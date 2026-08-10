@@ -825,7 +825,7 @@
     {dow:'SAT',dom:15,stay:0,big:false,title:'Land, settle in',sub:'Flight lands early afternoon',items:[
       {t:'12:50',h:'AirAsia KUL to PQC',p:'Lands 1:35pm local. Allow time to clear immigration and collect bags before the transfer.',major:true},
       {t:'~1:35pm',h:'Immigration, bags, transfer',p:'Airport to this end of the south coast is the shortest hotel transfer of the trip. Realistically checked in by mid afternoon.',chips:[chip('drive 25 to 35 min')]},
-      {t:'~3:00pm',h:'Check in, pool or Khem Beach',p:'The resort sits right on the beach, so there is nothing else to travel for tonight.'},
+      {t:'~3:00pm',h:'Check in to JW Marriott Emerald Bay',p:'The first one, and the one Bill Bensley built as a made up French university, so every block is a different pastel colour. Three pools and Khem Beach right outside, and nothing else to travel for tonight.',photo:'jw',credit:'JW Marriott Emerald Bay, Khem Beach.',major:true,tags:['Check in','Photo spot']},
       {t:'~6:15pm',h:'Sunset from Khem Beach',p:'Your first golden hour, taken from the resort. Worth checking the exact time closer to the day.',major:true,tags:['Photo spot']}
     ]},
     {dow:'SUN',dom:16,stay:0,big:true,title:'Cable car and Aquatopia',sub:'The big excursion for this stay',items:[
@@ -839,7 +839,7 @@
     {dow:'MON',dom:17,stay:1,big:false,title:'North, then Grand World',sub:'Travel day, easy evening',
      transfer:'Longest transfer of the trip. South to north runs roughly 1 to 1.5 hours by road. Worth leaving after breakfast rather than lunch, and it is a good nap window for Raes.',items:[
       {t:'~9:00am',h:'Check out, drive north',p:'Leave after breakfast. This is the longest drive of the trip.',major:true,chips:[chip('drive 1 to 1.5 hrs')]},
-      {t:'~10:30am',h:'Settle in, pool at Vinpearl',p:'Reset after the drive. Nothing else planned for the afternoon.'},
+      {t:'~10:30am',h:'Check in to Vinpearl Resort and Spa',p:'Straight out to the lagoon pool that winds the length of the resort. You arrive well before the usual 2pm check in, so expect bags into storage and a swim first, room later. Nothing else planned for the afternoon.',photo:'vinpearl',credit:'Vinpearl Resort and Spa, Bai Dai.',major:true,tags:['Check in']},
       {t:'~7:00pm',h:'Grand World, walk from the resort',p:'Little Venice canal streets, gondola boats and the nightly light and water show. Wide walking streets, stroller friendly, and plenty of family dining right there.',major:true,tags:['Photo spot','Kids love it'],chips:[chip('dinner plus show, 2 hrs'),lnk('vinpearl.com','https://vinpearl.com/en/grand-world-phu-quoc-what-is-worth-experiencing-there')]}
     ]},
     {dow:'TUE',dom:18,stay:1,big:true,title:'VinWonders',sub:'Booked. Theme park day',items:[
@@ -849,6 +849,7 @@
     {dow:'WED',dom:19,stay:2,big:false,title:'Short hop, beach reset',sub:'Nothing else planned today',
      transfer:'The easy move. Still the same Bai Dai neighbourhood as Vinpearl, so this one should only run 10 to 20 minutes.',items:[
       {t:'~11:00am',h:'Check out, transfer to Meliá',p:'No long drive today.',chips:[chip('drive 10 to 20 min')]},
+      {t:'~11:30am',h:'Check in to Meliá Vinpearl',p:'Pool villas on the same Bai Dai stretch, so it is the beach you were already on, with your own pool this time. Early again, so bags first and the room when it is ready.',photo:'melia',credit:'Meliá Vinpearl, one of the pool villas.',major:true,tags:['Check in']},
       {t:'12:00pm',h:"Bai Dai's white sand beach",p:'This coastline faces the sunset directly, so it is worth lingering into the evening.',major:true,tags:['Photo spot'],chips:[chip('sunset 6:15 to 6:30pm')]}
     ]},
     {dow:'THU',dom:20,stay:2,big:true,title:'Vinpearl Safari',sub:'Suggested placement, move it if it does not fit',items:[
@@ -858,7 +859,8 @@
     ]},
     {dow:'FRI',dom:21,stay:3,big:false,title:'Back south, Kiss Bridge',sub:'Low effort, high payoff evening',
      transfer:'Second long transfer. Back south, roughly 1 to 1.5 hours, a mirror of the drive up on day 3.',items:[
-      {t:'~9:00am',h:'Check out, drive south, check in',p:'Treat the rest of the afternoon as recovery, not activity.',major:true,chips:[chip('drive 1 to 1.5 hrs')]},
+      {t:'~9:00am',h:'Check out, drive south',p:'The mirror of Monday\u2019s drive up, and another good nap window for Raes.',chips:[chip('drive 1 to 1.5 hrs')]},
+      {t:'~10:30am',h:'Check in to La Festa Phu Quoc',p:'The last stay and the one you are in longest. The lobby is a barrel vaulted atrium with a palm growing up under the skylight, and you walk out of it straight into Sunset Town. Treat the rest of the afternoon as recovery, not activity.',photo:'lafesta',credit:'La Festa Phu Quoc, the lobby atrium.',major:true,tags:['Check in','Photo spot']},
       {t:'~6:30pm',h:'Kiss Bridge at sunset',p:'A few minutes on foot if you end up at La Festa. An easy sunset without repeating the full cable car day.',photo:'kissbridge',credit:'Kiss Bridge at sunset. Photo: Vivu Vietnam, '+CC,major:true,tags:['Photo spot'],chips:[lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]}
     ]},
     {dow:'SAT',dom:22,stay:3,big:false,title:'Sunset Town and beach',sub:'Easy day, nothing urgent',items:[
@@ -1062,7 +1064,7 @@
       }
       var bits=[];
       if(r.kind==='fixed'){
-        if(r.it.tags) r.it.tags.forEach(function(t){ bits.push('<span class="pill tiny ghost">'+t+'</span>'); });
+        if(r.it.tags) r.it.tags.forEach(function(t){ bits.push('<span class="pill tiny '+(t==='Check in'?'coral':'ghost')+'">'+t+'</span>'); });
         if(r.it.chips) r.it.chips.forEach(function(c){ bits.push(c); });
       }
       if(bits.length) h+='<div class="evchips">'+bits.join('')+'</div>';
