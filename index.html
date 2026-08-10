@@ -332,8 +332,23 @@
   .evtool:active{opacity:.55}
 
   .sky{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
-  .sky .skl{flex:1 1 100%;margin:2px 0 0;font-size:13px;line-height:1.5;color:var(--ink-soft)}
+  .sky .skl{flex:1 1 100%;margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-faint)}
   .sky .pill svg{color:var(--coral-text)}
+  .wxc{flex:1 1 100%;width:100%;height:auto;display:block;margin:4px 0 2px;
+    background:var(--surface);border-radius:20px;box-shadow:var(--sh-s)}
+  .wxlight{fill:rgba(238,123,69,.11)}
+  .wxbar{fill:var(--deep)}
+  .wxbase{stroke:rgba(12,36,27,.13);stroke-width:1}
+  .wxlab{font-family:'Jakarta',sans-serif;font-size:10px;font-weight:700;fill:var(--ink-faint)}
+  .wxnow{stroke:var(--coral);stroke-width:2;stroke-linecap:round}
+  .wxnowd{fill:var(--coral)}
+  .wxchip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:var(--r-pill);
+    font-size:11.5px;font-weight:700;letter-spacing:.01em;line-height:1.25}
+  .wxchip svg{width:13px;height:13px;flex:none}
+  .wxchip.l0{background:var(--sage);color:var(--deep)}
+  .wxchip.l1{background:rgba(238,123,69,.15);color:var(--coral-text)}
+  .wxchip.l2{background:var(--coral);color:#3A1405}
+  .wxchip.l3{background:var(--coral);color:#3A1405;box-shadow:0 0 0 2px rgba(238,123,69,.28)}
   .hours{display:flex;gap:9px;margin-top:14px}
   .hours>div{flex:1;background:var(--sage);border-radius:16px;padding:12px 13px}
   .hours .k{display:block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
@@ -725,34 +740,35 @@
      photo:'jw',credit:'JW Marriott Emerald Bay, Khem Beach.',
      site:['marriott.com','https://www.marriott.com/en-us/hotels/pqcjw-jw-marriott-phu-quoc-emerald-bay-resort-and-spa/overview/'],
      map:['Khem Beach','https://www.google.com/maps/search/?api=1&query=Khem+Beach+Phu+Quoc'],
-     ci:'3:00pm',co:'12:00pm',
+     ci:'3:00pm',co:'12:00pm',place:'Khem Beach',lat:10.036,lon:104.030,
      halal:'Resort dining is the easy option here. Ask for seafood or dishes prepared without pork or alcohol. The nearest dedicated halal restaurants, Sri Mutiara and Ganesh, are up in Duong Dong town, a real drive from this southern tip.',draft:false},
     {n:'Vinpearl Resort and Spa',short:'Vinpearl',side:'North coast',dates:'17 to 19 Aug',nights:'2 nights',
      loc:'Bai Dai, walkable to Grand World and close to Vinpearl Safari. The opposite end of the island from JW Marriott.',
      photo:'vinpearl',credit:'Vinpearl Resort and Spa, Bai Dai.',
      site:['vinpearl.com','https://vinpearl.com/en/hotels/vinpearl-resort-spa-phu-quoc'],
      map:['Bai Dai','https://www.google.com/maps/search/?api=1&query=Bai+Dai+Phu+Quoc'],
-     ci:'3:00pm',co:'12:00pm',
+     ci:'3:00pm',co:'12:00pm',place:'Bai Dai',lat:10.331,lon:103.852,
      halal:'The easiest halal nights of the whole trip. Vinpearl resort dining includes dedicated halal counters in its buffet restaurants, so no travel is needed.',draft:false},
     {n:'Meliá Vinpearl',short:'Meliá',side:'North coast',dates:'19 to 21 Aug',nights:'2 nights',
      loc:"Same Bai Dai stretch as Vinpearl, on the island's sunset-facing coast.",
      photo:'melia',credit:'Meliá Vinpearl, one of the pool villas.',
      site:['melia.com','https://www.melia.com/en/hotels/vietnam/phu-quoc/melia-vinpearl-phu-quoc'],
      map:['Meliá Vinpearl','https://www.google.com/maps/search/?api=1&query=Melia+Vinpearl+Phu+Quoc'],
-     ci:'3:00pm',co:'12:00pm',
+     ci:'3:00pm',co:'12:00pm',place:'Bai Dai north',lat:10.358,lon:103.850,
      halal:'Same Bai Dai cluster as Vinpearl, so in-resort halal dining should be just as easy here.',draft:false},
     {n:'La Festa Phu Quoc',short:'La Festa',side:'South coast',dates:'21 to 24 Aug',nights:'3 nights',
      loc:'In Sunset Town, An Thoi. Back on the same coast as JW Marriott, about half a kilometre from the cable car and Kiss Bridge.',
      photo:'lafesta',credit:'La Festa Phu Quoc, the lobby atrium.',
      site:['hilton.com','https://www.hilton.com/en/hotels/pqcpqqq-la-festa-phu-quoc/'],
      map:['Sunset Town','https://www.google.com/maps/search/?api=1&query=Sunset+Town+An+Thoi+Phu+Quoc'],
-     ci:'3:00pm',co:'12:00pm',
+     ci:'3:00pm',co:'12:00pm',place:'Sunset Town',lat:10.030,lon:104.007,
      halal:'Javaher Halal Restaurant sits inside Mercury Phu Quoc Resort and Villas, close to the airport and nearer this end of the island than Bai Dai. Likely your most reachable dedicated halal option for these three nights.',draft:true}
   ];
 
 
   var II = {
     market:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5z"/><path d="M3 9l2-5h14l2 5"/><path d="M9 13v3M15 13v3"/></svg>',
+    drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2s6 6.3 6 10.3A6 6 0 0 1 6 13.5c0-4 6-10.3 6-10.3z"/></svg>',
     moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.2 8.2 0 1 0 20 14.5z"/></svg>',
     sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>',
     beach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4"/><path d="M3 19c1.5 1.4 3 1.4 4.5 0s3-1.4 4.5 0 3 1.4 4.5 0 3-1.4 4.5 0"/></svg>',
@@ -838,62 +854,62 @@
       {t:'12:50',h:'AirAsia KUL to PQC',p:'Lands 1:35pm Phu Quoc time, which is an hour behind Malaysia. Put your watches back on the plane.',major:true},
       {t:'~1:35pm',h:'Immigration, bags, transfer',p:'Airport to the southern tip is the shortest hotel transfer of the trip, and the timing is a gift: check in opens at 3pm and you arrive at about 3pm.',chips:[chip('drive 25 to 35 min')]},
       {t:'3:00pm',h:'Check in to JW Marriott Emerald Bay',p:'The first one, and the one Bill Bensley built as a made up French university, so every block is a different pastel colour. Three pools and Khem Beach right outside, and nothing else to travel for tonight.',photo:'jw',credit:'JW Marriott Emerald Bay, Khem Beach.',major:true,tags:['Check in','Photo spot'],chips:[chip('check in from 3:00pm')]},
-      {t:'~4:00pm',h:'Pool, or straight onto Khem Beach',p:'Whatever Seth and Belle want after five hours of travelling. The resort is on the sand, so nothing here needs a car.'},
-      {t:'~6:15pm',h:'Sunset from Khem Beach',p:'Your first golden hour, taken from the resort. Worth checking the exact time closer to the day.',major:true,tags:['Photo spot']}
+      {t:'~4:00pm',h:'Pool, or straight onto Khem Beach',out:true,p:'Whatever Seth and Belle want after five hours of travelling. The resort is on the sand, so nothing here needs a car.'},
+      {t:'~6:15pm',h:'Sunset from Khem Beach',out:true,p:'Your first golden hour, taken from the resort. Worth checking the exact time closer to the day.',major:true,tags:['Photo spot']}
     ]},
     {dow:'SUN',dom:16,stay:0,big:true,title:'Cable car and Aquatopia',sub:'The big excursion for this stay',items:[
       {t:'7:30am',h:'Breakfast, drive to An Thoi',p:'Short hop from the hotel.',chips:[chip('drive 15 min')]},
-      {t:'~8:45am',h:"Hon Thom cable car",p:"The world's longest over water. Enclosed and air cooled, gentle enough for Raes.",photo:'honthom',credit:'Hon Thom cable car. Photo: Vivu Vietnam, '+CC,major:true,tags:['Kids love it','Good for Raes'],chips:[chip('15 min ride'),lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]},
-      {t:'9:00am',h:'Aquatopia water park',p:'21 slides and a lazy river for Seth and Belle. Shaded rest areas if Raes needs a break, and worth one of you rotating back with her if the morning runs long.',major:true,tags:['Kids love it']},
+      {t:'~8:45am',h:"Hon Thom cable car",out:true,p:"The world's longest over water. Enclosed and air cooled, gentle enough for Raes.",photo:'honthom',credit:'Hon Thom cable car. Photo: Vivu Vietnam, '+CC,major:true,tags:['Kids love it','Good for Raes'],chips:[chip('15 min ride'),lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]},
+      {t:'9:00am',h:'Aquatopia water park',out:true,p:'21 slides and a lazy river for Seth and Belle. Shaded rest areas if Raes needs a break, and worth one of you rotating back with her if the morning runs long.',major:true,tags:['Kids love it']},
       {t:'12:30pm',h:'Lunch on the island',p:'Food court and restaurants at the park. Check for pork free options, or bring a snack for the baby.'},
-      {t:'1:30pm',h:'More park, then cable car back',p:'Head back before everyone is fully spent. It has already been a big day.'},
-      {t:'~6:30pm',h:'Kiss Bridge and Kiss of the Sea',p:'Your free JW Marriott ticket, good anytime. Bridge open for sunset before 7:30pm, and the 7 minute fire, laser and water show starts after 8:30pm. Tonight is the natural fit since you are already out here, but it works on your arrival night instead if a late show on top of a water park is too much in one go.',major:true,tags:['Photo spot','Free ticket']}
+      {t:'1:30pm',h:'More park, then cable car back',out:true,p:'Head back before everyone is fully spent. It has already been a big day.'},
+      {t:'~6:30pm',h:'Kiss Bridge and Kiss of the Sea',out:true,p:'Your free JW Marriott ticket, good anytime. Bridge open for sunset before 7:30pm, and the 7 minute fire, laser and water show starts after 8:30pm. Tonight is the natural fit since you are already out here, but it works on your arrival night instead if a late show on top of a water park is too much in one go.',major:true,tags:['Photo spot','Free ticket']}
     ]},
     {dow:'MON',dom:17,stay:1,big:false,title:'North, then Grand World',sub:'Travel day, easy evening',
      transfer:'Longest transfer of the trip, roughly 1 to 1.5 hours south to north. Built around noon out and three in, so the morning stays on Khem Beach and the drive doubles as a nap for Raes.',items:[
-      {t:'8:00am',h:'Breakfast, then the beach again',p:'No reason to be up and packed early. Khem Beach is yours until noon, so use the last morning of it.'},
+      {t:'8:00am',h:'Breakfast, then the beach again',out:true,p:'No reason to be up and packed early. Khem Beach is yours until noon, so use the last morning of it.'},
       {t:'11:15am',h:'Pack, settle the bill',p:'Forty five minutes is plenty if the cases are half done from the night before.'},
       {t:'12:00pm',h:'Check out of JW Marriott',p:'Their stated check out, and the latest you get without paying for it. Worth asking at the desk the night before whether a later one is free, but plan for noon.',major:true,tags:['Check out'],chips:[chip('check out 12:00pm')]},
       {t:'12:15pm',h:'Drive north to Bai Dai',p:'The long one, south tip to north coast. Good nap window for Raes.',chips:[chip('drive 1 to 1.5 hrs')]},
       {t:'~1:45pm',h:'Bags at the desk, late lunch',p:'You land about an hour before check in opens. Leave everything with the bell desk and eat, either in the resort or five minutes on foot at Grand World.',tags:['Gap']},
       {t:'3:00pm',h:'Check in to Vinpearl Resort and Spa',p:'The lagoon pool winds the length of the resort and that is the whole afternoon sorted. Nothing else planned before dinner.',photo:'vinpearl',credit:'Vinpearl Resort and Spa, Bai Dai.',major:true,tags:['Check in'],chips:[chip('check in from 3:00pm')]},
-      {t:'~6:30pm',h:'Grand World, walk from the resort',p:'Little Venice canal streets, gondola boats and the nightly light and water show. Wide walking streets, stroller friendly, and plenty of family dining right there. The big Quintessence of Vietnam show on the water is at 8:15pm if you want to stay for it.',major:true,tags:['Photo spot','Kids love it'],chips:[chip('dinner plus show, 2 hrs'),lnk('vinpearl.com','https://vinpearl.com/en/grand-world-phu-quoc-what-is-worth-experiencing-there')]}
+      {t:'~6:30pm',h:'Grand World, walk from the resort',out:true,p:'Little Venice canal streets, gondola boats and the nightly light and water show. Wide walking streets, stroller friendly, and plenty of family dining right there. The big Quintessence of Vietnam show on the water is at 8:15pm if you want to stay for it.',major:true,tags:['Photo spot','Kids love it'],chips:[chip('dinner plus show, 2 hrs'),lnk('vinpearl.com','https://vinpearl.com/en/grand-world-phu-quoc-what-is-worth-experiencing-there')]}
     ]},
     {dow:'TUE',dom:18,stay:1,big:true,title:'VinWonders',sub:'Booked. Theme park day',items:[
-      {t:'9:00am',h:'VinWonders, same Bai Dai cluster',p:'Your tickets for this one. Rides and attractions for Seth and Belle. Worth being there near opening to beat the midday heat, with a shaded stroller base for Raes to nap between rides.',major:true,tags:['Booked','Kids love it'],chips:[chip('gates 9:00am to 7:30pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinwonders-phu-quoc/')]},
+      {t:'9:00am',h:'VinWonders, same Bai Dai cluster',out:true,p:'Your tickets for this one. Rides and attractions for Seth and Belle. Worth being there near opening to beat the midday heat, with a shaded stroller base for Raes to nap between rides.',major:true,tags:['Booked','Kids love it'],chips:[chip('gates 9:00am to 7:30pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinwonders-phu-quoc/')]},
       {t:'~3:00pm',h:'Head back, resort downtime',p:'A full theme park day is a lot for everyone. Pool or beach for the evening, nothing else on top of it.'}
     ]},
     {dow:'WED',dom:19,stay:2,big:false,title:'Short hop, beach reset',sub:'Nothing else planned today',
      transfer:'The easy move, ten to twenty minutes inside the same Bai Dai neighbourhood. The three hours between checking out and checking in cost you nothing here, because it is the same beach on both sides of the move.',items:[
-      {t:'8:30am',h:'Breakfast, last swim at Vinpearl',p:'The lagoon pool one more time before the bags go in the car.'},
+      {t:'8:30am',h:'Breakfast, last swim at Vinpearl',out:true,p:'The lagoon pool one more time before the bags go in the car.'},
       {t:'12:00pm',h:'Check out of Vinpearl',p:'Noon again. Nothing gained by leaving earlier when the next hotel is fifteen minutes away.',major:true,tags:['Check out'],chips:[chip('check out 12:00pm')]},
       {t:'12:20pm',h:'Across to Meliá, bags at the desk',p:'Short hop, then lunch while the room is being made up.',chips:[chip('drive 10 to 20 min')]},
-      {t:'~1:30pm',h:'Straight onto the beach',p:'This is the easiest gap of the trip. Same sand, same water, bags already dropped, nothing to wait for.',tags:['Gap']},
+      {t:'~1:30pm',h:'Straight onto the beach',out:true,p:'This is the easiest gap of the trip. Same sand, same water, bags already dropped, nothing to wait for.',tags:['Gap']},
       {t:'3:00pm',h:'Check in to Meliá Vinpearl',p:'Pool villas on the same Bai Dai stretch, so it is the beach you were already on, with your own pool this time.',photo:'melia',credit:'Meliá Vinpearl, one of the pool villas.',major:true,tags:['Check in'],chips:[chip('check in from 3:00pm')]},
-      {t:'~6:15pm',h:"Bai Dai sunset",p:'This coastline faces the sunset directly, so it is worth being out of the pool for it.',major:true,tags:['Photo spot'],chips:[chip('sunset 6:15 to 6:30pm')]}
+      {t:'~6:15pm',h:"Bai Dai sunset",out:true,p:'This coastline faces the sunset directly, so it is worth being out of the pool for it.',major:true,tags:['Photo spot'],chips:[chip('sunset 6:15 to 6:30pm')]}
     ]},
     {dow:'THU',dom:20,stay:2,big:true,title:'Vinpearl Safari',sub:'Suggested placement, move it if it does not fit',items:[
       {t:'8:00am',h:'Breakfast, transfer to the safari',p:'Day trippable from Meliá, same Bai Dai area as Vinpearl.'},
-      {t:'9:00am',h:'Vinpearl Safari',p:'Placed here so it does not stack against VinWonders, and so Wednesday stays a genuine breather between the two big park days. Semi wild animal park with an open air tram, comfortable for Raes, animals more active before midday. Rent a stroller at the gate, even for Belle. Under 100cm enters free, and no outside food is allowed except formula or baby food.',major:true,tags:['Kids love it','Good for Raes'],chips:[chip('gates 9am to 4pm, last entry 2pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinpearl-safari-phu-quoc/')]},
+      {t:'9:00am',h:'Vinpearl Safari',out:true,p:'Placed here so it does not stack against VinWonders, and so Wednesday stays a genuine breather between the two big park days. Semi wild animal park with an open air tram, comfortable for Raes, animals more active before midday. Rent a stroller at the gate, even for Belle. Under 100cm enters free, and no outside food is allowed except formula or baby food.',major:true,tags:['Kids love it','Good for Raes'],chips:[chip('gates 9am to 4pm, last entry 2pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinpearl-safari-phu-quoc/')]},
       {t:'~1:00pm',h:'Back to the resort',p:'A safari morning is a lot of walking even with a tram. Pool or beach for the rest of the day.'}
     ]},
     {dow:'FRI',dom:21,stay:3,big:false,title:'Back south, Kiss Bridge',sub:'Low effort, high payoff evening',
      transfer:'Second long transfer, the mirror of Monday, and the same shape: noon out, three in, and the hour in between spent in Sunset Town instead of a lobby.',items:[
-      {t:'8:30am',h:'Breakfast, last northern morning',p:'You do not come back up here, so take the beach one more time.'},
+      {t:'8:30am',h:'Breakfast, last northern morning',out:true,p:'You do not come back up here, so take the beach one more time.'},
       {t:'12:00pm',h:'Check out of Meliá',p:'Noon, as everywhere else.',major:true,tags:['Check out'],chips:[chip('check out 12:00pm')]},
       {t:'12:15pm',h:'Drive south to Sunset Town',p:'The mirror of Monday\u2019s drive up, and another good nap window for Raes.',chips:[chip('drive 1 to 1.5 hrs')]},
-      {t:'~1:45pm',h:'Bags at the desk, lunch in Sunset Town',p:'The best gap of the trip. You are an hour early and standing in the middle of the Mediterranean town, so eat, then walk Positano Street and the square while the afternoon light is still on the pastel walls.',tags:['Gap','Photo spot']},
+      {t:'~1:45pm',h:'Bags at the desk, lunch in Sunset Town',out:true,p:'The best gap of the trip. You are an hour early and standing in the middle of the Mediterranean town, so eat, then walk Positano Street and the square while the afternoon light is still on the pastel walls.',tags:['Gap','Photo spot']},
       {t:'3:00pm',h:'Check in to La Festa Phu Quoc',p:'The last stay and the one you are in longest. The lobby is a barrel vaulted atrium with a palm growing up under the skylight, and you walk out of it straight into Sunset Town. Treat the rest of the afternoon as recovery, not activity.',photo:'lafesta',credit:'La Festa Phu Quoc, the lobby atrium.',major:true,tags:['Check in','Photo spot'],chips:[chip('check in from 3:00pm')]},
-      {t:'~6:30pm',h:'Kiss Bridge at sunset',p:'A few minutes on foot if you end up at La Festa. An easy sunset without repeating the full cable car day.',photo:'kissbridge',credit:'Kiss Bridge at sunset. Photo: Vivu Vietnam, '+CC,major:true,tags:['Photo spot'],chips:[lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]}
+      {t:'~6:30pm',h:'Kiss Bridge at sunset',out:true,p:'A few minutes on foot if you end up at La Festa. An easy sunset without repeating the full cable car day.',photo:'kissbridge',credit:'Kiss Bridge at sunset. Photo: Vivu Vietnam, '+CC,major:true,tags:['Photo spot'],chips:[lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]}
     ]},
     {dow:'SAT',dom:22,stay:3,big:false,title:'Sunset Town and beach',sub:'Easy day, nothing urgent',items:[
-      {t:'Morning',h:'Beach, pool, resort time',p:'With a third night here, there is no need to cram everything into today. This one can stay genuinely unplanned.'},
-      {t:'~5:30pm',h:'Sunset Sanato beach club',p:'Its Gate Keeper, Bird Nest and Stairway to Heaven installations are some of the most photographed spots on the island. Small entry fee, or free with a drink. Distance from the southern resorts is not fully confirmed on my end, so check with the hotel before giving it a whole afternoon.',tags:['Photo spot','Optional'],chips:[lnk('sunsetsanato.com','https://www.sunsetsanato.com/en/')]},
-      {t:'Evening',h:'Sunset Town, by the hotel',p:'A walkable night market strip. Food stalls and an easy family stroll, good photos without booking anything.',major:true,tags:['Photo spot']}
+      {t:'Morning',h:'Beach, pool, resort time',out:true,p:'With a third night here, there is no need to cram everything into today. This one can stay genuinely unplanned.'},
+      {t:'~5:30pm',h:'Sunset Sanato beach club',out:true,p:'Its Gate Keeper, Bird Nest and Stairway to Heaven installations are some of the most photographed spots on the island. Small entry fee, or free with a drink. Distance from the southern resorts is not fully confirmed on my end, so check with the hotel before giving it a whole afternoon.',tags:['Photo spot','Optional'],chips:[lnk('sunsetsanato.com','https://www.sunsetsanato.com/en/')]},
+      {t:'Evening',h:'Sunset Town, by the hotel',out:true,p:'A walkable night market strip. Food stalls and an easy family stroll, good photos without booking anything.',major:true,tags:['Photo spot']}
     ]},
     {dow:'SUN',dom:23,stay:3,big:false,title:'Last full day, wide open',sub:'The bonus day from flying Monday',items:[
       {t:'All day',h:'No plan, on purpose',p:'This day only exists because you fly home Monday instead of Sunday. Nothing is owed to it. Pool, beach, whatever Seth and Belle are still asking for.',major:true},
-      {t:'~10:00am',h:'Sao Beach, if there is appetite',p:'A different southern beach from the ones you will already have seen. Calm, shallow water that is easy with kids.',photo:'sao',credit:'Sao Beach. Photo: Trantuonglam, '+CC,tags:['Optional'],chips:[chip('drive 15 min'),lnk('Maps','https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc')]},
+      {t:'~10:00am',h:'Sao Beach, if there is appetite',out:true,p:'A different southern beach from the ones you will already have seen. Calm, shallow water that is easy with kids.',photo:'sao',credit:'Sao Beach. Photo: Trantuonglam, '+CC,tags:['Optional'],chips:[chip('drive 15 min'),lnk('Maps','https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc')]},
       {t:'Evening',h:'Pack tonight',p:'Leaves Monday completely clear before an early flight.'}
     ]},
     {dow:'MON',dom:24,stay:3,big:false,title:'Departure',sub:'10:05am flight, early start',items:[
@@ -966,31 +982,50 @@
     return {rise:toMin(jt - w/360), set:toMin(jt + w/360)};
   }
 
-  var WXK='pq26.wx.v1', WX=null, WXAT=0;
+  var WXK='pq26.wx.v2', WX=null, WXAT=0;
   (function(){ try{ var r=localStorage.getItem(WXK); if(r){ var o=JSON.parse(r); WX=o.d; WXAT=o.at||0; } }catch(e){} })();
 
+  /* One request covers all four hotels. It matters: on the same day the south
+     tip and Bai Dai can differ by a third of the rainfall, and they sit on
+     opposite coasts of a monsoon. Results come back in the order asked. */
   function wxFetch(){
     if(WX && Date.now()-WXAT < 3*3600000) return;         // a few hours old is fine
     if(typeof fetch!=='function') return;
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=10.22&longitude=103.96'+
-          '&hourly=precipitation&daily=temperature_2m_max,precipitation_sum'+
+    fetch('https://api.open-meteo.com/v1/forecast'+
+          '?latitude='+STAYS.map(function(s){return s.lat;}).join(',')+
+          '&longitude='+STAYS.map(function(s){return s.lon;}).join(',')+
+          '&hourly=precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum'+
           '&timezone=Asia%2FBangkok&start_date=2026-08-15&end_date=2026-08-24')
       .then(function(r){ return r.ok?r.json():null; })
       .then(function(j){
-        if(!j||!j.daily||!j.hourly) return;
-        var out={};
-        j.daily.time.forEach(function(t,i){
-          out[t]={sum:j.daily.precipitation_sum[i], tmax:j.daily.temperature_2m_max[i], p:[]};
+        if(!j) return;
+        var list=(j.length===undefined)?[j]:j;            // one location comes back unwrapped
+        var out=[];
+        list.forEach(function(loc,si){
+          if(!loc||!loc.daily||!loc.hourly) return;
+          var d={};
+          loc.daily.time.forEach(function(t,i){
+            d[t]={sum:loc.daily.precipitation_sum[i], tmax:loc.daily.temperature_2m_max[i],
+                  tmin:loc.daily.temperature_2m_min[i], p:[]};
+          });
+          loc.hourly.time.forEach(function(t,i){
+            var k=t.slice(0,10), h=+t.slice(11,13);
+            if(d[k]) d[k].p[h]=loc.hourly.precipitation[i];
+          });
+          out[si]=d;
         });
-        j.hourly.time.forEach(function(t,i){
-          var k=t.slice(0,10), h=+t.slice(11,13);
-          if(out[k]) out[k].p[h]=j.hourly.precipitation[i];
-        });
+        if(!out.length) return;
         WX=out; WXAT=Date.now();
         try{ localStorage.setItem(WXK, JSON.stringify({at:WXAT,d:WX})); }catch(e){}
         renderDay(cur,true);
       })
       .catch(function(){});                                // offline, or a page that blocks it
+  }
+
+  function wxFor(di){
+    if(!WX) return null;
+    var byStay=WX[DAYS[di].stay];
+    return byStay ? byStay['2026-08-'+pad(15+di)] : null;
   }
 
   /* In this climate it rains most days, so the useful question is not whether
@@ -1010,27 +1045,109 @@
     return (best.t <= worst*0.55) ? best : null;
   }
   function onHour(h){ var ap=h<12?'am':'pm', hh=h%12||12; return hh+ap; }   // 14 -> 2pm
-  function wxLine(key){
-    var w=WX&&WX[key]; if(!w) return '';
-    var bits=[];
-    var mm=w.sum==null?null:Math.round(w.sum);
-    if(mm===null) bits.push('Rain unclear');
-    else if(mm<2) bits.push('Barely any rain due');
-    else if(mm<10) bits.push('Some rain about, roughly '+mm+'mm over the day');
-    else bits.push('A wet one, roughly '+mm+'mm over the day');
+  function wxLine(di){
+    var w=wxFor(di); if(!w) return '';
+    var bits=['Rain at '+STAYS[DAYS[di].stay].place];
     var dry=driestRun(w.p);
     if(dry) bits.push('driest stretch '+onHour(dry.a)+' to '+onHour(dry.b));
-    if(w.tmax!=null) bits.push('high '+Math.round(w.tmax)+'\u00B0');
+    var mm=w.sum==null?null:Math.round(w.sum);
+    if(mm!=null) bits.push(mm<2?'barely any all day':'roughly '+mm+'mm over the day');
     return bits.join(', ')+'.';
   }
+  /* Eighteen bars, 5am to 10pm. Height is the square root of the rainfall so
+     a light shower still reads, the warm band behind them is daylight, and the
+     coral line is now. Nothing to tap, it is meant to be glanced at. */
+  function wxChart(di, sun){
+    var w=wxFor(di); if(!w||!w.p) return '';
+    var H0=5, H1=22, N=H1-H0+1, W=336, HT=80, PAD=6, base=HT-19;
+    var step=(W-2*PAD)/N, bw=Math.min(13, step-5);
+    var mx=0, any=false;
+    for(var h=H0;h<=H1;h++){ var v=w.p[h]; if(v!=null){ any=true; if(v>mx) mx=v; } }
+    if(!any) return '';
+    var scale=Math.max(mx, 1.0);
+    function xh(f){ return PAD+(f-H0)*step; }
+    var g='';
+    var a=Math.max(H0, sun.rise/60), b=Math.min(H1+1, sun.set/60);
+    if(b>a) g+='<rect class="wxlight" x="'+xh(a).toFixed(1)+'" y="5" width="'+(xh(b)-xh(a)).toFixed(1)+
+               '" height="'+(base-5).toFixed(1)+'" rx="8"/>';
+    for(h=H0;h<=H1;h++){
+      var mm=w.p[h]==null?0:w.p[h];
+      var t=Math.sqrt(mm/scale);
+      var bh=Math.max(2.5, t*(base-13));
+      g+='<rect class="wxbar" x="'+(xh(h)+(step-bw)/2).toFixed(1)+'" y="'+(base-bh).toFixed(1)+
+         '" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" rx="3.5" opacity="'+
+         (0.18+0.78*Math.min(1,t)).toFixed(2)+'"/>';
+    }
+    g+='<line class="wxbase" x1="'+PAD+'" y1="'+base+'" x2="'+(W-PAD)+'" y2="'+base+'"/>';
+    [6,9,12,15,18,21].forEach(function(hh){
+      g+='<text class="wxlab" x="'+(xh(hh)+step/2).toFixed(1)+'" y="'+(base+14)+'" text-anchor="middle">'+onHour(hh)+'</text>';
+    });
+    var p=pqNow();
+    if(pqIndex(p)===di){
+      var nf=pqMins(p)/60;
+      if(nf>=H0&&nf<=H1+1){
+        var nx=xh(nf).toFixed(1);
+        g+='<line class="wxnow" x1="'+nx+'" y1="7" x2="'+nx+'" y2="'+base+'"/>'+
+           '<circle class="wxnowd" cx="'+nx+'" cy="5.5" r="3.6"/>';
+      }
+    }
+    return '<svg class="wxc" viewBox="0 0 '+W+' '+HT+'" role="img" aria-label="'+esc(wxAria(di,w))+'"><g>'+g+'</g></svg>';
+  }
+
+  /* An outdoor plan is not an instant, so read the three hours it starts in.
+     If those are wet, say when it clears rather than just saying no. */
+  function wxVerdict(di, mins){
+    var w=wxFor(di); if(!w||!w.p) return null;
+    var h=Math.floor(mins/60), v=[];
+    for(var k=0;k<3;k++){ var x=w.p[h+k]; if(x!=null) v.push(x); }
+    if(!v.length) return null;
+    var mean=0; v.forEach(function(x){ mean+=x; }); mean/=v.length;
+    var lvl = mean<0.15?0 : mean<0.8?1 : mean<2.5?2 : 3;
+    var when=(mins%60===0)?onHour(mins/60):nice(mins);
+    var txt = lvl===0 ? 'Dry around '+when
+            : lvl===1 ? 'Spitting around '+when
+            : lvl===2 ? 'Rain likely around '+when
+            :           'Heavy rain around '+when;
+    if(lvl>=2){
+      var alt=wxNextDry(w, h+3);
+      if(alt!=null) txt+=', drier from '+onHour(alt);
+    }
+    return {lvl:lvl, text:txt};
+  }
+  function wxNextDry(w, from){
+    for(var h=Math.max(from,6); h<=19; h++){
+      var a=w.p[h], b=w.p[h+1];
+      if(a!=null&&b!=null&&(a+b)/2<0.2) return h;
+    }
+    return null;
+  }
+  function wxChip(di, mins){
+    var v=wxVerdict(di, mins); if(!v) return '';
+    return '<span class="wxchip l'+v.lvl+'">'+(v.lvl?II.drop:II.sun)+v.text+'</span>';
+  }
+
+  function wxAria(di,w){
+    var out='Rain by the hour at '+STAYS[DAYS[di].stay].place+'. ';
+    var peak=-1, ph=0;
+    for(var h=5;h<=22;h++){ var v=w.p[h]; if(v!=null&&v>peak){ peak=v; ph=h; } }
+    if(peak>0.2) out+='Heaviest around '+onHour(ph)+'. ';
+    var dry=driestRun(w.p);
+    if(dry) out+='Driest '+onHour(dry.a)+' to '+onHour(dry.b)+'.';
+    return out;
+  }
+
   function skyBlock(di){
-    var key='2026-08-'+pad(15+di), t=sunTimes(2026,8,15+di);
-    if(!t) return '';
-    return '<div class="sky">'+
+    var t=sunTimes(2026,8,15+di); if(!t) return '';
+    var w=wxFor(di);
+    var h='<div class="sky">'+
       '<span class="pill tiny">'+II.sun+nice(t.rise)+'</span>'+
-      '<span class="pill tiny">'+II.moon+nice(t.set)+'</span>'+
-      (wxLine(key)?'<p class="skl">'+wxLine(key)+'</p>':'')+
-    '</div>';
+      '<span class="pill tiny">'+II.moon+nice(t.set)+'</span>';
+    if(w&&w.tmax!=null) h+='<span class="pill tiny">'+Math.round(w.tmax)+'&deg;'+
+      (w.tmin!=null?' / '+Math.round(w.tmin)+'&deg;':'')+'</span>';
+    h+=wxChart(di,t);
+    var line=wxLine(di);
+    if(line) h+='<p class="skl">'+line+'</p>';
+    return h+'</div>';
   }
 
   /* ---- what he sets himself. localStorage where it exists, memory where it
@@ -1179,6 +1296,7 @@
         if(r.it.photo) h+='<figure class="evshot" style="margin:13px 0 0"><img src="'+P[r.it.photo]+'" alt=""><figcaption class="cr">'+r.it.credit+'</figcaption></figure>';
       }
       var bits=[];
+      if(r.kind==='plan' || r.it.out){ var wc=wxChip(i, r.mins); if(wc) bits.push(wc); }
       if(r.kind==='fixed'){
         if(r.it.tags) r.it.tags.forEach(function(t){
           var k=(t==='Check in')?'coral':(t==='Check out')?'dark':'ghost';
