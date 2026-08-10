@@ -194,6 +194,54 @@
   .maphead h2{font-size:26px;font-weight:700;color:var(--deep)}
   .maphead p{margin:5px 0 0;font-size:12.5px;color:var(--ink-soft);font-weight:500;max-width:20ch}
 
+  /* ---------------- ideas ---------------- */
+  .ideapin{cursor:pointer}
+  .ideapin .ih{fill:var(--coral);opacity:0;transition:opacity 200ms var(--e-out)}
+  .ideapin .ic{fill:#fff;stroke:var(--coral);stroke-width:2.6;transition:transform 160ms var(--e-out)}
+  .ideapin .ii{fill:var(--coral)}
+  .ideapin:active .ic{transform:scale(.88);transform-box:fill-box;transform-origin:center}
+  .ideapin[data-active="true"] .ih{opacity:.3}
+  .ideapin[data-active="true"] .ic{fill:var(--coral)}
+  .ideapin[data-active="true"] .ii{fill:#fff}
+  .ideapin:focus-visible{outline:none}
+  .ideapin:focus-visible .ih{opacity:.36}
+  .ilabel{font-family:'Jakarta',sans-serif;font-size:10px;font-weight:700;fill:var(--deep);opacity:.68;pointer-events:none}
+
+  .arearow{display:flex;align-items:center;gap:9px;margin:26px 0 11px}
+  .arearow h3{font-size:15px;font-weight:800;letter-spacing:-.01em;flex:none}
+  .arearow .ln{flex:1;height:1px;background:var(--line);min-width:8px}
+  .arearow .near{font-size:11.5px;font-weight:600;color:var(--ink-faint);flex:none;white-space:nowrap}
+
+  .ideacard{
+    display:grid;grid-template-columns:38px 1fr 20px;gap:12px;align-items:center;
+    width:100%;text-align:left;
+    padding:13px 15px;border-radius:var(--r-img);background:var(--surface);box-shadow:var(--sh-s);
+    transition:transform 170ms var(--e-out);margin-bottom:9px;
+  }
+  .ideacard:active{transform:scale(.975)}
+  .ideacard .ib{
+    width:38px;height:38px;border-radius:50%;background:var(--sage);flex:none;
+    display:flex;align-items:center;justify-content:center;color:var(--deep);
+  }
+  .ideacard .ib svg{width:18px;height:18px;flex:none}
+  .ideacard .ic2{min-width:0}
+  .ideacard .it{display:block;font-size:14.5px;font-weight:700;line-height:1.3}
+  .ideacard .is{display:block;font-size:12px;color:var(--ink-faint);font-weight:500;margin-top:4px;line-height:1.4}
+  .ideacard .go{color:var(--ink-faint);display:flex;align-items:center}
+  .ideacard .go svg{width:18px;height:18px;flex:none}
+  .vd{
+    display:inline-block;padding:3px 8px;border-radius:var(--r-pill);
+    font-size:10px;font-weight:800;letter-spacing:.03em;margin-left:7px;vertical-align:2px;
+  }
+  .vd.yes{background:var(--coral);color:#3A1405}
+  .vd.may{background:var(--sage);color:var(--ink-soft)}
+
+  .skipbox{margin-top:22px;padding:15px 17px;border-radius:var(--r-img);background:var(--sage)}
+  .skipbox h4{margin:0 0 9px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .skipbox p{margin:0 0 9px;font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .skipbox p:last-child{margin-bottom:0}
+  .skipbox b{color:var(--ink)}
+
   /* ---------------- day strip ---------------- */
   .strip{margin:0 -18px;padding:4px 18px 8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .strip::-webkit-scrollbar{display:none}
@@ -436,7 +484,7 @@
     <div style="padding:calc(14px + env(safe-area-inset-top)) 0 16px">
       <span class="eyebrow">Where you go</span>
       <h1 style="font-size:34px;font-weight:700;margin-top:8px">The island route</h1>
-      <p style="margin:9px 0 0;font-size:14.5px;color:var(--ink-soft);max-width:34ch">Two stays at the southern tip, two up north at Bai Dai. Tap a photo to open that stay.</p>
+      <p style="margin:9px 0 0;font-size:14.5px;color:var(--ink-soft);max-width:34ch">Two stays at the southern tip, two up north at Bai Dai. Tap a photo for a stay, or a ring for an idea nearby.</p>
     </div>
 
     <div class="mapstage">
@@ -465,6 +513,47 @@
         <text class="mlabel" x="140" y="120">Safari</text>
         <text class="mlabel" x="236" y="443" text-anchor="middle">Hon Thom</text>
 
+        <g class="ideapin" data-idea="0" role="button" tabindex="0" aria-label="Idea: Rach Vem">
+          <circle cx="158.4" cy="94.8" r="14" fill="transparent"/>
+          <circle class="ih" cx="158.4" cy="94.8" r="15"/>
+          <circle class="ic" cx="158.4" cy="94.8" r="7"/>
+          <circle class="ii" cx="158.4" cy="94.8" r="2.6"/>
+        </g>
+        <text class="ilabel" x="166" y="98.3" text-anchor="start">Rach Vem</text>
+        <g class="ideapin" data-idea="1" role="button" tabindex="0" aria-label="Idea: Duong Dong">
+          <circle cx="191.1" cy="247.4" r="14" fill="transparent"/>
+          <circle class="ih" cx="191.1" cy="247.4" r="15"/>
+          <circle class="ic" cx="191.1" cy="247.4" r="7"/>
+          <circle class="ii" cx="191.1" cy="247.4" r="2.6"/>
+        </g>
+        <text class="ilabel" x="183" y="243" text-anchor="end">Duong Dong</text>
+        <g class="ideapin" data-idea="2" role="button" tabindex="0" aria-label="Idea: Suoi Tranh">
+          <circle cx="228" cy="238" r="14" fill="transparent"/>
+          <circle class="ih" cx="228" cy="238" r="15"/>
+          <circle class="ic" cx="228" cy="238" r="7"/>
+          <circle class="ii" cx="228" cy="238" r="2.6"/>
+        </g>
+        <text class="ilabel" x="236" y="241.5" text-anchor="start">Suoi Tranh</text>
+        <g class="ideapin" data-idea="3" role="button" tabindex="0" aria-label="Idea: Ham Ninh">
+          <circle cx="250" cy="264" r="14" fill="transparent"/>
+          <circle class="ih" cx="250" cy="264" r="15"/>
+          <circle class="ic" cx="250" cy="264" r="7"/>
+          <circle class="ii" cx="250" cy="264" r="2.6"/>
+        </g>
+        <text class="ilabel" x="258" y="267.5" text-anchor="start">Ham Ninh</text>
+        <g class="ideapin" data-idea="4" role="button" tabindex="0" aria-label="Idea: Ho Quoc">
+          <circle cx="236.3" cy="308.5" r="14" fill="transparent"/>
+          <circle class="ih" cx="236.3" cy="308.5" r="15"/>
+          <circle class="ic" cx="236.3" cy="308.5" r="7"/>
+          <circle class="ii" cx="236.3" cy="308.5" r="2.6"/>
+        </g>
+        <text class="ilabel" x="244" y="312.0" text-anchor="start">Ho Quoc</text>
+        <g class="ideapin" data-idea="5" role="button" tabindex="0" aria-label="Idea: Sao Beach">
+          <circle cx="242.6" cy="355.6" r="14" fill="transparent"/>
+          <circle class="ih" cx="242.6" cy="355.6" r="15"/>
+          <circle class="ic" cx="242.6" cy="355.6" r="7"/>
+          <circle class="ii" cx="242.6" cy="355.6" r="2.6"/>
+        </g>
         <line class="leader" x1="236.9" y1="371.4" x2="278" y2="352"/>
         <circle class="anchor" cx="236.9" cy="371.4" r="3.4"/>
         <line class="leader" x1="220.6" y1="374.8" x2="268" y2="400"/>
@@ -511,6 +600,13 @@
 
     <div class="sect"><h2>In order</h2></div>
     <div id="ordered"></div>
+
+    <div class="sect">
+      <h2>Ideas nearby</h2>
+      <span class="note" style="background:none;padding:0;font-size:12.5px">Not booked</span>
+    </div>
+    <p style="margin:0 0 4px;font-size:13.5px;color:var(--ink-soft)">Places worth a look, grouped by where they are. Nothing here is in the plan yet.</p>
+    <div id="ideas"></div>
   </section>
 
   <!-- ================= DAYS ================= -->
@@ -591,6 +687,67 @@
      site:['hilton.com','https://www.hilton.com/en/hotels/pqcpqqq-la-festa-phu-quoc/'],
      map:['Sunset Town','https://www.google.com/maps/search/?api=1&query=Sunset+Town+An+Thoi+Phu+Quoc'],
      halal:'Javaher Halal Restaurant sits inside Mercury Phu Quoc Resort and Villas, close to the airport and nearer this end of the island than Bai Dai. Likely your most reachable dedicated halal option for these three nights.',draft:true}
+  ];
+
+
+  var II = {
+    star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 14.3 9l5.7.5-4.3 3.8 1.3 5.6L12 15.9 7 18.9l1.3-5.6L4 9.5 9.7 9z"/></svg>',
+    market:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5z"/><path d="M3 9l2-5h14l2 5"/><path d="M9 13v3M15 13v3"/></svg>',
+    drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 10.4A6 6 0 0 1 6 13.4C6 9.4 12 3 12 3z"/></svg>',
+    boat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.5 1.5 3 1.5 4.5 0S10.5 15.5 12 17s3 1.5 4.5 0 3-1.5 4.5 0"/><path d="M5 13h14l-2-5H7z"/><path d="M12 8V4"/></svg>',
+    temple:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-3-4H6z"/><path d="M5 9v11h14V9"/><path d="M10 20v-5h4v5"/></svg>',
+    beach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4"/><path d="M3 19c1.5 1.4 3 1.4 4.5 0s3-1.4 4.5 0 3 1.4 4.5 0 3-1.4 4.5 0"/></svg>'
+  };
+
+  // Not booked. Suggestions only, ordered to match the map pins.
+  var IDEAS = [
+    { n:'Rach Vem fishing village', icon:'star', area:'north', verdict:'may',
+      one:'North coast, close to both Bai Dai stays',
+      why:'A quiet fishing village with floating raft houses and cheap fresh seafood, about 25km from Duong Dong. It is sold everywhere as Starfish Beach.',
+      warn:'The starfish gather close to shore from November to April. In August you will most likely see the village and the rafts, not the starfish. Go for the boat houses and the seafood, not the photos you have seen.',
+      time:'Half a morning', near:[1,2], days:[4],
+      map:'https://www.google.com/maps/search/?api=1&query=Rach+Vem+Phu+Quoc' },
+
+    { n:'Duong Dong town', icon:'market', area:'middle', verdict:'yes',
+      one:'Night market, both halal restaurants, and Dinh Cau shrine',
+      why:'The night market runs 6pm to midnight, food stalls and coconut ice cream. The same town holds Sri Mutiara and Ganesh, the two dedicated halal restaurants, plus the Dinh Cau shrine and lighthouse on the rocks for sunset.',
+      warn:'This is the one that fixes a real gap. Right now the halal restaurants are listed in the plan as a long drive with nothing built around them. One evening here solves dinner and gives you a night out at the same time.',
+      time:'An evening', near:[1,2], days:[4],
+      map:'https://www.google.com/maps/search/?api=1&query=Duong+Dong+night+market+Phu+Quoc' },
+
+    { n:'Suoi Tranh waterfall', icon:'drop', area:'middle', verdict:'yes',
+      one:'Just north of the airport, on the transfer route',
+      why:'A small waterfall with shaded natural pools, open 7am to 6pm, about 30,000 dong each. Short and easy, and Seth and Belle can paddle.',
+      warn:'The one place where travelling in the rainy season helps you. Most Phu Quoc waterfalls are a trickle in the dry months. August is when this one actually runs.',
+      time:'About an hour', near:[0,1,2,3], days:[4,6],
+      map:'https://www.google.com/maps/search/?api=1&query=Suoi+Tranh+waterfall+Phu+Quoc' },
+
+    { n:'Ham Ninh fishing village', icon:'boat', area:'east', verdict:'yes',
+      one:'East coast, the calm side in August',
+      why:'Free to walk into. A working village with seafood restaurants built out over the water on stilts. Best early, when the light is on the water.',
+      warn:'On the eastern side, which stays sheltered while the west coast is rough this month.',
+      time:'A morning', near:[0,3], days:[8],
+      map:'https://www.google.com/maps/search/?api=1&query=Ham+Ninh+fishing+village+Phu+Quoc' },
+
+    { n:'Ho Quoc Pagoda', icon:'temple', area:'east', verdict:'may',
+      one:'Hillside pagoda looking out over the sea',
+      why:'Set on a slope on the southeast coast with a long view over the water. Quiet, and the most photogenic non-beach spot on the island.',
+      warn:'Twenty minutes is enough. Easy to add on the way to or from Sao Beach or Ham Ninh rather than as a trip of its own.',
+      time:'20 to 30 minutes', near:[0,3], days:[7,8],
+      map:'https://www.google.com/maps/search/?api=1&query=Thien+Vien+Truc+Lam+Ho+Quoc+Phu+Quoc' },
+
+    { n:'Sao Beach', icon:'beach', area:'east', verdict:'yes',
+      one:'The calm-water beach on the southeast coast',
+      why:'White sand, shallow and gently sloping, roughly 15 minutes from the southern stays. Already sitting in Sunday as an optional item.',
+      warn:'Worth promoting from optional to the anchor of that day. In August the sloping eastern sand breaks the swell, so this is one of the few genuinely calm places to swim with Raes that week.',
+      time:'Half a day', near:[0,3], days:[8],
+      map:'https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc' }
+  ];
+
+  var AREAS = [
+    { k:'north',  t:'North, around Bai Dai', sub:'Near Vinpearl and Meliá' },
+    { k:'middle', t:'Middle of the island',  sub:'On the road between your stays' },
+    { k:'east',   t:'East and south coast',  sub:'Near JW Marriott and La Festa' }
   ];
 
   function chip(t){ return '<span class="pill tiny">'+I.clock+t+'</span>'; }
@@ -692,6 +849,33 @@
     ordered.appendChild(b);
   });
 
+
+  /* ---- ideas, grouped by area ---- */
+  function ideaCard(i){
+    var d=IDEAS[i];
+    return '<button class="ideacard" data-idea="'+i+'">'+
+      '<span class="ib">'+II[d.icon]+'</span>'+
+      '<span class="ic2"><span class="it">'+d.n+'<span class="vd '+(d.verdict==='yes'?'yes':'may')+'">'+
+        (d.verdict==='yes'?'WORTH IT':'MAYBE')+'</span></span>'+
+      '<span class="is">'+d.one+' &middot; '+d.time+'</span></span>'+
+      '<span class="go">'+I.chev+'</span></button>';
+  }
+  (function(){
+    var host=document.getElementById('ideas'); if(!host) return;
+    var h='<div class="note" style="margin-top:14px">'+I.info+
+      '<div><b>One thing about August.</b> This is the southwest monsoon. The west coast, where Vinpearl and Meliá sit, gets the rough water and the wind. The east and southeast coast stays calm because the shallow sand breaks the swell. Mornings are usually dry and the heavy showers come in the afternoon.</div></div>';
+    AREAS.forEach(function(a){
+      var list=IDEAS.map(function(d,i){return {d:d,i:i};}).filter(function(o){return o.d.area===a.k;});
+      if(!list.length) return;
+      h+='<div class="arearow"><h3>'+a.t+'</h3><span class="ln"></span><span class="near">'+a.sub+'</span></div>';
+      list.forEach(function(o){ h+=ideaCard(o.i); });
+    });
+    h+='<div class="skipbox"><h4>Looked at, decided against</h4>'+
+       '<p><b>Coconut Tree Prison.</b> A war prison museum with graphic torture reconstructions, so not an outing for Seth and Belle. One source also reported it closed for maintenance in early 2026 while others list normal hours, so it would need a phone call first.</p>'+
+       '<p><b>Snorkelling the An Thoi islands.</b> Operators take children from 100cm, which rules Raes out and makes Belle borderline, and the sea is the one thing you cannot control this month.</p></div>';
+    host.innerHTML=h;
+  })();
+
   /* ---- day strip ---- */
   var strip=document.getElementById('strip'), panel=document.getElementById('daypanel'), cur=0;
   DAYS.forEach(function(d,i){
@@ -730,6 +914,11 @@
       h+='</div>';
     });
     h+='</div>';
+    var fit=IDEAS.map(function(d,k){return {d:d,i:k};}).filter(function(o){return o.d.days.indexOf(i)>-1;});
+    if(fit.length){
+      h+='<div class="arearow"><h3>If you want more today</h3><span class="ln"></span><span class="near">Not booked</span></div>';
+      fit.forEach(function(o){ h+=ideaCard(o.i); });
+    }
     panel.innerHTML=h;
 
     Array.prototype.forEach.call(strip.children,function(c,ci){ c.setAttribute('aria-selected', ci===i?'true':'false'); });
@@ -793,7 +982,13 @@
       h+='<button class="nightbtn" data-goday="'+di+'"><span class="dt"><span class="w">'+d.dow+'</span><span class="n">'+d.dom+'</span></span>'+
          '<span class="tt">'+d.title+'</span><span class="go">'+I.chev+'</span></button>';
     });
-    h+='</div><div class="slinks">'+
+    h+='</div>';
+    var near=IDEAS.map(function(d,i){return {d:d,i:i};}).filter(function(o){return o.d.near.indexOf(idx)>-1;});
+    if(near.length){
+      h+='<div class="arearow"><h3>Ideas near here</h3><span class="ln"></span><span class="near">Not booked</span></div>';
+      near.forEach(function(o){ h+=ideaCard(o.i); });
+    }
+    h+='<div class="slinks">'+
        '<a href="'+s.site[1]+'" target="_blank" rel="noopener">'+I.link+s.site[0]+'</a>'+
        '<a href="'+s.map[1]+'" target="_blank" rel="noopener">'+I.link+s.map[0]+' on Maps</a></div>';
     ss.innerHTML=h; ss.scrollTop=0;
@@ -801,12 +996,45 @@
     Array.prototype.forEach.call(document.querySelectorAll('.stop'),function(st){
       st.setAttribute('data-active', st.getAttribute('data-stay')===String(idx)?'true':'false');
     });
+    Array.prototype.forEach.call(document.querySelectorAll('.ideapin'),function(pn){ pn.setAttribute('data-active','false'); });
     var c=document.getElementById('sclose'); if(c){ c.addEventListener('click',closeSheet); c.focus(); }
   }
+
+  function openIdea(i){
+    var d=IDEAS[i]; open='idea'+i; lastFocus=document.activeElement;
+    var area=AREAS.filter(function(a){return a.k===d.area;})[0];
+    var h='<div class="shead"><div style="flex:1;min-width:0">'+
+      '<h2>'+d.n+'</h2><div class="sub">'+area.t+' &middot; '+d.time+'</div></div>'+
+      '<button class="sclose" id="sclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>';
+    h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px">'+
+       '<span class="pill tiny '+(d.verdict==='yes'?'coral':'ghost')+'">'+(d.verdict==='yes'?'Worth it':'Maybe')+'</span>'+
+       '<span class="pill tiny ghost">Not booked</span></div>';
+    h+='<p style="margin:14px 0 0;font-size:15px;color:var(--ink-soft)">'+d.why+'</p>';
+    h+='<div class="note'+(d.verdict==='yes'?'':' warm')+'">'+(d.verdict==='yes'?I.info:I.warn)+'<div>'+d.warn+'</div></div>';
+    if(d.days && d.days.length){
+      h+='<div class="arearow"><h3>Would fit</h3><span class="ln"></span></div><div class="nights">';
+      d.days.forEach(function(di){
+        var dd=DAYS[di];
+        h+='<button class="nightbtn" data-goday="'+di+'"><span class="dt"><span class="w">'+dd.dow+'</span><span class="n">'+dd.dom+'</span></span>'+
+           '<span class="tt">'+dd.title+'</span><span class="go">'+I.chev+'</span></button>';
+      });
+      h+='</div>';
+    }
+    h+='<div class="slinks"><a href="'+d.map+'" target="_blank" rel="noopener">'+I.link+'Open in Maps</a></div>';
+    ss.innerHTML=h; ss.scrollTop=0;
+    sheet.style.transform=''; sheet.setAttribute('data-open','true'); scrim.setAttribute('data-open','true');
+    Array.prototype.forEach.call(document.querySelectorAll('.stop'),function(st){ st.setAttribute('data-active','false'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.ideapin'),function(pn){
+      pn.setAttribute('data-active', pn.getAttribute('data-idea')===String(i)?'true':'false');
+    });
+    var c=document.getElementById('sclose'); if(c){ c.addEventListener('click',closeSheet); c.focus(); }
+  }
+
   function closeSheet(){
     sheet.setAttribute('data-open','false'); scrim.setAttribute('data-open','false'); sheet.style.transform='';
     open=null;
-    Array.prototype.forEach.call(document.querySelectorAll('.stop'),function(st){ st.setAttribute('data-active','false'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.stop, .ideapin'),function(st){ st.setAttribute('data-active','false'); });
+    var nv=document.getElementById('nav'); if(nv) nv.setAttribute('data-tucked','false');
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   scrim.addEventListener('click',closeSheet);
@@ -816,11 +1044,15 @@
     var di=+b.getAttribute('data-goday'); closeSheet(); setView('days'); renderDay(di);
   });
   document.addEventListener('click',function(e){
+    var idea=e.target.closest('.ideacard, .ideapin');
+    if(idea && idea.hasAttribute('data-idea')){ openIdea(+idea.getAttribute('data-idea')); return; }
     var t=e.target.closest('.stop, .staycard, .nightbtn[data-stay]');
     if(t && t.hasAttribute('data-stay')) openSheet(+t.getAttribute('data-stay'));
   });
   document.addEventListener('keydown',function(e){
     if(e.key!=='Enter'&&e.key!==' ') return;
+    var pn=e.target.closest&&e.target.closest('.ideapin');
+    if(pn){ e.preventDefault(); openIdea(+pn.getAttribute('data-idea')); return; }
     var st=e.target.closest&&e.target.closest('.stop');
     if(st){ e.preventDefault(); openSheet(+st.getAttribute('data-stay')); }
   });
