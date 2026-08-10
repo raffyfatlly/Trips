@@ -486,15 +486,13 @@
         <div class="faces">
           <span style="background:#2C6E52">R</span>
           <span style="background:#3E8A68">S</span>
-          <span style="background:#E08A4C">7</span>
-          <span style="background:#D96F3C">5</span>
-          <span style="background:#B9552A;font-size:11px">6m</span>
+          <span style="background:#E08A4C">S</span>
+          <span style="background:#D96F3C">B</span>
+          <span style="background:#B9552A">R</span>
         </div>
         <span class="cap">Raffy, Syahirah, Seth, Belle and Raes</span>
       </div>
     </div>
-
-    <div class="live" id="live"></div>
 
     <div class="feature">
       <img src="img/kissbridge.webp" alt="Kiss Bridge at sunset, Phu Quoc" />
@@ -1172,7 +1170,10 @@
   document.getElementById('nextday').addEventListener('click',function(){ if(cur<DAYS.length-1) renderDay(cur+1); });
   (function(){ var di=pqIndex(pqNow()); renderDay(di>=0&&di<DAYS.length?di:0); })();
 
-  /* ---- the live card: countdown before, day counter during ---- */
+  /* ---- the live card: countdown before, day counter during.
+     The card itself is parked for now at his request. Everything here still
+     runs and keeps the greeting line and the hero badge honest, so putting
+     <div class="live" id="live"></div> back on the Trip tab restores it. ---- */
   function nextUp(di,nowM){
     var st=store(), out=null;
     rows(di).forEach(function(r){
@@ -1183,7 +1184,7 @@
   }
   function badge(t){ var b=document.getElementById('febadge'); if(b) b.textContent=t; }
   function renderLive(){
-    var el=document.getElementById('live'); if(!el) return;
+    var el=document.getElementById('live');          // may be absent, the rest still runs
     var p=pqNow(), di=pqIndex(p), nowM=pqMins(p);
     var clock='<div class="lclock"><div class="t">'+hhmm(nowM)+'</div><div class="z">Phu Quoc</div></div>';
     var cd=document.getElementById('countdown'), ts=document.getElementById('tripstate'), h;
@@ -1216,14 +1217,15 @@
       if(ts) ts.textContent='Done';
       badge('15 to 24 Aug 2026');
     }
-    el.innerHTML=h;
+    if(el) el.innerHTML=h;
   }
-  document.getElementById('live').addEventListener('click',function(e){
+  var liveEl=document.getElementById('live');
+  if(liveEl) liveEl.addEventListener('click',function(e){
     var b=e.target.closest('[data-live-day]'); if(!b) return;
     setView('days'); renderDay(+b.getAttribute('data-live-day'));
   });
   renderLive();
-  setInterval(renderLive,1000);
+  setInterval(renderLive,liveEl?1000:60000);   // no card on the page, so no need to tick every second
   setInterval(function(){
     markToday();
     var a=document.activeElement;
