@@ -279,6 +279,72 @@
   .ev h3{font-size:18px;font-weight:700;margin-top:3px;letter-spacing:-.02em}
   .ev p{margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);line-height:1.52}
   .ev .evchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+
+  /* ---- live: the clock, the countdown, and the things he sets himself ---- */
+  .live{background:var(--deep);color:#fff;border-radius:var(--r-card);padding:18px;margin:0 0 22px;
+    box-shadow:var(--sh-m);position:relative;overflow:hidden}
+  .live .lk{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--on-deep);
+    padding-right:72px}
+  .live .lbig{font-family:'Outfit',sans-serif;font-size:38px;font-weight:700;line-height:1.04;letter-spacing:-.03em;
+    margin-top:7px;font-variant-numeric:tabular-nums}
+  .live .lbig small{font-size:15px;font-weight:600;letter-spacing:0;color:var(--on-deep);margin-left:6px}
+  .live .lsub{font-size:13.5px;color:var(--on-deep);margin-top:9px;line-height:1.52}
+  .live .lsub b{color:#fff;font-weight:700}
+  .live .lclock{position:absolute;top:17px;right:18px;text-align:right}
+  .live .lclock .t{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;
+    letter-spacing:-.01em;line-height:1}
+  .live .lclock .z{font-size:9px;font-weight:800;letter-spacing:.1em;color:var(--on-deep);text-transform:uppercase;
+    margin-top:4px}
+  .live .lgo{display:inline-flex;align-items:center;gap:6px;border:0;cursor:pointer;font:inherit;
+    background:var(--coral);color:#3A1405;font-size:12.5px;font-weight:800;padding:9px 15px;
+    border-radius:var(--r-pill);margin-top:14px;transition:transform .18s var(--e-out)}
+  .live .lgo:active{transform:scale(.97)}
+
+  .dchip[data-today="true"]{box-shadow:0 0 0 2px var(--coral)}
+  .todaybtn{display:inline-flex;align-items:center;gap:6px;border:0;cursor:pointer;font:inherit;
+    background:var(--coral);color:#3A1405;font-size:12px;font-weight:800;padding:8px 14px;
+    border-radius:var(--r-pill);margin:0 0 4px;transition:transform .18s var(--e-out)}
+  .todaybtn:active{transform:scale(.97)}
+
+  .nowline{position:relative;padding-left:30px;margin-bottom:22px;display:flex;align-items:center;gap:9px}
+  .nowline .nd{position:absolute;left:0;top:50%;margin-top:-7.5px;width:15px;height:15px;border-radius:50%;
+    background:var(--coral);box-shadow:0 0 0 4px rgba(238,123,69,.20)}
+  .nowline .nt{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--coral-text);flex:none}
+  .nowline .nl{flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--coral),rgba(238,123,69,0))}
+
+  .ev[data-past="true"]{opacity:.48}
+  .ev[data-past="true"] .knot{box-shadow:0 0 0 2.5px rgba(12,36,27,.18)}
+  .ev.mine .knot{background:var(--coral);box-shadow:0 0 0 2.5px var(--coral)}
+  .ev.done{opacity:.42}
+  .ev.done h3{text-decoration:line-through;text-decoration-thickness:2px}
+  .ev .tmrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tmbtn{position:relative;display:inline-block;border-radius:var(--r-pill);padding:4px 11px;font-size:12.5px;
+    font-weight:700;letter-spacing:.01em;background:rgba(238,123,69,.15);color:var(--coral-text);
+    transition:transform .18s var(--e-out)}
+  .tmbtn:active{transform:scale(.96)}
+  .ev.soft .tmbtn{background:rgba(12,36,27,.07);color:var(--ink-faint)}
+  .tmbtn[data-set="true"]{background:var(--coral);color:#3A1405}
+  .tmbtn input{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;margin:0;cursor:pointer}
+  .inmin{font-size:11.5px;font-weight:700;color:var(--ink-faint);letter-spacing:.01em}
+  .inmin.soon{color:var(--coral-text)}
+  .evtool{border:0;background:transparent;font:inherit;font-size:11.5px;font-weight:700;color:var(--ink-faint);
+    padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+  .evtool:active{opacity:.55}
+
+  .planbox{background:var(--sage);border-radius:var(--r-card);padding:15px 15px 16px;margin-top:24px}
+  .planbox h4{font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+  .planrow{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap}
+  .planrow select,.planrow input[type="time"]{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);
+    background:var(--surface);border:0;border-radius:14px;padding:11px;box-shadow:var(--sh-s);min-width:0;
+    -webkit-appearance:none;appearance:none}
+  .planrow select{flex:1 1 120px;padding-right:30px;text-overflow:ellipsis;
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234C6157' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;background-size:14px 14px}
+  .planrow input[type="time"]{flex:0 0 132px;text-align:center}
+  .planadd{flex:1 1 100%;border:0;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;background:var(--deep);
+    color:#fff;border-radius:14px;padding:12px;transition:transform .18s var(--e-out)}
+  .planadd:active{transform:scale(.98)}
+  .planbox .hint{font-size:11.5px;color:var(--ink-faint);margin-top:10px;line-height:1.45}
   .evshot{margin-top:13px;border-radius:var(--r-img);overflow:hidden;position:relative;box-shadow:var(--sh-s)}
   .evshot img{width:100%;height:180px;object-fit:cover}
   .evshot .cr{
@@ -428,10 +494,12 @@
       </div>
     </div>
 
+    <div class="live" id="live"></div>
+
     <div class="feature">
       <img src="img/kissbridge.webp" alt="Kiss Bridge at sunset, Phu Quoc" />
       <div class="veil"></div>
-      <span class="pill tiny badge coral">Starts Sat 15 Aug</span>
+      <span class="pill tiny badge coral" id="febadge">Starts Sat 15 Aug</span>
       <div class="fc">
         <h2>South, north, and back</h2>
         <p>Two stays at the bottom of the island, two at the top, then back down for the last three nights.</p>
@@ -596,6 +664,7 @@
   <section class="view" id="v-days" hidden>
     <div style="padding:calc(14px + env(safe-area-inset-top)) 0 14px">
       <span class="eyebrow">Day by day</span>
+      <div id="todayjump" style="margin-top:12px"></div>
     </div>
     <div class="strip"><div class="stripin" id="strip" role="tablist" aria-label="Trip days"></div></div>
     <div id="daypanel"></div>
@@ -812,18 +881,58 @@
 
   function reduce(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
 
-  /* ---- live countdown, honest about today ---- */
-  (function(){
-    var start=new Date(2026,7,15), end=new Date(2026,7,24), now=new Date();
-    var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
-    var days=Math.round((start-d0)/86400000);
-    var cd=document.getElementById('countdown'), st=document.getElementById('tripstate');
-    if(days>1){ cd.textContent=days+' days until you fly'; st.textContent='9 nights'; }
-    else if(days===1){ cd.textContent='You fly tomorrow'; st.textContent='9 nights'; }
-    else if(days===0){ cd.textContent='You fly today'; st.textContent='Day 1'; }
-    else if(d0<=end){ var n=Math.round((d0-start)/86400000)+1; cd.textContent='Day '+n+' of 10 on the island'; st.textContent='Day '+n; }
-    else { cd.textContent='Trip complete'; st.textContent='Done'; }
-  })();
+  /* ================= live time =================
+     Phu Quoc runs UTC+7 all year, Malaysia UTC+8. Everything below works in
+     Phu Quoc wall clock so the app reads the same on the island as at home. */
+  var PQ_OFF=7*60;
+  function pqNow(){ var n=new Date(); return new Date(n.getTime()+(n.getTimezoneOffset()+PQ_OFF)*60000); }
+  function pqIndex(p){                                  // <0 before, 0..9 during, >9 after
+    return Math.round((Date.UTC(p.getFullYear(),p.getMonth(),p.getDate())-Date.UTC(2026,7,15))/86400000);
+  }
+  function pqMins(p){ return p.getHours()*60+p.getMinutes(); }
+  var DEPART=Date.UTC(2026,7,15,4,50);                  // 12:50 in Kuala Lumpur, UTC+8
+
+  function pad(n){ return (n<10?'0':'')+n; }
+  function hhmm(v){ v=((v%1440)+1440)%1440; return pad(Math.floor(v/60))+':'+pad(v%60); }
+  function nice(v){ var h=Math.floor(v/60),m=v%60,ap=h<12?'am':'pm',hh=h%12||12; return hh+':'+pad(m)+ap; }
+  function gap(m){
+    if(m<1) return 'now';
+    if(m<60) return 'in '+m+' min';
+    var h=Math.floor(m/60), r=m%60;
+    return 'in '+h+'h'+(r?' '+r+'m':'');
+  }
+  function parseT(v){
+    if(v==null) return null;
+    var w=String(v).toLowerCase();
+    var m=w.replace(/[~\s]/g,'').match(/^(\d{1,2})(?::(\d{2}))?(am|pm)?$/);
+    if(m){
+      var h=+m[1], mi=m[2]?+m[2]:0;
+      if(m[3]==='pm'&&h<12) h+=12;
+      if(m[3]==='am'&&h===12) h=0;
+      return h*60+mi;
+    }
+    if(w.indexOf('morning')>-1) return 9*60;
+    if(w.indexOf('evening')>-1) return 19*60;
+    if(w.indexOf('all day')>-1) return 0;
+    return null;
+  }
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+  /* ---- what he sets himself. localStorage where it exists, memory where it
+     does not (a sandboxed frame can refuse it), so nothing ever throws. ---- */
+  var LSK='pq26.v1', MEM=null;
+  function store(){
+    if(MEM) return MEM;
+    MEM={times:{},plans:{},done:{},seq:0};
+    try{
+      var raw=localStorage.getItem(LSK);
+      if(raw){ var o=JSON.parse(raw);
+        if(o&&typeof o==='object'){ MEM.times=o.times||{}; MEM.plans=o.plans||{}; MEM.done=o.done||{}; MEM.seq=o.seq||0; } }
+    }catch(e){}
+    return MEM;
+  }
+  function save(){ try{ localStorage.setItem(LSK,JSON.stringify(store())); }catch(e){} }
+
 
   /* ---- stay carousel ---- */
   var rail=document.getElementById('stayrail');
@@ -890,13 +999,46 @@
 
   function stayDays(idx){ var o=[]; DAYS.forEach(function(d,i){ if(d.stay===idx) o.push(i); }); return o; }
 
-  function renderDay(i){
-    cur=i; var d=DAYS[i], s=STAYS[d.stay];
+  /* one day as a single ordered list: the fixed plan and whatever he adds,
+     merged and sorted by the time actually in force. */
+  function rows(di){
+    var d=DAYS[di], st=store(), out=[], seq=0, last=0;
+    d.items.forEach(function(it,k){
+      var id=di+'.'+k, base=parseT(it.t);
+      if(base===null) base=last; else last=base;
+      var over=st.times[id];
+      out.push({kind:'fixed',id:id,it:it,base:base,mins:(over==null?base:over),set:over!=null,seq:seq++});
+    });
+    (st.plans[String(di)]||[]).forEach(function(pl){
+      if(!IDEAS[pl.i]) return;
+      out.push({kind:'plan',id:'p'+di+'.'+pl.k,pl:pl,idea:IDEAS[pl.i],mins:pl.t,set:true,seq:seq++});
+    });
+    out.sort(function(a,b){ return (a.mins-b.mins)||(a.seq-b.seq); });
+    return out;
+  }
+
+  function tmBtn(r){
+    var label=r.set?nice(r.mins):r.it.t;
+    return '<span class="tmbtn" data-set="'+(r.set?'true':'false')+'">'+esc(label)+
+      '<input type="time" value="'+hhmm(r.mins)+'" data-settime="'+r.id+'" aria-label="Set a time"></span>';
+  }
+  function countdownBit(r,today,nowM){
+    if(!today||r.mins<nowM) return '';
+    return '<span class="inmin'+((r.mins-nowM)<=90?' soon':'')+'">'+gap(r.mins-nowM)+'</span>';
+  }
+  function nowLine(nowM){
+    return '<div class="nowline"><span class="nd"></span><span class="nt">NOW '+hhmm(nowM)+'</span><span class="nl"></span></div>';
+  }
+
+  function renderDay(i,quiet){
+    cur=i; var d=DAYS[i], s=STAYS[d.stay], st=store();
     var ds=stayDays(d.stay), ord=ds.indexOf(i)+1;
+    var p=pqNow(), pi=pqIndex(p), today=(pi===i), started=(pi>=i), nowM=pqMins(p);
     var h='<div class="dayhead"><h2>'+d.title+'</h2>'+
       '<div class="dayrow">'+
       '<span class="pill tiny dark">'+d.dow+' '+d.dom+' Aug</span>'+
       '<span class="pill tiny">'+s.short+', day '+ord+' of '+ds.length+'</span>'+
+      (today?'<span class="pill tiny coral">Today</span>':'')+
       '</div>'+
       '<p style="margin:13px 0 0;font-size:14.5px;color:var(--ink-soft)">'+d.sub+'</p></div>';
 
@@ -904,35 +1046,191 @@
     if(s.draft && (i===0||DAYS[i-1].stay!==d.stay))
       h+='<div class="note warm">'+I.warn+'<div><b>This stay is not booked yet.</b> Everything from here assumes La Festa in Sunset Town. If you book elsewhere in the south most of this still holds.</div></div>';
 
+    var R=rows(i), marked=false, edited=false;
     h+='<div class="tl">';
-    d.items.forEach(function(it){
-      h+='<div class="ev'+(it.major?'':' soft')+'"><span class="knot"></span>'+
-         '<div class="tm">'+it.t+'</div><h3>'+it.h+'</h3><p>'+it.p+'</p>';
-      if(it.photo) h+='<figure class="evshot" style="margin:13px 0 0"><img src="'+P[it.photo]+'" alt=""><figcaption class="cr">'+it.credit+'</figcaption></figure>';
+    R.forEach(function(r){
+      if(today&&!marked&&r.mins>nowM){ h+=nowLine(nowM); marked=true; }
+      var done=!!st.done[r.id], past=(today&&r.mins+30<nowM);
+      if(r.set||done) edited=true;
+      h+='<div class="ev'+(r.kind==='plan'?' mine':(r.it.major?'':' soft'))+(done?' done':'')+
+         '" data-past="'+((past&&!done)?'true':'false')+'">'+
+         '<span class="knot"></span><div class="tmrow">'+tmBtn(r)+countdownBit(r,today,nowM)+
+         (r.kind==='plan'?'<span class="pill tiny coral">Yours</span>':'')+'</div>';
+      if(r.kind==='plan'){
+        h+='<h3>'+r.idea.n+'</h3><p>'+r.idea.one+'. '+r.idea.time+'.</p>';
+      }else{
+        h+='<h3>'+r.it.h+'</h3><p>'+r.it.p+'</p>';
+        if(r.it.photo) h+='<figure class="evshot" style="margin:13px 0 0"><img src="'+P[r.it.photo]+'" alt=""><figcaption class="cr">'+r.it.credit+'</figcaption></figure>';
+      }
       var bits=[];
-      if(it.tags) it.tags.forEach(function(t){ bits.push('<span class="pill tiny ghost">'+t+'</span>'); });
-      if(it.chips) it.chips.forEach(function(c){ bits.push(c); });
+      if(r.kind==='fixed'){
+        if(r.it.tags) r.it.tags.forEach(function(t){ bits.push('<span class="pill tiny ghost">'+t+'</span>'); });
+        if(r.it.chips) r.it.chips.forEach(function(c){ bits.push(c); });
+      }
       if(bits.length) h+='<div class="evchips">'+bits.join('')+'</div>';
-      h+='</div>';
+      var tools=[];
+      if(started) tools.push('<button class="evtool" data-done="'+r.id+'">'+(done?'Not done':'Mark done')+'</button>');
+      if(r.kind==='plan'){
+        tools.push('<button class="evtool" data-openidea="'+r.pl.i+'">Details</button>');
+        tools.push('<button class="evtool" data-unplan="'+r.pl.k+'" data-day="'+i+'">Remove</button>');
+      }else if(r.set){
+        tools.push('<button class="evtool" data-resettime="'+r.id+'">Back to '+esc(r.it.t)+'</button>');
+      }
+      h+=(tools.length?'<div class="evchips" style="gap:14px">'+tools.join('')+'</div>':'')+'</div>';
     });
+    if(today&&!marked) h+=nowLine(nowM);
     h+='</div>';
-    var fit=IDEAS.map(function(d,k){return {d:d,i:k};}).filter(function(o){return o.d.days.indexOf(i)>-1;});
+
+    var fit=IDEAS.map(function(x,k){return {d:x,i:k};}).filter(function(o){return o.d.days.indexOf(i)>-1;});
     if(fit.length){
       h+='<div class="arearow"><h3>If you want more today</h3><span class="ln"></span><span class="near">Not booked</span></div>';
       fit.forEach(function(o){ h+=ideaCard(o.i); });
     }
+
+    var deft=today?hhmm((Math.floor(nowM/60)+1)*60):'09:00';
+    h+='<div class="planbox"><h4>Put something on this day</h4><div class="planrow">'+
+       '<select id="plansel" aria-label="Pick a place">'+
+       IDEAS.map(function(x,k){ return '<option value="'+k+'">'+esc(x.n)+'</option>'; }).join('')+
+       '</select><input type="time" id="plantime" value="'+deft+'" aria-label="Pick a time">'+
+       '<button class="planadd" id="planadd">Add to '+d.dow+' '+d.dom+' Aug</button></div>'+
+       '<div class="hint">Times you change and places you add are kept on this phone. They are not shared with anyone else looking at the same link.</div>'+
+       (edited?'<button class="evtool" data-resetday="'+i+'" style="margin-top:10px">Reset this day back to the plan</button>':'')+
+       '</div>';
+
     panel.innerHTML=h;
 
     Array.prototype.forEach.call(strip.children,function(c,ci){ c.setAttribute('aria-selected', ci===i?'true':'false'); });
     document.getElementById('prevday').disabled=(i===0);
     document.getElementById('nextday').disabled=(i===DAYS.length-1);
-    var chipEl=strip.children[i];
-    if(chipEl&&chipEl.scrollIntoView) chipEl.scrollIntoView({behavior:reduce()?'auto':'smooth',inline:'center',block:'nearest'});
+    markToday();
+    if(!quiet){
+      var chipEl=strip.children[i];
+      if(chipEl&&chipEl.scrollIntoView) chipEl.scrollIntoView({behavior:reduce()?'auto':'smooth',inline:'center',block:'nearest'});
+    }
   }
+
+  function markToday(){
+    var di=pqIndex(pqNow()), host=document.getElementById('todayjump');
+    Array.prototype.forEach.call(strip.children,function(c,ci){ c.setAttribute('data-today', ci===di?'true':'false'); });
+    if(!host) return;
+    host.innerHTML=(di>=0&&di<DAYS.length&&di!==cur)
+      ? '<button class="todaybtn" data-goday="'+di+'">Jump to today, '+DAYS[di].dow+' '+DAYS[di].dom+' Aug</button>' : '';
+  }
+
+  /* ---- everything he can change, in one place ---- */
+  function setTime(id,v){ var m=parseT(v); if(m==null) return; store().times[id]=m; save(); }
+  function planAdd(di,idea,mins){
+    var st=store(), key=String(di);
+    st.seq=(st.seq||0)+1;
+    (st.plans[key]=st.plans[key]||[]).push({i:idea,t:mins,k:st.seq});
+    save();
+  }
+  function planTime(di,k,mins){
+    (store().plans[String(di)]||[]).forEach(function(pl){ if(pl.k===k) pl.t=mins; });
+    save();
+  }
+  function planDrop(di,k){
+    var st=store(), key=String(di);
+    st.plans[key]=(st.plans[key]||[]).filter(function(pl){ return pl.k!==k; });
+    delete st.done['p'+di+'.'+k];
+    save();
+  }
+  function resetDay(di){
+    var st=store();
+    Object.keys(st.times).forEach(function(id){ if(id.split('.')[0]===String(di)) delete st.times[id]; });
+    Object.keys(st.done).forEach(function(id){ if(id.replace('p','').split('.')[0]===String(di)) delete st.done[id]; });
+    delete st.plans[String(di)];
+    save();
+  }
+
+  panel.addEventListener('change',function(e){
+    var inp=e.target.closest('input[data-settime]'); if(!inp) return;
+    var id=inp.getAttribute('data-settime'), m=parseT(inp.value); if(m==null) return;
+    if(id.charAt(0)==='p'){ planTime(cur,+id.split('.')[1],m); } else { setTime(id,inp.value); }
+    renderDay(cur,true);
+  });
+  panel.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    var st=store();
+    if(b.id==='planadd'){
+      var sel=document.getElementById('plansel'), tm=document.getElementById('plantime');
+      var m=parseT(tm&&tm.value); if(m==null) m=9*60;
+      planAdd(cur,+sel.value,m); renderDay(cur,true); return;
+    }
+    if(b.hasAttribute('data-done')){ var id=b.getAttribute('data-done');
+      if(st.done[id]) delete st.done[id]; else st.done[id]=1; save(); renderDay(cur,true); return; }
+    if(b.hasAttribute('data-resettime')){ delete st.times[b.getAttribute('data-resettime')]; save(); renderDay(cur,true); return; }
+    if(b.hasAttribute('data-unplan')){ planDrop(+b.getAttribute('data-day'),+b.getAttribute('data-unplan')); renderDay(cur,true); return; }
+    if(b.hasAttribute('data-resetday')){ resetDay(+b.getAttribute('data-resetday')); renderDay(cur,true); return; }
+    if(b.hasAttribute('data-openidea')){ openIdea(+b.getAttribute('data-openidea')); return; }
+  });
+  document.getElementById('todayjump').addEventListener('click',function(e){
+    var b=e.target.closest('[data-goday]'); if(b) renderDay(+b.getAttribute('data-goday'));
+  });
   strip.addEventListener('click',function(e){ var b=e.target.closest('.dchip'); if(b) renderDay(+b.getAttribute('data-i')); });
   document.getElementById('prevday').addEventListener('click',function(){ if(cur>0) renderDay(cur-1); });
   document.getElementById('nextday').addEventListener('click',function(){ if(cur<DAYS.length-1) renderDay(cur+1); });
-  renderDay(0);
+  (function(){ var di=pqIndex(pqNow()); renderDay(di>=0&&di<DAYS.length?di:0); })();
+
+  /* ---- the live card: countdown before, day counter during ---- */
+  function nextUp(di,nowM){
+    var st=store(), out=null;
+    rows(di).forEach(function(r){
+      if(out||st.done[r.id]||r.mins<nowM) return;
+      out={mins:r.mins,label:(r.kind==='plan'?r.idea.n:r.it.h)};
+    });
+    return out;
+  }
+  function badge(t){ var b=document.getElementById('febadge'); if(b) b.textContent=t; }
+  function renderLive(){
+    var el=document.getElementById('live'); if(!el) return;
+    var p=pqNow(), di=pqIndex(p), nowM=pqMins(p);
+    var clock='<div class="lclock"><div class="t">'+hhmm(nowM)+'</div><div class="z">Phu Quoc</div></div>';
+    var cd=document.getElementById('countdown'), ts=document.getElementById('tripstate'), h;
+    if(di<0){
+      var left=Math.max(0,Math.floor((DEPART-Date.now())/1000));
+      var dd=Math.floor(left/86400), hh=Math.floor(left%86400/3600), mm=Math.floor(left%3600/60), ss=left%60;
+      h=clock+'<div class="lk">Countdown</div>'+
+        '<div class="lbig">'+dd+'<small>'+(dd===1?'day':'days')+'</small> '+pad(hh)+':'+pad(mm)+':'+pad(ss)+'</div>'+
+        '<div class="lsub">until you fly out of <b>Kuala Lumpur</b>. Nine nights, four hotels, two coasts.</div>';
+      if(cd) cd.textContent=dd>0?(dd+(dd===1?' day':' days')+' until you fly'):'You fly today';
+      if(ts) ts.textContent=dd>0?(dd+'d'):'Today';
+      badge(dd>0?(dd+(dd===1?' day':' days')+' to go'):'You fly today');
+    }else if(di<DAYS.length){
+      var d=DAYS[di], nx=nextUp(di,nowM);
+      var spare=IDEAS.filter(function(x){ return x.days.indexOf(di)>-1; }).length;
+      h=clock+'<div class="lk">'+d.dow+' '+d.dom+' Aug &middot; '+STAYS[d.stay].short+'</div>'+
+        '<div class="lbig">Day '+(di+1)+'<small>of '+DAYS.length+'</small></div>'+
+        '<div class="lsub">'+(nx
+          ? 'Next up, <b>'+esc(nx.label)+'</b> at '+nice(nx.mins)+', '+gap(nx.mins-nowM)+'.'
+          : (spare?'Nothing left on the plan today. <b>'+spare+(spare===1?' idea':' ideas')+'</b> would still fit if you want more.'
+                  :'Nothing left on the plan today. <b>'+esc(d.title)+'</b>.'))+'</div>'+
+        '<button class="lgo" data-live-day="'+di+'">Open today</button>';
+      if(cd) cd.textContent='Day '+(di+1)+' of '+DAYS.length+' on the island';
+      if(ts) ts.textContent='Day '+(di+1);
+      badge('Day '+(di+1)+' of '+DAYS.length);
+    }else{
+      h=clock+'<div class="lk">Trip complete</div><div class="lbig">9 nights<small>done</small></div>'+
+        '<div class="lsub">Phu Quoc, 15 to 24 August 2026. The days are all still here.</div>';
+      if(cd) cd.textContent='Trip complete';
+      if(ts) ts.textContent='Done';
+      badge('15 to 24 Aug 2026');
+    }
+    el.innerHTML=h;
+  }
+  document.getElementById('live').addEventListener('click',function(e){
+    var b=e.target.closest('[data-live-day]'); if(!b) return;
+    setView('days'); renderDay(+b.getAttribute('data-live-day'));
+  });
+  renderLive();
+  setInterval(renderLive,1000);
+  setInterval(function(){
+    markToday();
+    var a=document.activeElement;
+    var busy=a&&a.closest&&a.closest('#daypanel input, #daypanel select');
+    if(!busy&&pqIndex(pqNow())===cur) renderDay(cur,true);
+  },60000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden){ renderLive(); markToday(); } });
 
   /* ---- view switching ---- */
   var views={trip:document.getElementById('v-trip'),map:document.getElementById('v-map'),days:document.getElementById('v-days')};
@@ -1023,6 +1321,14 @@
       });
       h+='</div>';
     }
+    var pi=pqIndex(pqNow());
+    var sel=(d.days&&d.days.length)?d.days[0]:((pi>=0&&pi<DAYS.length)?pi:0);
+    h+='<div class="planbox"><h4>Put it on a day</h4><div class="planrow">'+
+       '<select id="isel" aria-label="Pick a day">'+
+       DAYS.map(function(dd,k){ return '<option value="'+k+'"'+(k===sel?' selected':'')+'>'+dd.dow+' '+dd.dom+' Aug</option>'; }).join('')+
+       '</select><input type="time" id="itime" value="09:00" aria-label="Pick a time">'+
+       '<button class="planadd" data-planidea="'+i+'">Add it to that day</button></div>'+
+       '<div class="hint">It lands in that day\u2019s timeline in time order, and you can move it later.</div></div>';
     h+='<div class="slinks"><a href="'+d.map+'" target="_blank" rel="noopener">'+I.link+'Open in Maps</a></div>';
     ss.innerHTML=h; ss.scrollTop=0;
     sheet.style.transform=''; sheet.setAttribute('data-open','true'); scrim.setAttribute('data-open','true');
@@ -1043,8 +1349,16 @@
   scrim.addEventListener('click',closeSheet);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&open!==null) closeSheet(); });
   ss.addEventListener('click',function(e){
+    var pa=e.target.closest('[data-planidea]');
+    if(pa){
+      var di=+document.getElementById('isel').value;
+      var m=parseT(document.getElementById('itime').value); if(m==null) m=9*60;
+      planAdd(di,+pa.getAttribute('data-planidea'),m);
+      closeSheet(); setView('days'); renderDay(di);
+      return;
+    }
     var b=e.target.closest('[data-goday]'); if(!b) return;
-    var di=+b.getAttribute('data-goday'); closeSheet(); setView('days'); renderDay(di);
+    var gd=+b.getAttribute('data-goday'); closeSheet(); setView('days'); renderDay(gd);
   });
   document.addEventListener('click',function(e){
     var idea=e.target.closest('.ideacard, .ideapin');
