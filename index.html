@@ -334,14 +334,25 @@
   .sky{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
   .sky .skl{flex:1 1 100%;margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-faint)}
   .sky .pill svg{color:var(--coral-text)}
-  .wxc{flex:1 1 100%;width:100%;height:auto;display:block;margin:4px 0 2px;
-    background:var(--surface);border-radius:20px;box-shadow:var(--sh-s)}
-  .wxlight{fill:rgba(238,123,69,.11)}
-  .wxbar{fill:var(--deep)}
-  .wxbase{stroke:rgba(12,36,27,.13);stroke-width:1}
-  .wxlab{font-family:'Jakarta',sans-serif;font-size:10px;font-weight:700;fill:var(--ink-faint)}
-  .wxnow{stroke:var(--coral);stroke-width:2;stroke-linecap:round}
-  .wxnowd{fill:var(--coral)}
+  .hrs{flex:1 1 100%;margin:6px -18px 0;padding:2px 18px 4px;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity}
+  .hrs::-webkit-scrollbar{display:none}
+  .hrsin{display:flex;gap:6px;width:max-content}
+  .hrc{flex:0 0 auto;width:52px;scroll-snap-align:center;display:flex;flex-direction:column;
+    align-items:center;gap:5px;padding:9px 4px 10px;border-radius:18px;background:var(--surface);
+    box-shadow:var(--sh-s)}
+  .hrc[data-dark="true"]{background:var(--sage);box-shadow:none}
+  .hrc[data-now="true"]{background:var(--deep)}
+  .hrc .ht{font-size:10.5px;font-weight:800;letter-spacing:.02em;color:var(--ink-faint);white-space:nowrap}
+  .hrc .hd{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+  .hrc svg{width:21px;height:21px;color:var(--ink-soft)}
+  .hrc[data-wet="1"] svg{color:var(--coral-text)}
+  .hrc[data-wet="2"] svg{color:var(--coral)}
+  .hrc[data-now="true"] .ht{color:var(--coral)}
+  .hrc[data-now="true"] .hd{color:#fff}
+  .hrc[data-now="true"] svg{color:var(--on-deep)}
+  .hrc[data-now="true"][data-wet="1"] svg,.hrc[data-now="true"][data-wet="2"] svg{color:var(--coral)}
+  .skfresh{flex:1 1 100%;margin:6px 0 0;font-size:11px;font-weight:600;color:var(--ink-faint)}
   .wxchip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:var(--r-pill);
     font-size:11.5px;font-weight:700;letter-spacing:.01em;line-height:1.25}
   .wxchip svg{width:13px;height:13px;flex:none}
@@ -768,6 +779,13 @@
 
   var II = {
     market:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5z"/><path d="M3 9l2-5h14l2 5"/><path d="M9 13v3M15 13v3"/></svg>',
+    wsun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.2M12 19v2.2M2.8 12H5M19 12h2.2M5.5 5.5 7 7M17 17l1.5 1.5M18.5 5.5 17 7M7 17l-1.5 1.5"/></svg>',
+    wsuncloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6.5a3.5 3.5 0 0 1 6.6 1.4"/><path d="M8 3.4v1.4M4.2 5.1l1 1M3.1 8.8h1.4"/><path d="M7.5 19h9a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6 1.2A3.2 3.2 0 0 0 7.5 19z"/></svg>',
+    wcloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18.5h9.5a3.8 3.8 0 0 0 .4-7.6 5.4 5.4 0 0 0-10.4 1.3A3.4 3.4 0 0 0 7 18.5z"/></svg>',
+    wmist:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M6 13h12M4 17h11"/></svg>',
+    wdrizzle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15.5h9.5a3.8 3.8 0 0 0 .4-7.6A5.4 5.4 0 0 0 6.5 9.2 3.4 3.4 0 0 0 7 15.5z"/><path d="M9.5 19v1.4M14.5 19v1.4"/></svg>',
+    wrain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15h9.5a3.8 3.8 0 0 0 .4-7.6A5.4 5.4 0 0 0 6.5 8.7 3.4 3.4 0 0 0 7 15z"/><path d="M8.5 18v2.6M12 18.4v2.6M15.5 18v2.6"/></svg>',
+    wstorm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5h9.5a3.8 3.8 0 0 0 .4-7.6A5.4 5.4 0 0 0 6.5 8.2 3.4 3.4 0 0 0 7 14.5z"/><path d="m12.8 17-3 3.2h3l-1.2 2.6"/></svg>',
     drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2s6 6.3 6 10.3A6 6 0 0 1 6 13.5c0-4 6-10.3 6-10.3z"/></svg>',
     moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.2 8.2 0 1 0 20 14.5z"/></svg>',
     sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>',
@@ -982,19 +1000,19 @@
     return {rise:toMin(jt - w/360), set:toMin(jt + w/360)};
   }
 
-  var WXK='pq26.wx.v2', WX=null, WXAT=0;
+  var WXK='pq26.wx.v3', WX=null, WXAT=0;
   (function(){ try{ var r=localStorage.getItem(WXK); if(r){ var o=JSON.parse(r); WX=o.d; WXAT=o.at||0; } }catch(e){} })();
 
   /* One request covers all four hotels. It matters: on the same day the south
      tip and Bai Dai can differ by a third of the rainfall, and they sit on
      opposite coasts of a monsoon. Results come back in the order asked. */
   function wxFetch(){
-    if(WX && Date.now()-WXAT < 3*3600000) return;         // a few hours old is fine
+    if(WX && Date.now()-WXAT < 3600000) return;           // an hour old is fine, older is not
     if(typeof fetch!=='function') return;
     fetch('https://api.open-meteo.com/v1/forecast'+
           '?latitude='+STAYS.map(function(s){return s.lat;}).join(',')+
           '&longitude='+STAYS.map(function(s){return s.lon;}).join(',')+
-          '&hourly=precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum'+
+          '&hourly=weathercode,temperature_2m&daily=temperature_2m_max,temperature_2m_min'+
           '&timezone=Asia%2FBangkok&start_date=2026-08-15&end_date=2026-08-24')
       .then(function(r){ return r.ok?r.json():null; })
       .then(function(j){
@@ -1005,12 +1023,11 @@
           if(!loc||!loc.daily||!loc.hourly) return;
           var d={};
           loc.daily.time.forEach(function(t,i){
-            d[t]={sum:loc.daily.precipitation_sum[i], tmax:loc.daily.temperature_2m_max[i],
-                  tmin:loc.daily.temperature_2m_min[i], p:[]};
+            d[t]={tmax:loc.daily.temperature_2m_max[i], tmin:loc.daily.temperature_2m_min[i], c:[], t:[]};
           });
           loc.hourly.time.forEach(function(t,i){
             var k=t.slice(0,10), h=+t.slice(11,13);
-            if(d[k]) d[k].p[h]=loc.hourly.precipitation[i];
+            if(d[k]){ d[k].c[h]=loc.hourly.weathercode[i]; d[k].t[h]=loc.hourly.temperature_2m[i]; }
           });
           out[si]=d;
         });
@@ -1028,114 +1045,128 @@
     return byStay ? byStay['2026-08-'+pad(15+di)] : null;
   }
 
-  /* In this climate it rains most days, so the useful question is not whether
-     but when. Report the driest four hours between 7am and 8pm, and only when
-     they are genuinely drier than the rest. */
-  function driestRun(p){
-    if(!p||p.length<21) return null;
-    var best=null, worst=0;
-    for(var a=7;a<=16;a++){
-      var t=0, ok=true;
-      for(var k=0;k<4;k++){ var v=p[a+k]; if(v==null){ok=false;break;} t+=v; }
-      if(!ok) continue;
-      if(best===null||t<best.t) best={a:a,b:a+4,t:t};
-      if(t>worst) worst=t;
-    }
-    if(!best||worst<=0) return null;
-    return (best.t <= worst*0.55) ? best : null;
-  }
   function onHour(h){ var ap=h<12?'am':'pm', hh=h%12||12; return hh+ap; }   // 14 -> 2pm
   function wxLine(di){
-    var w=wxFor(di); if(!w) return '';
-    var bits=['Rain at '+STAYS[DAYS[di].stay].place];
-    var dry=driestRun(w.p);
-    if(dry) bits.push('driest stretch '+onHour(dry.a)+' to '+onHour(dry.b));
-    var mm=w.sum==null?null:Math.round(w.sum);
-    if(mm!=null) bits.push(mm<2?'barely any all day':'roughly '+mm+'mm over the day');
-    return bits.join(', ')+'.';
+    var w=wxFor(di); if(!w||!w.c) return '';
+    var wet=0, dry=0, worst=0;
+    for(var h=7;h<=20;h++){
+      var k=wxKind(w.c[h]); if(!k) continue;
+      if(k.wet){ wet++; if(k.wet>worst) worst=k.wet; } else dry++;
+    }
+    if(!wet&&!dry) return '';
+    var out=STAYS[DAYS[di].stay].place+'. ';
+    out += !wet ? 'Dry all day.'
+         : !dry ? (worst>1?'Rain on and off all day.':'Light rain on and off all day.')
+         : (wet>dry ? 'Wet for most of the day.' : 'Mostly dry.');
+    var best=wxNextDry(w, 7);
+    if(wet&&best!=null) out+=' Best window from '+onHour(best)+'.';
+    else if(!dry){                                   // never fully clears, so find the lightest bit
+      var soft=wxLightest(w);
+      if(soft!=null) out+=' Lightest around '+onHour(soft)+'.';
+    }
+    return out;
   }
-  /* Eighteen bars, 5am to 10pm. Height is the square root of the rainfall so
-     a light shower still reads, the warm band behind them is daylight, and the
-     coral line is now. Nothing to tap, it is meant to be glanced at. */
-  function wxChart(di, sun){
-    var w=wxFor(di); if(!w||!w.p) return '';
-    var H0=5, H1=22, N=H1-H0+1, W=336, HT=80, PAD=6, base=HT-19;
-    var step=(W-2*PAD)/N, bw=Math.min(13, step-5);
-    var mx=0, any=false;
-    for(var h=H0;h<=H1;h++){ var v=w.p[h]; if(v!=null){ any=true; if(v>mx) mx=v; } }
+
+  /* When nothing is dry, the next best thing is the three hours that are least
+     wet. In this monsoon that is usually the only choice on offer. */
+  function wxLightest(w){
+    var best=null, bestAt=null;
+    for(var h=7;h<=18;h++){
+      var t=0, ok=true;
+      for(var k=0;k<3;k++){ var kind=wxKind(w.c[h+k]); if(!kind){ok=false;break;} t+=kind.wet; }
+      if(ok&&(best===null||t<best)){ best=t; bestAt=h; }
+    }
+    return bestAt;
+  }
+  /* Hour by hour, 5am to 10pm, scrolled sideways. Hours outside daylight are
+     dropped onto the sage so the useful part of the day stands out. */
+  function wxStrip(di, sun){
+    var w=wxFor(di); if(!w||!w.c) return '';
+    var p=pqNow(), today=(pqIndex(p)===di), nowH=Math.floor(pqMins(p)/60);
+    var cells='', any=false;
+    for(var h=5;h<=22;h++){
+      var kind=wxKind(w.c[h]); if(!kind) continue;
+      any=true;
+      var dark=(h*60<sun.rise-30)||(h*60>sun.set+30);
+      var deg=(w.t&&w.t[h]!=null)?Math.round(w.t[h])+'&deg;':'';
+      cells+='<div class="hrc" data-wet="'+kind.wet+'"'+
+             (dark?' data-dark="true"':'')+((today&&h===nowH)?' data-now="true"':'')+
+             ' title="'+esc(kind.w)+'">'+
+             '<span class="ht">'+((today&&h===nowH)?'NOW':onHour(h))+'</span>'+
+             II[kind.i]+
+             '<span class="hd">'+deg+'</span></div>';
+    }
     if(!any) return '';
-    var scale=Math.max(mx, 1.0);
-    function xh(f){ return PAD+(f-H0)*step; }
-    var g='';
-    var a=Math.max(H0, sun.rise/60), b=Math.min(H1+1, sun.set/60);
-    if(b>a) g+='<rect class="wxlight" x="'+xh(a).toFixed(1)+'" y="5" width="'+(xh(b)-xh(a)).toFixed(1)+
-               '" height="'+(base-5).toFixed(1)+'" rx="8"/>';
-    for(h=H0;h<=H1;h++){
-      var mm=w.p[h]==null?0:w.p[h];
-      var t=Math.sqrt(mm/scale);
-      var bh=Math.max(2.5, t*(base-13));
-      g+='<rect class="wxbar" x="'+(xh(h)+(step-bw)/2).toFixed(1)+'" y="'+(base-bh).toFixed(1)+
-         '" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" rx="3.5" opacity="'+
-         (0.18+0.78*Math.min(1,t)).toFixed(2)+'"/>';
-    }
-    g+='<line class="wxbase" x1="'+PAD+'" y1="'+base+'" x2="'+(W-PAD)+'" y2="'+base+'"/>';
-    [6,9,12,15,18,21].forEach(function(hh){
-      g+='<text class="wxlab" x="'+(xh(hh)+step/2).toFixed(1)+'" y="'+(base+14)+'" text-anchor="middle">'+onHour(hh)+'</text>';
-    });
-    var p=pqNow();
-    if(pqIndex(p)===di){
-      var nf=pqMins(p)/60;
-      if(nf>=H0&&nf<=H1+1){
-        var nx=xh(nf).toFixed(1);
-        g+='<line class="wxnow" x1="'+nx+'" y1="7" x2="'+nx+'" y2="'+base+'"/>'+
-           '<circle class="wxnowd" cx="'+nx+'" cy="5.5" r="3.6"/>';
-      }
-    }
-    return '<svg class="wxc" viewBox="0 0 '+W+' '+HT+'" role="img" aria-label="'+esc(wxAria(di,w))+'"><g>'+g+'</g></svg>';
+    return '<div class="hrs" id="hrs"><div class="hrsin" role="img" aria-label="'+
+           esc(wxAria(di,w))+'">'+cells+'</div></div>';
+  }
+
+
+  /* Open-Meteo speaks WMO codes. These are the only ones this island produces
+     in August, plus the cold ones for completeness. */
+  function wxKind(code){
+    if(code==null) return null;
+    if(code<=1)  return {w:'Sunny',      i:'wsun',      wet:0};
+    if(code===2) return {w:'Some cloud', i:'wsuncloud', wet:0};
+    if(code===3) return {w:'Cloudy',     i:'wcloud',    wet:0};
+    if(code<=48) return {w:'Misty',      i:'wmist',     wet:0};
+    if(code<=57) return {w:'Light rain', i:'wdrizzle',  wet:1};
+    if(code<=67) return {w:'Rain',       i:'wrain',     wet:2};
+    if(code<=79) return {w:'Snow',       i:'wcloud',    wet:2};
+    if(code===80)return {w:'Showers',    i:'wrain',     wet:2};
+    if(code<=86) return {w:'Heavy rain', i:'wrain',     wet:2};
+    return {w:'Thunderstorm', i:'wstorm', wet:2};
   }
 
   /* An outdoor plan is not an instant, so read the three hours it starts in.
      If those are wet, say when it clears rather than just saying no. */
   function wxVerdict(di, mins){
-    var w=wxFor(di); if(!w||!w.p) return null;
-    var h=Math.floor(mins/60), v=[];
-    for(var k=0;k<3;k++){ var x=w.p[h+k]; if(x!=null) v.push(x); }
-    if(!v.length) return null;
-    var mean=0; v.forEach(function(x){ mean+=x; }); mean/=v.length;
-    var lvl = mean<0.15?0 : mean<0.8?1 : mean<2.5?2 : 3;
-    var when=(mins%60===0)?onHour(mins/60):nice(mins);
-    var txt = lvl===0 ? 'Dry around '+when
-            : lvl===1 ? 'Spitting around '+when
-            : lvl===2 ? 'Rain likely around '+when
-            :           'Heavy rain around '+when;
-    if(lvl>=2){
-      var alt=wxNextDry(w, h+3);
-      if(alt!=null) txt+=', drier from '+onHour(alt);
+    var w=wxFor(di); if(!w||!w.c) return null;
+    var h=Math.floor(mins/60), worst=null;
+    for(var k=0;k<3;k++){                                  // the hours it spans
+      var kind=wxKind(w.c[h+k]);
+      if(kind && (!worst || kind.wet>worst.wet)) worst=kind;
     }
-    return {lvl:lvl, text:txt};
+    if(!worst) return null;
+    var when=(mins%60===0)?onHour(mins/60):nice(mins);
+    var txt=worst.w+' at '+when;
+    if(worst.wet>0){
+      var alt=wxNextDry(w, h+3);
+      if(alt!=null) txt+='. Better from '+onHour(alt);
+    }
+    return {lvl:worst.wet, icon:worst.i, text:txt};
   }
   function wxNextDry(w, from){
-    for(var h=Math.max(from,6); h<=19; h++){
-      var a=w.p[h], b=w.p[h+1];
-      if(a!=null&&b!=null&&(a+b)/2<0.2) return h;
+    for(var h=Math.max(from,6); h<=20; h++){
+      var a=wxKind(w.c[h]), b=wxKind(w.c[h+1]);
+      if(a&&b&&a.wet===0&&b.wet===0) return h;
     }
     return null;
   }
   function wxChip(di, mins){
     var v=wxVerdict(di, mins); if(!v) return '';
-    return '<span class="wxchip l'+v.lvl+'">'+(v.lvl?II.drop:II.sun)+v.text+'</span>';
+    return '<span class="wxchip l'+v.lvl+'">'+II[v.icon]+v.text+'</span>';
   }
 
   function wxAria(di,w){
-    var out='Rain by the hour at '+STAYS[DAYS[di].stay].place+'. ';
-    var peak=-1, ph=0;
-    for(var h=5;h<=22;h++){ var v=w.p[h]; if(v!=null&&v>peak){ peak=v; ph=h; } }
-    if(peak>0.2) out+='Heaviest around '+onHour(ph)+'. ';
-    var dry=driestRun(w.p);
-    if(dry) out+='Driest '+onHour(dry.a)+' to '+onHour(dry.b)+'.';
+    var out='Weather hour by hour at '+STAYS[DAYS[di].stay].place+'. ';
+    for(var h=8;h<=20;h+=4){
+      var k=wxKind(w.c[h]);
+      if(k) out+=onHour(h)+' '+k.w.toLowerCase()+'. ';
+    }
     return out;
   }
 
+
+  function ago(ms){
+    var m=Math.round((Date.now()-ms)/60000);
+    if(m<2) return 'just now';
+    if(m<60) return m+' minutes ago';
+    var hr=Math.round(m/60);
+    if(hr<24) return hr===1?'an hour ago':hr+' hours ago';
+    var dd=Math.round(hr/24);
+    return dd===1?'yesterday':dd+' days ago';
+  }
   function skyBlock(di){
     var t=sunTimes(2026,8,15+di); if(!t) return '';
     var w=wxFor(di);
@@ -1144,9 +1175,10 @@
       '<span class="pill tiny">'+II.moon+nice(t.set)+'</span>';
     if(w&&w.tmax!=null) h+='<span class="pill tiny">'+Math.round(w.tmax)+'&deg;'+
       (w.tmin!=null?' / '+Math.round(w.tmin)+'&deg;':'')+'</span>';
-    h+=wxChart(di,t);
+    h+=wxStrip(di,t);
     var line=wxLine(di);
     if(line) h+='<p class="skl">'+line+'</p>';
+    if(w&&WXAT) h+='<p class="skfresh">Forecast checked '+ago(WXAT)+'</p>';
     return h+'</div>';
   }
 
@@ -1340,10 +1372,23 @@
     document.getElementById('prevday').disabled=(i===0);
     document.getElementById('nextday').disabled=(i===DAYS.length-1);
     markToday();
+    hrsCentre();
     if(!quiet){
       var chipEl=strip.children[i];
       if(chipEl&&chipEl.scrollIntoView) chipEl.scrollIntoView({behavior:reduce()?'auto':'smooth',inline:'center',block:'nearest'});
     }
+  }
+
+  /* Open the hours on the useful part of the day. Measured with rectangles
+     because offsetLeft is relative to the nearest positioned ancestor, which is
+     not this scroller, and skipped while the view is hidden because everything
+     measures zero there. */
+  function hrsCentre(){
+    var st=document.getElementById('hrs'); if(!st||!st.clientWidth) return;
+    var mark=st.querySelector('.hrc[data-now="true"]') || st.querySelectorAll('.hrc')[3];
+    if(!mark) return;
+    var a=st.getBoundingClientRect(), b=mark.getBoundingClientRect();
+    st.scrollLeft=Math.max(0, st.scrollLeft + (b.left-a.left) - (st.clientWidth-b.width)/2);
   }
 
   function markToday(){
@@ -1473,7 +1518,11 @@
     var busy=a&&a.closest&&a.closest('#daypanel input, #daypanel select');
     if(!busy&&pqIndex(pqNow())===cur) renderDay(cur,true);
   },60000);
-  document.addEventListener('visibilitychange',function(){ if(!document.hidden){ renderLive(); markToday(); } });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden) return;
+    renderLive(); markToday();
+    wxFetch();                        // picking the phone back up is the moment to recheck
+  });
 
   /* ---- view switching ---- */
   var views={trip:document.getElementById('v-trip'),map:document.getElementById('v-map'),days:document.getElementById('v-days')};
@@ -1483,6 +1532,7 @@
     Array.prototype.forEach.call(nav.children,function(b){ b.setAttribute('aria-selected', b.getAttribute('data-view')===v?'true':'false'); });
     window.scrollTo({top:0,behavior:'auto'});
     nav.setAttribute('data-tucked','false');
+    if(v==='days') hrsCentre();          // it could not be measured while hidden
   }
   nav.addEventListener('click',function(e){ var b=e.target.closest('button[data-view]'); if(b) setView(b.getAttribute('data-view')); });
 
