@@ -679,6 +679,8 @@
     beach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4"/><path d="M3 19c1.5 1.4 3 1.4 4.5 0s3-1.4 4.5 0 3 1.4 4.5 0 3-1.4 4.5 0"/></svg>',
     tower:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 9 8h6z"/><path d="M9.5 8v12h5V8"/><path d="M9.5 12.5h5"/><path d="M4.5 20.5h15"/></svg>',
     ticket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9V6.5a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1V9a2.6 2.6 0 0 0 0 6v2.5a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V15a2.6 2.6 0 0 0 0-6z"/><path d="M14 6.5v11" stroke-dasharray="2 2.6"/></svg>',
+    arch:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 20.5V10a7.5 7.5 0 0 1 15 0v10.5"/><path d="M9.5 20.5V14a2.5 2.5 0 0 1 5 0v6.5"/><path d="M2.5 20.5h19"/></svg>',
+    castle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5V7l3 2.2 2.7-3 2.8 3 2.8-3 2.7 3 3-2.2v13.5z"/><path d="M10 20.5v-4.6h4v4.6"/></svg>',
     glass:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5h15l-7.5 7.6z"/><path d="M12 12.6V19"/><path d="M8 19h8"/></svg>'
   };
 
@@ -706,10 +708,11 @@
       map:'https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc' },
 
     { n:'Sunset Town after dark', icon:'tower', area:'east', verdict:'yes',
-      one:'You are sleeping inside it. People fly in just for this',
-      why:'La Festa sits in Sun Premier Village Primavera, the Amalfi quarter of Sunset Town. Pastel shophouses, a Pompeii ruins set, and a 75 metre Venice Clock Tower modelled on the campanile in St Mark\u2019s Square with an infinity pool at its foot. Kiss Bridge runs out into the sea from the same promenade, and the Kiss of the Sea show you have free tickets for plays on the water just off it.',
-      warn:'The plan calls this a walkable night market strip, which undersells it badly. It is the most photographed place on the island and you have three nights inside it. Everything here is a walk from your room, so it costs you no travel time at all.',
+      one:'The evening half. Kiss Bridge, the show, the tower lit up',
+      why:'The same streets change completely once the sun drops. Kiss Bridge runs out into the sea from the promenade, the Kiss of the Sea show you have free tickets for plays on the water just off the end of it, and the Clock Tower lights up over the square. La Festa sits inside all of it, so none of this costs you a drive.',
+      warn:'The plan calls this a walkable night market strip, which undersells it badly. It is the most photographed place on the island and you have three nights in the middle of it. For the daytime version of the same streets, see the Positano Street card.',
       time:'Every evening you are there', near:[3], days:[6,7,8],
+      photo:'kissbridge', credit:'Kiss Bridge at sunset, Sunset Town. Photo: Vivu Vietnam, '+CC,
       map:'https://www.google.com/maps/search/?api=1&query=Sunset+Town+Phu+Quoc' },
 
     { n:'Grand World, the paid half', icon:'ticket', area:'north', verdict:'yes',
@@ -717,6 +720,7 @@
       why:'Walking in is free and that is all most people see. Behind it sits the Teddy Bear Museum in the donut building with a 15 metre bear at 200,000 dong, a gondola down the 400 metre Venice canal at 200,000 dong, and the Quintessence of Vietnam show on the water, where the daytime mini shows from about 3pm to 5:30pm are free and the 8:15pm big show is 300,000 dong. Show and museum together is 450,000.',
       warn:'Those prices drop to 150,000 and 230,000 for anyone between 100cm and 140cm, so Seth and Belle should both land in the cheaper band. Decide before you arrive rather than at the gate. The big show and the gondola both run at fixed times and Monday evening is your only night there.',
       time:'Adds about two hours', near:[1,2], days:[2,3],
+      photo:'grandworld', credit:"Grand World's Little Venice at night. Photo: 松岡明芳, "+CC,
       map:'https://www.google.com/maps/search/?api=1&query=Grand+World+Phu+Quoc' },
 
     { n:'INK 360', icon:'glass', area:'middle', verdict:'may',
@@ -724,7 +728,21 @@
       why:'On the roof of the InterContinental on Long Beach, designed by Ashley Sutton as the inside of a giant kraken, tentacles coming through the ceiling and hand worked metalwork everywhere. Opens at 5pm, and the view runs the whole length of the west coast.',
       warn:'Being straight with you: it is a bar, drinks are the entire business model, and there is no sitting up there without ordering. Not a halal room. It is on this list because it appears on every list of the island and you should decide rather than not know. If it is a no, the Dinh Cau rocks in Duong Dong give you the same sunset over the same water for nothing.',
       time:'An hour around sunset', near:[], days:[],
-      map:'https://www.google.com/maps/search/?api=1&query=INK+360+InterContinental+Phu+Quoc' }
+      map:'https://www.google.com/maps/search/?api=1&query=INK+360+InterContinental+Phu+Quoc' },
+
+    { n:'Positano Street and the Venice quarter', icon:'arch', area:'east', verdict:'yes',
+      one:'The European photo walk, and it starts at your door',
+      why:'Sunset Town is built as a Mediterranean town and the detail is not cheap. Positano Street runs in pastel Italian shophouse colours, Duong Venice has the fountains and the classical facades, the 75 metre Clock Tower copies the campanile in St Mark\u2019s Square, and Sunset Town Square opens wide enough to get all five of you in one frame. The Pompeii ruins set sits in the middle of it. All of it free to walk into.',
+      warn:'Shoot it early. The light is soft before about 9am, the pastel walls take the morning sun, and the square is empty. By late afternoon the same streets fill up for the sunset and the show, and you will be queueing for every backdrop.',
+      time:'An hour before breakfast', near:[3], days:[6,7,8],
+      map:'https://www.google.com/maps/search/?api=1&query=Sunset+Town+Square+Phu+Quoc' },
+
+    { n:'European Avenue, inside VinWonders', icon:'castle', area:'north', verdict:'yes',
+      one:'Already paid for on Tuesday, and easy to walk past',
+      why:'One of the six zones is a medieval European street: cobbled boulevard, old town facades, the Copenhagen Flea Market and Fire Phoenix Square. The Mystical Castle sits at the end of it with Vietnam\u2019s first dark ride, knights and dragons, which is squarely Seth and Belle territory. The Once show runs at 6:45pm on the central lake in the same zone.',
+      warn:'This is inside the ticket you have already bought, so it costs nothing extra. Save the avenue for the end of the day rather than the start, then you finish on the 6:45pm show and walk straight out. Do not leave before it.',
+      time:'Late afternoon to 6:45pm', near:[1,2], days:[3],
+      map:'https://www.google.com/maps/search/?api=1&query=VinWonders+Phu+Quoc' }
   ];
 
   var AREAS = [
@@ -994,6 +1012,7 @@
        '<span class="pill tiny '+(d.verdict==='yes'?'coral':'ghost')+'">'+(d.verdict==='yes'?'Worth it':'Maybe')+'</span>'+
        '<span class="pill tiny ghost">Not booked</span></div>';
     h+='<p style="margin:14px 0 0;font-size:15px;color:var(--ink-soft)">'+d.why+'</p>';
+    if(d.photo) h+='<figure class="shot" style="margin:14px 0 0"><img src="'+P[d.photo]+'" alt=""><figcaption class="cr">'+d.credit+'</figcaption></figure>';
     h+='<div class="note'+(d.verdict==='yes'?'':' warm')+'">'+(d.verdict==='yes'?I.info:I.warn)+'<div>'+d.warn+'</div></div>';
     if(d.days && d.days.length){
       h+='<div class="arearow"><h3>Would fit</h3><span class="ln"></span></div><div class="nights">';
