@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="theme-color" content="#10362A" />
+<meta name="description" content="Phu Quoc family trip, 15 to 24 August 2026. Four stays, day by day." />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Phu Quoc" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" />
+<link rel="preload" as="font" type="font/woff2" href="fonts/outfit.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="fonts/jakarta.woff2" crossorigin />
+<title>Phu Quoc, nine nights</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<style>
+  @font-face{font-family:'Outfit';font-weight:100 900;font-style:normal;font-display:swap;src:url(fonts/outfit.woff2) format('woff2')}
+  @font-face{font-family:'Jakarta';font-weight:200 800;font-style:normal;font-display:swap;src:url(fonts/jakarta.woff2) format('woff2')}
+
+  /* Single theme on purpose: a warm daylight island palette, fixed for every viewer. */
+  :root{
+    --bg:#EDF2EA;
+    --surface:#FFFFFF;
+    --sage:#E2EBDE;
+    --deep:#10362A;
+    --deep-2:#0A2A20;
+    --ink:#0C241B;
+    --ink-soft:#4C6157;
+    --ink-faint:#5A6C63;
+    --coral:#EE7B45;
+    --coral-text:#AE4715;
+    --on-deep:#C9DCD0;
+    --line:rgba(12,36,27,.10);
+    --r-card:26px;
+    --r-img:20px;
+    --r-pill:999px;
+    --sh-s:0 2px 10px rgba(12,36,27,.06);
+    --sh-m:0 8px 26px -10px rgba(12,36,27,.20);
+    --sh-l:0 18px 44px -16px rgba(12,36,27,.30);
+    --e-out:cubic-bezier(.23,1,.32,1);
+    --e-drawer:cubic-bezier(.32,.72,0,1);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Jakarta',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.disp{font-family:'Outfit',sans-serif;margin:0;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+  button{font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  img{display:block;max-width:100%}
+  a{color:var(--coral-text)}
+  :focus-visible{outline:2.5px solid var(--coral);outline-offset:3px;border-radius:14px}
+
+  .wrap{max-width:520px;margin:0 auto;padding:0 18px}
+  .view{padding-top:8px;padding-bottom:118px}
+  .view[hidden]{display:none}
+
+  /* ---------------- pills & chips ---------------- */
+  .pill{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:9px 15px;border-radius:var(--r-pill);
+    background:var(--surface);box-shadow:var(--sh-s);
+    font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap;
+  }
+  .pill svg{width:15px;height:15px;flex:none;color:var(--ink-faint)}
+  .pill.dark{background:var(--deep);color:#fff;box-shadow:none}
+  .pill.dark svg{color:var(--on-deep)}
+  .pill.ghost{background:transparent;box-shadow:none;border:1.5px solid rgba(12,36,27,.16);color:var(--ink-soft)}
+  .pill.tiny{padding:6px 11px;font-size:11.5px;gap:5px}
+  .pill.tiny svg{width:12.5px;height:12.5px}
+  .pill.coral{background:var(--coral);color:#3A1405;box-shadow:none}
+  .pill.coral svg{color:#3A1405}
+
+  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* ---------------- greeting ---------------- */
+  .hello{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:calc(18px + env(safe-area-inset-top)) 0 20px}
+  .hello .who{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .hello .sub{font-size:13px;color:var(--ink-faint);margin-top:2px}
+
+  /* ---------------- hero ---------------- */
+  .hero h1{font-size:clamp(46px,15vw,62px);font-weight:800}
+  .hero .h2{font-size:clamp(46px,15vw,62px);font-weight:300;color:var(--ink-soft);display:block}
+  .herochips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+
+  .crew{display:flex;align-items:center;gap:10px;margin-top:22px}
+  .faces{display:flex}
+  .faces span{
+    width:36px;height:36px;border-radius:50%;border:2.5px solid var(--bg);
+    margin-left:-11px;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:#fff;
+  }
+  .faces span:first-child{margin-left:0}
+  .crew .cap{font-size:13px;color:var(--ink-faint);font-weight:500}
+
+  /* ---------------- big feature card ---------------- */
+  .feature{
+    position:relative;margin-top:24px;border-radius:var(--r-card);overflow:hidden;
+    box-shadow:var(--sh-m);background:var(--deep);
+  }
+  .feature img{width:100%;height:290px;object-fit:cover}
+  .feature .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,26,19,.02) 0%,rgba(6,26,19,.30) 40%,rgba(6,26,19,.72) 66%,rgba(6,26,19,.93) 100%);
+  }
+  .feature .fc{position:absolute;left:0;right:0;bottom:0;padding:20px}
+  .feature .fc h2{color:#fff;font-size:27px;font-weight:700}
+  .feature .fc p{margin:8px 0 0;color:#D9E7DE;font-size:13.5px;max-width:30ch}
+  .feature .fstats{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+  .feature .fstats .pill{background:rgba(255,255,255,.16);color:#fff;box-shadow:none;backdrop-filter:blur(8px)}
+  .feature .fstats .pill svg{color:#CFE0D6}
+  .feature .badge{position:absolute;top:16px;left:16px}
+
+  .sect{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:34px 0 14px}
+  .sect h2{font-size:23px;font-weight:700}
+  .sect .note{font-size:12.5px;color:var(--ink-faint);font-weight:500}
+
+  /* ---------------- stay carousel ---------------- */
+  .rail{margin:0 -18px;padding:2px 18px 6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory}
+  .rail::-webkit-scrollbar{display:none}
+  .railin{display:flex;gap:13px;width:max-content}
+  .staycard{
+    position:relative;width:210px;height:272px;border-radius:var(--r-card);overflow:hidden;
+    box-shadow:var(--sh-m);scroll-snap-align:start;text-align:left;
+    transition:transform 200ms var(--e-out);background:var(--deep);
+  }
+  .staycard:active{transform:scale(.965)}
+  .staycard img{width:100%;height:100%;object-fit:cover}
+  .staycard .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,26,19,.10) 30%,rgba(6,26,19,.86) 100%)}
+  .staycard .num{
+    position:absolute;top:13px;left:13px;width:29px;height:29px;border-radius:50%;
+    background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;
+    font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:var(--deep);
+  }
+  .staycard .flag{position:absolute;top:13px;right:13px}
+  .staycard .sc{position:absolute;left:0;right:0;bottom:0;padding:15px}
+  .staycard .sc h3{color:#fff;font-size:18px;font-weight:700;line-height:1.12}
+  .staycard .sc .meta{margin-top:7px;font-size:12px;color:#C8DACE;font-weight:500}
+  .staycard .draft{
+    position:absolute;top:13px;right:13px;padding:5px 10px;border-radius:var(--r-pill);
+    background:var(--coral);color:#3A1405;font-size:10.5px;font-weight:800;letter-spacing:.04em;
+  }
+
+  /* ---------------- info card ---------------- */
+  .card{background:var(--surface);border-radius:var(--r-card);box-shadow:var(--sh-s);padding:18px}
+  .flightcard{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}
+  .flightcard .col .code{font-family:'Outfit',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .flightcard .col .t{font-size:12.5px;color:var(--ink-faint);margin-top:2px;font-weight:500}
+  .flightcard .col.r{text-align:right}
+  .flightcard .mid{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-faint)}
+  .flightcard .mid svg{width:19px;height:19px}
+  .flightcard .mid .d{font-size:10.5px;font-weight:700;letter-spacing:.05em}
+  .fdiv{height:1px;background:var(--line);margin:15px 0}
+
+  /* ---------------- map ---------------- */
+  .mapstage{
+    position:relative;border-radius:var(--r-card);overflow:hidden;
+    background:linear-gradient(165deg,#CDE6DD 0%,#B7D8CE 55%,#A6CCC2 100%);
+    box-shadow:var(--sh-m);
+  }
+  .mapstage svg{display:block;width:100%;height:auto}
+  .isle{fill:url(#gIsle)}
+  .isleShadow{fill:#0C241B;opacity:.13}
+  .route{fill:none;stroke:var(--coral);stroke-width:4.4;stroke-linecap:round;stroke-linejoin:round}
+  .routeUnder{fill:none;stroke:#fff;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+  .leader{stroke:#fff;stroke-width:2.4;opacity:.85;stroke-linecap:round}
+  .anchor{fill:#fff;stroke:var(--coral);stroke-width:2}
+  .aptdot{fill:var(--deep)}
+  .aptring{fill:none;stroke:#fff;stroke-width:2.5}
+  .mlabel{font-family:'Jakarta',sans-serif;font-size:11px;font-weight:700;fill:var(--deep);opacity:.55}
+
+  .stop{cursor:pointer}
+  .stop .ring{fill:#fff;transition:transform 200ms var(--e-out)}
+  .stop .glow{fill:var(--coral);opacity:0;transition:opacity 200ms var(--e-out)}
+  .stop .cap{
+    font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;fill:#fff;
+    text-anchor:middle;dominant-baseline:central;
+  }
+  .stop .capbg{fill:var(--deep)}
+  .stop[data-active="true"] .glow{opacity:.30}
+  .stop[data-active="true"] .capbg{fill:var(--coral)}
+  .stop[data-active="true"] .cap{fill:#3A1405}
+  .stop:active .ring{transform:scale(.92);transform-box:fill-box;transform-origin:center}
+  .stop:focus-visible{outline:none}
+  .stop:focus-visible .glow{opacity:.36}
+
+  .maphead{position:absolute;top:0;left:0;right:0;padding:18px 18px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
+  .maphead h2{font-size:26px;font-weight:700;color:var(--deep)}
+  .maphead p{margin:5px 0 0;font-size:12.5px;color:var(--ink-soft);font-weight:500;max-width:20ch}
+
+  /* ---------------- day strip ---------------- */
+  .strip{margin:0 -18px;padding:4px 18px 8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .stripin{display:flex;gap:9px;width:max-content}
+  .dchip{
+    width:58px;height:80px;border-radius:22px;background:var(--surface);box-shadow:var(--sh-s);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+    transition:transform 180ms var(--e-out),background 180ms var(--e-out);
+  }
+  .dchip:active{transform:scale(.93)}
+  .dchip .dw{font-size:10.5px;font-weight:700;letter-spacing:.07em;color:var(--ink-faint)}
+  .dchip .dd{font-family:'Outfit',sans-serif;font-size:23px;font-weight:700;line-height:1.05}
+  .dchip .dot{width:5px;height:5px;border-radius:50%;background:transparent;margin-top:4px}
+  .dchip .dot.on{background:var(--coral)}
+  .dchip[aria-selected="true"]{background:var(--deep)}
+  .dchip[aria-selected="true"] .dw{color:var(--on-deep)}
+  .dchip[aria-selected="true"] .dd{color:#fff}
+  .dchip[aria-selected="true"] .dot.on{background:var(--coral)}
+
+  .dayhead{margin:26px 0 4px}
+  .dayhead h2{font-size:30px;font-weight:700}
+  .dayrow{display:flex;align-items:center;gap:9px;margin-top:12px;flex-wrap:wrap}
+
+  /* ---------------- timeline ---------------- */
+  .tl{margin-top:22px;position:relative}
+  .ev{position:relative;padding-left:30px;padding-bottom:22px}
+  .ev::before{content:"";position:absolute;left:6.5px;top:20px;bottom:-2px;width:2px;background:rgba(12,36,27,.11)}
+  .ev:last-child::before{display:none}
+  .ev .knot{position:absolute;left:0;top:8px;width:15px;height:15px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 2.5px var(--coral)}
+  .ev.soft .knot{box-shadow:0 0 0 2.5px rgba(12,36,27,.18)}
+  .ev .tm{font-size:12.5px;font-weight:700;color:var(--coral-text);letter-spacing:.01em}
+  .ev.soft .tm{color:var(--ink-faint)}
+  .ev h3{font-size:18px;font-weight:700;margin-top:3px;letter-spacing:-.02em}
+  .ev p{margin:6px 0 0;font-size:14.5px;color:var(--ink-soft);line-height:1.52}
+  .ev .evchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .evshot{margin-top:13px;border-radius:var(--r-img);overflow:hidden;position:relative;box-shadow:var(--sh-s)}
+  .evshot img{width:100%;height:180px;object-fit:cover}
+  .evshot .cr{
+    position:absolute;left:0;right:0;bottom:0;padding:24px 12px 9px;text-align:right;
+    background:linear-gradient(180deg,transparent,rgba(6,26,19,.82));
+    font-size:9.5px;color:#E4EEE8;line-height:1.4;
+  }
+  .evshot .cr a{color:#E4EEE8}
+
+  .note{
+    margin-top:14px;padding:15px 17px;border-radius:var(--r-img);background:var(--sage);
+    font-size:14px;color:var(--ink-soft);display:flex;gap:11px;align-items:flex-start;
+  }
+  .note svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--ink-faint)}
+  .note b{color:var(--ink)}
+  .note.warm{background:#FDEDE2}
+  .note.warm svg{color:var(--coral-text)}
+  .note.warm b{color:var(--coral-text)}
+
+  .stepnav{display:flex;gap:11px;margin-top:8px}
+  .stepnav button{
+    flex:1;min-height:52px;border-radius:var(--r-pill);background:var(--surface);box-shadow:var(--sh-s);
+    display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700;
+    transition:transform 170ms var(--e-out);
+  }
+  .stepnav button:active{transform:scale(.96)}
+  .stepnav button[disabled]{opacity:.36;pointer-events:none}
+  .stepnav svg{width:16px;height:16px}
+
+  /* ---------------- bottom nav ---------------- */
+  .nav{
+    position:fixed;z-index:60;left:50%;transform:translateX(-50%);
+    bottom:calc(18px + env(safe-area-inset-bottom));
+    display:flex;gap:4px;padding:7px;border-radius:var(--r-pill);
+    background:rgba(16,54,42,.93);backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);box-shadow:var(--sh-l);
+    transition:transform 220ms var(--e-out),opacity 220ms var(--e-out);
+  }
+  .nav[data-tucked="true"]{transform:translateX(-50%) translateY(165%);opacity:0;pointer-events:none}
+  .nav button{
+    min-width:74px;height:50px;border-radius:var(--r-pill);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    color:var(--on-deep);transition:background 200ms var(--e-out),color 200ms var(--e-out),transform 160ms var(--e-out);
+  }
+  .nav button:active{transform:scale(.94)}
+  .nav button svg{width:19px;height:19px}
+  .nav button span{font-size:10.5px;font-weight:700;letter-spacing:.03em}
+  .nav button[aria-selected="true"]{background:var(--coral);color:#3A1405}
+
+  /* ---------------- sheet ---------------- */
+  .scrim{position:fixed;inset:0;z-index:70;background:rgba(6,26,19,.5);opacity:0;pointer-events:none;transition:opacity 280ms var(--e-out);backdrop-filter:blur(2px)}
+  .scrim[data-open="true"]{opacity:1;pointer-events:auto}
+  .sheet{
+    position:fixed;z-index:71;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;
+    background:var(--bg);border-radius:30px 30px 0 0;box-shadow:0 -14px 50px rgba(6,26,19,.3);
+    transform:translateY(101%);transition:transform 340ms var(--e-drawer);
+    max-height:90dvh;display:flex;flex-direction:column;
+  }
+  .sheet[data-open="true"]{transform:translateY(0)}
+  .grab{padding:12px 0 6px;display:flex;justify-content:center;flex:none;touch-action:none;cursor:grab}
+  .grab span{width:42px;height:4.5px;border-radius:4px;background:rgba(12,36,27,.20)}
+  .sscroll{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 20px calc(28px + env(safe-area-inset-bottom))}
+  .shead{display:flex;align-items:flex-start;gap:13px;margin-bottom:14px}
+  .shead h2{font-size:25px;font-weight:700;flex:1;min-width:0}
+  .shead .sub{font-size:13px;color:var(--ink-faint);margin-top:5px;font-weight:500}
+  .sclose{
+    flex:none;width:42px;height:42px;border-radius:50%;background:var(--surface);box-shadow:var(--sh-s);
+    display:flex;align-items:center;justify-content:center;color:var(--ink-soft);
+    transition:transform 160ms var(--e-out);
+  }
+  .sclose:active{transform:scale(.9)}
+  .sclose svg{width:16px;height:16px}
+  .shot{border-radius:var(--r-img);overflow:hidden;position:relative;box-shadow:var(--sh-s)}
+  .shot img{width:100%;height:200px;object-fit:cover}
+  .shot .cr{
+    position:absolute;left:0;right:0;bottom:0;padding:26px 12px 9px;text-align:right;
+    background:linear-gradient(180deg,transparent,rgba(6,26,19,.84));font-size:9.5px;color:#E4EEE8;line-height:1.4;
+  }
+  .shot .cr a{color:#E4EEE8}
+  .nights{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+  .nightbtn{
+    display:grid;grid-template-columns:48px 1fr auto;gap:13px;align-items:center;width:100%;text-align:left;
+    padding:13px 15px;border-radius:var(--r-img);background:var(--surface);box-shadow:var(--sh-s);
+    transition:transform 170ms var(--e-out);
+  }
+  .nightbtn:active{transform:scale(.975)}
+  .nightbtn .dt{text-align:center}
+  .nightbtn .dt .w{font-size:10.5px;font-weight:700;color:var(--ink-faint);letter-spacing:.06em}
+  .nightbtn .dt .n{font-family:'Outfit',sans-serif;font-size:21px;font-weight:700;line-height:1.05}
+  .nightbtn .tt{font-size:14.5px;font-weight:700;line-height:1.25}
+  .nightbtn .go{color:var(--ink-faint);display:flex}
+  .nightbtn .go svg{width:17px;height:17px}
+  .slinks{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .slinks a{
+    display:inline-flex;align-items:center;gap:7px;padding:11px 16px;border-radius:var(--r-pill);
+    background:var(--surface);box-shadow:var(--sh-s);font-size:13px;font-weight:700;
+    color:var(--ink);text-decoration:none;
+  }
+  .slinks a svg{width:14px;height:14px;color:var(--ink-faint)}
+
+  /* ---------------- footer ---------------- */
+  .foot{margin-top:34px}
+  .foot h2{font-size:21px;font-weight:700;margin-bottom:14px}
+  .foot .card + .card{margin-top:11px}
+  .foot .card{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink-soft)}
+  .foot .card svg{width:17px;height:17px;flex:none;margin-top:2px;color:var(--coral-text)}
+  .foot .card b{color:var(--ink)}
+  .credits{margin-top:22px;font-size:11px;line-height:1.65;color:var(--ink-faint);opacity:.9}
+  .credits a{color:var(--ink-faint)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:1ms !important;animation-duration:1ms !important;scroll-behavior:auto !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ================= TRIP ================= -->
+  <section class="view" id="v-trip">
+    <div class="hello">
+      <div>
+        <div class="who">Hi Raffy 👋</div>
+        <div class="sub" id="countdown">Your island trip</div>
+      </div>
+      <span class="pill tiny" id="tripstate">9 nights</span>
+    </div>
+
+    <div class="hero">
+      <span class="pill tiny ghost">🇻🇳 Vietnam</span>
+      <h1 style="margin-top:14px">Phu Quoc<span class="h2">nine nights</span></h1>
+      <div class="herochips">
+        <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>15 to 24 Aug</span>
+        <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>4 stays</span>
+        <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>2 coasts</span>
+      </div>
+      <div class="crew">
+        <div class="faces">
+          <span style="background:#2C6E52">R</span>
+          <span style="background:#3E8A68">S</span>
+          <span style="background:#E08A4C">7</span>
+          <span style="background:#D96F3C">5</span>
+          <span style="background:#B9552A;font-size:11px">6m</span>
+        </div>
+        <span class="cap">Raffy, Syahirah, Seth&nbsp;7, Belle&nbsp;5, Raes&nbsp;6m</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <img src="img/kissbridge.webp" alt="Kiss Bridge at sunset, Phu Quoc" />
+      <div class="veil"></div>
+      <span class="pill tiny badge coral">Starts Sat 15 Aug</span>
+      <div class="fc">
+        <h2>South, north, and back</h2>
+        <p>Two stays at the bottom of the island, two at the top, then back down for the last three nights.</p>
+        <div class="fstats">
+          <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>9 nights</span>
+          <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>33 km apart</span>
+          <span class="pill tiny"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>4 hotels</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h2>Your stays</h2>
+      <span class="note" style="background:none;padding:0;font-size:12.5px">Tap for details</span>
+    </div>
+    <div class="rail"><div class="railin" id="stayrail"></div></div>
+
+    <div class="sect"><h2>Flights</h2></div>
+    <div class="card">
+      <div class="flightcard">
+        <div class="col"><div class="code">KUL</div><div class="t">12:50</div></div>
+        <div class="mid">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.7.7 0 0 0-.7 1.1L8 11l-2 2H3.5l-.7 1.4 3.6 1.2 1.2 3.6L9 18.5V16l2-2 3.7 3.9a.7.7 0 0 0 1.1-.7z"/></svg>
+          <span class="d">SAT 15</span>
+        </div>
+        <div class="col r"><div class="code">PQC</div><div class="t">13:35</div></div>
+      </div>
+      <div class="fdiv"></div>
+      <div class="flightcard">
+        <div class="col"><div class="code">PQC</div><div class="t">10:05</div></div>
+        <div class="mid">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.7.7 0 0 0-.7 1.1L8 11l-2 2H3.5l-.7 1.4 3.6 1.2 1.2 3.6L9 18.5V16l2-2 3.7 3.9a.7.7 0 0 0 1.1-.7z"/></svg>
+          <span class="d">MON 24</span>
+        </div>
+        <div class="col r"><div class="code">KUL</div><div class="t">12:50</div></div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <h2>Before you lock this in</h2>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span><b>Stop 4 is not booked.</b> Everything from 21 Aug assumes La Festa in Sunset Town, your best guess.</span></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg><span><b>The Safari day is my placement.</b> Thursday 20 from Meliá, since you had not picked one.</span></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Clock times are suggestions,</b> built from check-in norms and public drive-time listings, not a confirmed route.</span></div>
+      <div class="credits">
+        Island outline from OpenStreetMap contributors, ODbL. Photos from Wikimedia Commons, CC BY-SA 4.0: Kiss Bridge, An Thoi harbour, Hon Thom cable car and Kiss of the Sea by Vivu Vietnam; Grand World by 松岡明芳; Vinpearl Safari by Khoitran1957; Sao Beach by Trantuonglam.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAP ================= -->
+  <section class="view" id="v-map" hidden>
+    <div style="padding:calc(14px + env(safe-area-inset-top)) 0 16px">
+      <span class="eyebrow">Where you go</span>
+      <h1 style="font-size:34px;font-weight:700;margin-top:8px">The island route</h1>
+      <p style="margin:9px 0 0;font-size:14.5px;color:var(--ink-soft);max-width:34ch">Two stays at the southern tip, two up north at Bai Dai. Tap a photo to open that stay.</p>
+    </div>
+
+    <div class="mapstage">
+      <svg viewBox="0 0 358 470" role="img" aria-label="Illustrated map of Phu Quoc showing four stays along the route">
+        <defs>
+          <linearGradient id="gIsle" x1="0" y1="0" x2="0.6" y2="1">
+            <stop offset="0%" stop-color="#FDFFFC"/>
+            <stop offset="55%" stop-color="#F2FAF2"/>
+            <stop offset="100%" stop-color="#E6F4E9"/>
+          </linearGradient>
+          <clipPath id="cb1"><circle cx="278" cy="352" r="19"/></clipPath>
+          <clipPath id="cb2"><circle cx="58" cy="146" r="19"/></clipPath>
+          <clipPath id="cb3"><circle cx="52" cy="100" r="19"/></clipPath>
+          <clipPath id="cb4"><circle cx="268" cy="400" r="19"/></clipPath>
+        </defs>
+
+        <path class="isleShadow" d="M76.7 95.7L78.0 98.9L79.1 98.3L84.0 101.6L86.0 105.7L91.5 128.6L96.6 140.3L96.0 142.7L98.7 144.6L99.9 148.0L100.8 148.2L100.1 146.0L100.9 144.6L104.9 143.1L107.7 143.4L116.3 147.1L121.2 152.8L122.5 156.6L125.8 158.1L134.7 157.3L136.0 155.1L142.1 157.6L149.9 166.1L156.6 180.5L164.6 186.6L171.5 197.2L177.3 215.5L176.0 216.6L177.9 216.5L178.7 218.0L176.2 217.6L179.1 220.0L181.6 227.2L187.7 252.5L203.0 328.9L206.1 358.8L209.6 361.0L212.9 360.8L214.2 362.4L215.0 364.3L213.6 364.9L215.0 364.3L215.8 366.6L216.6 375.4L217.2 373.2L219.0 375.5L218.5 377.1L217.1 376.4L219.3 377.4L220.6 380.4L220.7 388.5L221.9 390.7L225.2 390.1L226.5 385.3L232.6 384.2L236.2 386.3L240.0 391.3L241.2 387.4L245.6 386.3L247.2 389.5L251.1 393.0L256.5 395.1L256.4 392.3L254.8 389.4L252.7 387.6L250.8 389.3L247.9 387.6L246.3 383.2L238.7 373.0L239.0 369.3L241.1 365.7L244.7 366.7L245.9 365.2L243.0 362.3L242.7 356.3L244.9 349.8L246.4 348.3L249.1 348.5L249.3 341.9L247.4 340.4L243.4 339.8L241.8 337.2L236.3 333.5L235.6 336.9L234.9 335.4L232.4 335.5L229.5 330.1L234.7 322.9L234.4 315.9L235.6 310.3L240.3 306.3L244.1 299.7L243.3 295.3L238.4 288.8L239.7 287.9L238.5 286.1L239.8 285.2L239.8 282.3L241.9 282.1L241.6 280.0L243.8 279.1L242.2 277.5L249.4 272.2L253.8 249.5L259.8 231.6L266.1 223.7L267.3 224.3L271.6 220.2L274.4 214.3L276.6 204.4L280.4 195.2L280.1 187.8L276.4 176.8L275.0 167.2L275.8 159.6L279.4 147.8L279.6 142.7L275.6 130.7L275.6 125.5L273.3 117.6L275.0 108.1L280.7 103.7L279.5 102.2L281.1 103.3L277.1 97.6L278.3 90.8L274.6 83.9L266.0 75.2L264.0 70.0L260.7 67.1L260.7 64.4L255.2 62.6L248.4 54.3L246.4 53.3L244.4 53.8L242.8 56.2L237.9 54.5L230.2 45.5L219.4 26.8L209.6 22.8L198.8 26.3L192.0 33.1L190.8 36.0L190.1 48.5L187.1 59.1L175.2 62.1L170.3 65.4L165.1 84.8L160.3 93.1L154.8 98.2L150.3 100.0L147.4 99.8L145.6 98.1L132.9 95.9L116.3 90.1L111.3 91.1L105.7 88.6L96.5 87.6L92.6 85.2L89.1 87.6L86.1 85.5L81.7 84.8L79.9 85.3L81.3 88.5L81.2 91.1L78.3 93.6L78.2 95.4L76.7 95.7Z" transform="translate(3,6)"/>
+        <path class="isle" d="M76.7 95.7L78.0 98.9L79.1 98.3L84.0 101.6L86.0 105.7L91.5 128.6L96.6 140.3L96.0 142.7L98.7 144.6L99.9 148.0L100.8 148.2L100.1 146.0L100.9 144.6L104.9 143.1L107.7 143.4L116.3 147.1L121.2 152.8L122.5 156.6L125.8 158.1L134.7 157.3L136.0 155.1L142.1 157.6L149.9 166.1L156.6 180.5L164.6 186.6L171.5 197.2L177.3 215.5L176.0 216.6L177.9 216.5L178.7 218.0L176.2 217.6L179.1 220.0L181.6 227.2L187.7 252.5L203.0 328.9L206.1 358.8L209.6 361.0L212.9 360.8L214.2 362.4L215.0 364.3L213.6 364.9L215.0 364.3L215.8 366.6L216.6 375.4L217.2 373.2L219.0 375.5L218.5 377.1L217.1 376.4L219.3 377.4L220.6 380.4L220.7 388.5L221.9 390.7L225.2 390.1L226.5 385.3L232.6 384.2L236.2 386.3L240.0 391.3L241.2 387.4L245.6 386.3L247.2 389.5L251.1 393.0L256.5 395.1L256.4 392.3L254.8 389.4L252.7 387.6L250.8 389.3L247.9 387.6L246.3 383.2L238.7 373.0L239.0 369.3L241.1 365.7L244.7 366.7L245.9 365.2L243.0 362.3L242.7 356.3L244.9 349.8L246.4 348.3L249.1 348.5L249.3 341.9L247.4 340.4L243.4 339.8L241.8 337.2L236.3 333.5L235.6 336.9L234.9 335.4L232.4 335.5L229.5 330.1L234.7 322.9L234.4 315.9L235.6 310.3L240.3 306.3L244.1 299.7L243.3 295.3L238.4 288.8L239.7 287.9L238.5 286.1L239.8 285.2L239.8 282.3L241.9 282.1L241.6 280.0L243.8 279.1L242.2 277.5L249.4 272.2L253.8 249.5L259.8 231.6L266.1 223.7L267.3 224.3L271.6 220.2L274.4 214.3L276.6 204.4L280.4 195.2L280.1 187.8L276.4 176.8L275.0 167.2L275.8 159.6L279.4 147.8L279.6 142.7L275.6 130.7L275.6 125.5L273.3 117.6L275.0 108.1L280.7 103.7L279.5 102.2L281.1 103.3L277.1 97.6L278.3 90.8L274.6 83.9L266.0 75.2L264.0 70.0L260.7 67.1L260.7 64.4L255.2 62.6L248.4 54.3L246.4 53.3L244.4 53.8L242.8 56.2L237.9 54.5L230.2 45.5L219.4 26.8L209.6 22.8L198.8 26.3L192.0 33.1L190.8 36.0L190.1 48.5L187.1 59.1L175.2 62.1L170.3 65.4L165.1 84.8L160.3 93.1L154.8 98.2L150.3 100.0L147.4 99.8L145.6 98.1L132.9 95.9L116.3 90.1L111.3 91.1L105.7 88.6L96.5 87.6L92.6 85.2L89.1 87.6L86.1 85.5L81.7 84.8L79.9 85.3L81.3 88.5L81.2 91.1L78.3 93.6L78.2 95.4L76.7 95.7Z"/>
+
+        <path class="routeUnder" d="M220.6 374.8C224.2 374.1 235.3 379.1 236.9 371.4C238.5 363.7 232.2 355.7 228.0 340.0C223.8 324.3 221.6 317.7 218.0 300.0C214.4 282.3 210.9 278.3 211.8 259.6C212.7 240.9 219.8 233.6 222.0 215.0C224.2 196.4 225.7 189.3 222.0 175.0C218.3 160.7 218.6 158.1 205.0 150.0C191.4 141.9 184.8 143.7 160.0 138.0C135.2 132.3 107.8 131.9 92.5 123.9C77.2 115.9 91.0 106.4 90.6 101.5"/>
+        <path class="route" d="M220.6 374.8C224.2 374.1 235.3 379.1 236.9 371.4C238.5 363.7 232.2 355.7 228.0 340.0C223.8 324.3 221.6 317.7 218.0 300.0C214.4 282.3 210.9 278.3 211.8 259.6C212.7 240.9 219.8 233.6 222.0 215.0C224.2 196.4 225.7 189.3 222.0 175.0C218.3 160.7 218.6 158.1 205.0 150.0C191.4 141.9 184.8 143.7 160.0 138.0C135.2 132.3 107.8 131.9 92.5 123.9C77.2 115.9 91.0 106.4 90.6 101.5"/>
+
+        <circle class="aptdot" cx="211.8" cy="259.6" r="5.5"/>
+        <circle class="aptring" cx="211.8" cy="259.6" r="5.5"/>
+        <text class="mlabel" x="202" y="263" text-anchor="end">Airport</text>
+        <text class="mlabel" x="140" y="120">Safari</text>
+        <text class="mlabel" x="236" y="443" text-anchor="middle">Hon Thom</text>
+
+        <line class="leader" x1="236.9" y1="371.4" x2="278" y2="352"/>
+        <circle class="anchor" cx="236.9" cy="371.4" r="3.4"/>
+        <line class="leader" x1="220.6" y1="374.8" x2="268" y2="400"/>
+        <circle class="anchor" cx="220.6" cy="374.8" r="3.4"/>
+        <line class="leader" x1="92.5" y1="123.9" x2="58" y2="146"/>
+        <circle class="anchor" cx="92.5" cy="123.9" r="3.4"/>
+        <line class="leader" x1="90.6" y1="101.5" x2="52" y2="100"/>
+        <circle class="anchor" cx="90.6" cy="101.5" r="3.4"/>
+
+        <g class="stop" data-stay="0" role="button" tabindex="0" aria-label="Stay 1, JW Marriott Emerald Bay">
+          <circle class="hit" cx="278" cy="352" r="24" fill="transparent"/>
+          <circle class="glow" cx="278" cy="352" r="26"/>
+          <circle class="ring" cx="278" cy="352" r="22"/>
+          <image href="img/b1.webp" x="259" y="333" width="38" height="38" clip-path="url(#cb1)" preserveAspectRatio="xMidYMid slice"/>
+          <circle class="capbg" cx="292" cy="338" r="9"/>
+          <text class="cap" x="292" y="338">1</text>
+        </g>
+        <g class="stop" data-stay="1" role="button" tabindex="0" aria-label="Stay 2, Vinpearl Resort and Spa">
+          <circle class="hit" cx="58" cy="146" r="24" fill="transparent"/>
+          <circle class="glow" cx="58" cy="146" r="26"/>
+          <circle class="ring" cx="58" cy="146" r="22"/>
+          <image href="img/b2.webp" x="39" y="127" width="38" height="38" clip-path="url(#cb2)" preserveAspectRatio="xMidYMid slice"/>
+          <circle class="capbg" cx="72" cy="132" r="9"/>
+          <text class="cap" x="72" y="132">2</text>
+        </g>
+        <g class="stop" data-stay="2" role="button" tabindex="0" aria-label="Stay 3, Melia Vinpearl">
+          <circle class="hit" cx="52" cy="100" r="24" fill="transparent"/>
+          <circle class="glow" cx="52" cy="100" r="26"/>
+          <circle class="ring" cx="52" cy="100" r="22"/>
+          <image href="img/b3.webp" x="33" y="81" width="38" height="38" clip-path="url(#cb3)" preserveAspectRatio="xMidYMid slice"/>
+          <circle class="capbg" cx="66" cy="86" r="9"/>
+          <text class="cap" x="66" y="86">3</text>
+        </g>
+        <g class="stop" data-stay="3" role="button" tabindex="0" aria-label="Stay 4, La Festa, not booked yet">
+          <circle class="hit" cx="268" cy="400" r="24" fill="transparent"/>
+          <circle class="glow" cx="268" cy="400" r="26"/>
+          <circle class="ring" cx="268" cy="400" r="22" stroke="#EE7B45" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <image href="img/b4.webp" x="249" y="381" width="38" height="38" clip-path="url(#cb4)" preserveAspectRatio="xMidYMid slice"/>
+          <circle class="capbg" cx="282" cy="386" r="9"/>
+          <text class="cap" x="282" y="386">4</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sect"><h2>In order</h2></div>
+    <div id="ordered"></div>
+  </section>
+
+  <!-- ================= DAYS ================= -->
+  <section class="view" id="v-days" hidden>
+    <div style="padding:calc(14px + env(safe-area-inset-top)) 0 14px">
+      <span class="eyebrow">Day by day</span>
+    </div>
+    <div class="strip"><div class="stripin" id="strip" role="tablist" aria-label="Trip days"></div></div>
+    <div id="daypanel"></div>
+    <div class="stepnav">
+      <button id="prevday"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Back</button>
+      <button id="nextday">Next<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </section>
+
+</div>
+
+<nav class="nav" id="nav">
+  <button data-view="trip" aria-selected="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V9l6-5 6 5v11"/></svg>
+    <span>Trip</span>
+  </button>
+  <button data-view="map" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3z"/><path d="M9 3v15M15 6v15"/></svg>
+    <span>Map</span>
+  </button>
+  <button data-view="days" aria-selected="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+    <span>Days</span>
+  </button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Stay details">
+  <div class="grab" id="grab"><span></span></div>
+  <div class="sscroll" id="sscroll"></div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+  var I = {
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>',
+    car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>',
+    info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+  };
+  var P = {
+    anthoi:'img/anthoi.webp', grandworld:'img/grandworld.webp', safari:'img/safari.webp',
+    kissofsea:'img/kissofsea.webp', honthom:'img/honthom.webp', kissbridge:'img/kissbridge.webp', sao:'img/sao.webp'
+  };
+  var CC='<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>';
+
+  var STAYS=[
+    {n:'JW Marriott Emerald Bay',short:'JW Marriott',side:'South coast',dates:'15 to 17 Aug',nights:'2 nights',
+     loc:'On Khem Beach at the southern tip, a short drive from An Thoi and the Hon Thom cable car station.',
+     photo:'anthoi',credit:'An Thoi harbour, right by this stay. Photo: Vivu Vietnam, '+CC,
+     site:['marriott.com','https://www.marriott.com/en-us/hotels/pqcjw-jw-marriott-phu-quoc-emerald-bay-resort-and-spa/overview/'],
+     map:['Khem Beach','https://www.google.com/maps/search/?api=1&query=Khem+Beach+Phu+Quoc'],
+     halal:'Resort dining is the easy option here. Ask for seafood or dishes prepared without pork or alcohol. The nearest dedicated halal restaurants, Sri Mutiara and Ganesh, are up in Duong Dong town, a real drive from this southern tip.',draft:false},
+    {n:'Vinpearl Resort and Spa',short:'Vinpearl',side:'North coast',dates:'17 to 19 Aug',nights:'2 nights',
+     loc:'Bai Dai, walkable to Grand World and close to Vinpearl Safari. The opposite end of the island from JW Marriott.',
+     photo:'grandworld',credit:"Grand World's Little Venice at night. Photo: 松岡明芳, "+CC,
+     site:['vinpearl.com','https://vinpearl.com/en/hotels/vinpearl-resort-spa-phu-quoc'],
+     map:['Bai Dai','https://www.google.com/maps/search/?api=1&query=Bai+Dai+Phu+Quoc'],
+     halal:'The easiest halal nights of the whole trip. Vinpearl resort dining includes dedicated halal counters in its buffet restaurants, so no travel is needed.',draft:false},
+    {n:'Meliá Vinpearl',short:'Meliá',side:'North coast',dates:'19 to 21 Aug',nights:'2 nights',
+     loc:"Same Bai Dai stretch as Vinpearl, on the island's sunset-facing coast.",
+     photo:'safari',credit:'Vinpearl Safari, day-tripped from here. Photo: Khoitran1957, '+CC,
+     site:['melia.com','https://www.melia.com/en/hotels/vietnam/phu-quoc/melia-vinpearl-phu-quoc'],
+     map:['Meliá Vinpearl','https://www.google.com/maps/search/?api=1&query=Melia+Vinpearl+Phu+Quoc'],
+     halal:'Same Bai Dai cluster as Vinpearl, so in-resort halal dining should be just as easy here.',draft:false},
+    {n:'La Festa Phu Quoc',short:'La Festa',side:'South coast',dates:'21 to 24 Aug',nights:'3 nights',
+     loc:'In Sunset Town, An Thoi. Back on the same coast as JW Marriott, about half a kilometre from the cable car and Kiss Bridge.',
+     photo:'kissofsea',credit:'Kiss of the Sea show, Sunset Town. Photo: Vivu Vietnam, '+CC,
+     site:['hilton.com','https://www.hilton.com/en/hotels/pqcpqqq-la-festa-phu-quoc/'],
+     map:['Sunset Town','https://www.google.com/maps/search/?api=1&query=Sunset+Town+An+Thoi+Phu+Quoc'],
+     halal:'Javaher Halal Restaurant sits inside Mercury Phu Quoc Resort and Villas, close to the airport and nearer this end of the island than Bai Dai. Likely your most reachable dedicated halal option for these three nights.',draft:true}
+  ];
+
+  function chip(t){ return '<span class="pill tiny">'+I.clock+t+'</span>'; }
+  function lnk(l,h){ return '<a class="pill tiny" style="text-decoration:none" href="'+h+'" target="_blank" rel="noopener">'+I.link+l+'</a>'; }
+
+  var DAYS=[
+    {dow:'SAT',dom:15,stay:0,big:false,title:'Land, settle in',sub:'Flight lands early afternoon',items:[
+      {t:'12:50',h:'AirAsia KUL to PQC',p:'Lands 1:35pm local. Allow time to clear immigration and collect bags before the transfer.',major:true},
+      {t:'~1:35pm',h:'Immigration, bags, transfer',p:'Airport to this end of the south coast is the shortest hotel transfer of the trip. Realistically checked in by mid afternoon.',chips:[chip('drive 25 to 35 min')]},
+      {t:'~3:00pm',h:'Check in, pool or Khem Beach',p:'The resort sits right on the beach, so there is nothing else to travel for tonight.'},
+      {t:'~6:15pm',h:'Sunset from Khem Beach',p:'Your first golden hour, taken from the resort. Worth checking the exact time closer to the day.',major:true,tags:['Photo spot']}
+    ]},
+    {dow:'SUN',dom:16,stay:0,big:true,title:'Cable car and Aquatopia',sub:'The big excursion for this stay',items:[
+      {t:'7:30am',h:'Breakfast, drive to An Thoi',p:'Short hop from the hotel.',chips:[chip('drive 15 min')]},
+      {t:'~8:45am',h:"Hon Thom cable car",p:"The world's longest over water. Enclosed and air cooled, gentle enough for Raes.",photo:'honthom',credit:'Hon Thom cable car. Photo: Vivu Vietnam, '+CC,major:true,tags:['Kids love it','Good for Raes'],chips:[chip('15 min ride'),lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]},
+      {t:'9:00am',h:'Aquatopia water park',p:'21 slides and a lazy river for Seth and Belle. Shaded rest areas if Raes needs a break, and worth one of you rotating back with her if the morning runs long.',major:true,tags:['Kids love it']},
+      {t:'12:30pm',h:'Lunch on the island',p:'Food court and restaurants at the park. Check for pork free options, or bring a snack for the baby.'},
+      {t:'1:30pm',h:'More park, then cable car back',p:'Head back before everyone is fully spent. It has already been a big day.'},
+      {t:'~6:30pm',h:'Kiss Bridge and Kiss of the Sea',p:'Your free JW Marriott ticket, good anytime. Bridge open for sunset before 7:30pm, and the 7 minute fire, laser and water show starts after 8:30pm. Tonight is the natural fit since you are already out here, but it works on your arrival night instead if a late show on top of a water park is too much in one go.',major:true,tags:['Photo spot','Free ticket']}
+    ]},
+    {dow:'MON',dom:17,stay:1,big:false,title:'North, then Grand World',sub:'Travel day, easy evening',
+     transfer:'Longest transfer of the trip. South to north runs roughly 1 to 1.5 hours by road. Worth leaving after breakfast rather than lunch, and it is a good nap window for Raes.',items:[
+      {t:'~9:00am',h:'Check out, drive north',p:'Leave after breakfast. This is the longest drive of the trip.',major:true,chips:[chip('drive 1 to 1.5 hrs')]},
+      {t:'~10:30am',h:'Settle in, pool at Vinpearl',p:'Reset after the drive. Nothing else planned for the afternoon.'},
+      {t:'~7:00pm',h:'Grand World, walk from the resort',p:'Little Venice canal streets, gondola boats and the nightly light and water show. Wide walking streets, stroller friendly, and plenty of family dining right there.',major:true,tags:['Photo spot','Kids love it'],chips:[chip('dinner plus show, 2 hrs'),lnk('vinpearl.com','https://vinpearl.com/en/grand-world-phu-quoc-what-is-worth-experiencing-there')]}
+    ]},
+    {dow:'TUE',dom:18,stay:1,big:true,title:'VinWonders',sub:'Booked. Theme park day',items:[
+      {t:'9:00am',h:'VinWonders, same Bai Dai cluster',p:'Your tickets for this one. Rides and attractions for Seth and Belle. Worth being there near opening to beat the midday heat, with a shaded stroller base for Raes to nap between rides.',major:true,tags:['Booked','Kids love it'],chips:[chip('gates 9:00am to 7:30pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinwonders-phu-quoc/')]},
+      {t:'~3:00pm',h:'Head back, resort downtime',p:'A full theme park day is a lot for everyone. Pool or beach for the evening, nothing else on top of it.'}
+    ]},
+    {dow:'WED',dom:19,stay:2,big:false,title:'Short hop, beach reset',sub:'Nothing else planned today',
+     transfer:'The easy move. Still the same Bai Dai neighbourhood as Vinpearl, so this one should only run 10 to 20 minutes.',items:[
+      {t:'~11:00am',h:'Check out, transfer to Meliá',p:'No long drive today.',chips:[chip('drive 10 to 20 min')]},
+      {t:'12:00pm',h:"Bai Dai's white sand beach",p:'This coastline faces the sunset directly, so it is worth lingering into the evening.',major:true,tags:['Photo spot'],chips:[chip('sunset 6:15 to 6:30pm')]}
+    ]},
+    {dow:'THU',dom:20,stay:2,big:true,title:'Vinpearl Safari',sub:'Suggested placement, move it if it does not fit',items:[
+      {t:'8:00am',h:'Breakfast, transfer to the safari',p:'Day trippable from Meliá, same Bai Dai area as Vinpearl.'},
+      {t:'9:00am',h:'Vinpearl Safari',p:'Placed here so it does not stack against VinWonders, and so Wednesday stays a genuine breather between the two big park days. Semi wild animal park with an open air tram, comfortable for Raes, animals more active before midday. Rent a stroller at the gate, even for Belle. Under 100cm enters free, and no outside food is allowed except formula or baby food.',major:true,tags:['Kids love it','Good for Raes'],chips:[chip('gates 9am to 4pm, last entry 2pm'),lnk('vinwonders.com','https://vinwonders.com/en/vinpearl-safari-phu-quoc/')]},
+      {t:'~1:00pm',h:'Back to the resort',p:'A safari morning is a lot of walking even with a tram. Pool or beach for the rest of the day.'}
+    ]},
+    {dow:'FRI',dom:21,stay:3,big:false,title:'Back south, Kiss Bridge',sub:'Low effort, high payoff evening',
+     transfer:'Second long transfer. Back south, roughly 1 to 1.5 hours, a mirror of the drive up on day 3.',items:[
+      {t:'~9:00am',h:'Check out, drive south, check in',p:'Treat the rest of the afternoon as recovery, not activity.',major:true,chips:[chip('drive 1 to 1.5 hrs')]},
+      {t:'~6:30pm',h:'Kiss Bridge at sunset',p:'A few minutes on foot if you end up at La Festa. An easy sunset without repeating the full cable car day.',photo:'kissbridge',credit:'Kiss Bridge at sunset. Photo: Vivu Vietnam, '+CC,major:true,tags:['Photo spot'],chips:[lnk('sunworld.vn','https://sunworld.vn/en/hon-thom')]}
+    ]},
+    {dow:'SAT',dom:22,stay:3,big:false,title:'Sunset Town and beach',sub:'Easy day, nothing urgent',items:[
+      {t:'Morning',h:'Beach, pool, resort time',p:'With a third night here, there is no need to cram everything into today. This one can stay genuinely unplanned.'},
+      {t:'~5:30pm',h:'Sunset Sanato beach club',p:'Its Gate Keeper, Bird Nest and Stairway to Heaven installations are some of the most photographed spots on the island. Small entry fee, or free with a drink. Distance from the southern resorts is not fully confirmed on my end, so check with the hotel before giving it a whole afternoon.',tags:['Photo spot','Optional'],chips:[lnk('sunsetsanato.com','https://www.sunsetsanato.com/en/')]},
+      {t:'Evening',h:'Sunset Town, by the hotel',p:'A walkable night market strip. Food stalls and an easy family stroll, good photos without booking anything.',major:true,tags:['Photo spot']}
+    ]},
+    {dow:'SUN',dom:23,stay:3,big:false,title:'Last full day, wide open',sub:'The bonus day from flying Monday',items:[
+      {t:'All day',h:'No plan, on purpose',p:'This day only exists because you fly home Monday instead of Sunday. Nothing is owed to it. Pool, beach, whatever Seth and Belle are still asking for.',major:true},
+      {t:'~10:00am',h:'Sao Beach, if there is appetite',p:'A different southern beach from the ones you will already have seen. Calm, shallow water that is easy with kids.',photo:'sao',credit:'Sao Beach. Photo: Trantuonglam, '+CC,tags:['Optional'],chips:[chip('drive 15 min'),lnk('Maps','https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc')]},
+      {t:'Evening',h:'Pack tonight',p:'Leaves Monday completely clear before an early flight.'}
+    ]},
+    {dow:'MON',dom:24,stay:3,big:false,title:'Departure',sub:'10:05am flight, early start',items:[
+      {t:'~7:00am',h:'Check out, drive to the airport',p:'For a 10:05 departure with two hours of buffer, the drive back is the same 25 to 35 minutes as arrival day.',major:true,chips:[chip('at the airport by 8:00am')]},
+      {t:'10:05am',h:'AirAsia PQC to KUL',p:'Departs 10:05am, lands Kuala Lumpur 12:50pm.',major:true}
+    ]}
+  ];
+
+  function reduce(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  /* ---- live countdown, honest about today ---- */
+  (function(){
+    var start=new Date(2026,7,15), end=new Date(2026,7,24), now=new Date();
+    var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var days=Math.round((start-d0)/86400000);
+    var cd=document.getElementById('countdown'), st=document.getElementById('tripstate');
+    if(days>1){ cd.textContent=days+' days until you fly'; st.textContent='9 nights'; }
+    else if(days===1){ cd.textContent='You fly tomorrow'; st.textContent='9 nights'; }
+    else if(days===0){ cd.textContent='You fly today'; st.textContent='Day 1'; }
+    else if(d0<=end){ var n=Math.round((d0-start)/86400000)+1; cd.textContent='Day '+n+' of 10 on the island'; st.textContent='Day '+n; }
+    else { cd.textContent='Trip complete'; st.textContent='Done'; }
+  })();
+
+  /* ---- stay carousel ---- */
+  var rail=document.getElementById('stayrail');
+  STAYS.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.className='staycard'; b.setAttribute('data-stay',i);
+    b.innerHTML='<img src="'+P[s.photo]+'" alt=""><div class="veil"></div>'+
+      '<span class="num">'+(i+1)+'</span>'+
+      (s.draft?'<span class="draft">DRAFT</span>':'')+
+      '<div class="sc"><h3>'+s.short+'</h3><div class="meta">'+s.side+'<br>'+s.dates+', '+s.nights+'</div></div>';
+    rail.appendChild(b);
+  });
+
+  /* ---- ordered list on the map view ---- */
+  var ordered=document.getElementById('ordered');
+  STAYS.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.className='nightbtn'; b.setAttribute('data-stay',i);
+    b.style.marginBottom='9px';
+    b.innerHTML='<span class="dt"><span class="n">'+(i+1)+'</span></span>'+
+      '<span><span class="tt">'+s.short+(s.draft?' <span style="color:var(--coral-text);font-size:.72em;font-weight:800">DRAFT</span>':'')+'</span>'+
+      '<div style="font-size:12.5px;color:var(--ink-faint);font-weight:500;margin-top:3px">'+s.side+', '+s.dates+'</div></span>'+
+      '<span class="go">'+I.chev+'</span>';
+    ordered.appendChild(b);
+  });
+
+  /* ---- day strip ---- */
+  var strip=document.getElementById('strip'), panel=document.getElementById('daypanel'), cur=0;
+  DAYS.forEach(function(d,i){
+    var b=document.createElement('button');
+    b.className='dchip'; b.setAttribute('role','tab'); b.setAttribute('data-i',i);
+    b.setAttribute('aria-selected', i===0?'true':'false');
+    b.innerHTML='<span class="dw">'+d.dow+'</span><span class="dd">'+d.dom+'</span><span class="dot'+(d.big?' on':'')+'"></span>';
+    strip.appendChild(b);
+  });
+
+  function stayDays(idx){ var o=[]; DAYS.forEach(function(d,i){ if(d.stay===idx) o.push(i); }); return o; }
+
+  function renderDay(i){
+    cur=i; var d=DAYS[i], s=STAYS[d.stay];
+    var ds=stayDays(d.stay), ord=ds.indexOf(i)+1;
+    var h='<div class="dayhead"><h2>'+d.title+'</h2>'+
+      '<div class="dayrow">'+
+      '<span class="pill tiny dark">'+d.dow+' '+d.dom+' Aug</span>'+
+      '<span class="pill tiny">'+s.short+', day '+ord+' of '+ds.length+'</span>'+
+      '</div>'+
+      '<p style="margin:13px 0 0;font-size:14.5px;color:var(--ink-soft)">'+d.sub+'</p></div>';
+
+    if(d.transfer) h+='<div class="note">'+I.car+'<div>'+d.transfer+'</div></div>';
+    if(s.draft && (i===0||DAYS[i-1].stay!==d.stay))
+      h+='<div class="note warm">'+I.warn+'<div><b>This stay is not booked yet.</b> Everything from here assumes La Festa in Sunset Town. If you book elsewhere in the south most of this still holds.</div></div>';
+
+    h+='<div class="tl">';
+    d.items.forEach(function(it){
+      h+='<div class="ev'+(it.major?'':' soft')+'"><span class="knot"></span>'+
+         '<div class="tm">'+it.t+'</div><h3>'+it.h+'</h3><p>'+it.p+'</p>';
+      if(it.photo) h+='<figure class="evshot" style="margin:13px 0 0"><img src="'+P[it.photo]+'" alt=""><figcaption class="cr">'+it.credit+'</figcaption></figure>';
+      var bits=[];
+      if(it.tags) it.tags.forEach(function(t){ bits.push('<span class="pill tiny ghost">'+t+'</span>'); });
+      if(it.chips) it.chips.forEach(function(c){ bits.push(c); });
+      if(bits.length) h+='<div class="evchips">'+bits.join('')+'</div>';
+      h+='</div>';
+    });
+    h+='</div>';
+    panel.innerHTML=h;
+
+    Array.prototype.forEach.call(strip.children,function(c,ci){ c.setAttribute('aria-selected', ci===i?'true':'false'); });
+    document.getElementById('prevday').disabled=(i===0);
+    document.getElementById('nextday').disabled=(i===DAYS.length-1);
+    var chipEl=strip.children[i];
+    if(chipEl&&chipEl.scrollIntoView) chipEl.scrollIntoView({behavior:reduce()?'auto':'smooth',inline:'center',block:'nearest'});
+  }
+  strip.addEventListener('click',function(e){ var b=e.target.closest('.dchip'); if(b) renderDay(+b.getAttribute('data-i')); });
+  document.getElementById('prevday').addEventListener('click',function(){ if(cur>0) renderDay(cur-1); });
+  document.getElementById('nextday').addEventListener('click',function(){ if(cur<DAYS.length-1) renderDay(cur+1); });
+  renderDay(0);
+
+  /* ---- view switching ---- */
+  var views={trip:document.getElementById('v-trip'),map:document.getElementById('v-map'),days:document.getElementById('v-days')};
+  var nav=document.getElementById('nav');
+  function setView(v){
+    Object.keys(views).forEach(function(k){ views[k].hidden=(k!==v); });
+    Array.prototype.forEach.call(nav.children,function(b){ b.setAttribute('aria-selected', b.getAttribute('data-view')===v?'true':'false'); });
+    window.scrollTo({top:0,behavior:'auto'});
+    nav.setAttribute('data-tucked','false');
+  }
+  nav.addEventListener('click',function(e){ var b=e.target.closest('button[data-view]'); if(b) setView(b.getAttribute('data-view')); });
+
+  /* nav tucks away while you scroll down, returns on the way up */
+  (function(){
+    if(reduce()) return;                       // no motion: leave it put
+    var lastY=0, queued=false;
+    function apply(){
+      queued=false;
+      var y=Math.max(0,window.scrollY);
+      var doc=document.documentElement;
+      var atTop=y<70;
+      var atEnd=(y+window.innerHeight)>=(doc.scrollHeight-48);
+      if(atTop||atEnd) nav.setAttribute('data-tucked','false');
+      else if(y>lastY+10) nav.setAttribute('data-tucked','true');
+      else if(y<lastY-10) nav.setAttribute('data-tucked','false');
+      lastY=y;
+    }
+    window.addEventListener('scroll',function(){
+      if(!queued){ queued=true; requestAnimationFrame(apply); }
+    },{passive:true});
+  })();
+
+  /* ---- sheet ---- */
+  var sheet=document.getElementById('sheet'), scrim=document.getElementById('scrim'), ss=document.getElementById('sscroll');
+  var open=null, lastFocus=null;
+
+  function openSheet(idx){
+    var s=STAYS[idx]; open=idx; lastFocus=document.activeElement;
+    var h='<div class="shead"><div style="flex:1;min-width:0">'+
+      '<h2>'+s.n+'</h2><div class="sub">'+s.side+' &middot; '+s.dates+' &middot; '+s.nights+'</div></div>'+
+      '<button class="sclose" id="sclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>';
+    if(s.draft) h+='<div class="note warm" style="margin-top:0">'+I.warn+'<div><b>Not booked yet.</b> This stop is your best guess, so treat these three nights as a draft.</div></div>';
+    h+='<figure class="shot" style="margin:14px 0 0"><img src="'+P[s.photo]+'" alt=""><figcaption class="cr">'+s.credit+'</figcaption></figure>';
+    h+='<p style="margin:15px 0 0;font-size:15px;color:var(--ink-soft)">'+s.loc+'</p>';
+    h+='<div class="note">'+I.info+'<div><b>Halal food.</b> '+s.halal+'</div></div>';
+    h+='<div class="nights">';
+    stayDays(idx).forEach(function(di){
+      var d=DAYS[di];
+      h+='<button class="nightbtn" data-goday="'+di+'"><span class="dt"><span class="w">'+d.dow+'</span><span class="n">'+d.dom+'</span></span>'+
+         '<span class="tt">'+d.title+'</span><span class="go">'+I.chev+'</span></button>';
+    });
+    h+='</div><div class="slinks">'+
+       '<a href="'+s.site[1]+'" target="_blank" rel="noopener">'+I.link+s.site[0]+'</a>'+
+       '<a href="'+s.map[1]+'" target="_blank" rel="noopener">'+I.link+s.map[0]+' on Maps</a></div>';
+    ss.innerHTML=h; ss.scrollTop=0;
+    sheet.style.transform=''; sheet.setAttribute('data-open','true'); scrim.setAttribute('data-open','true');
+    Array.prototype.forEach.call(document.querySelectorAll('.stop'),function(st){
+      st.setAttribute('data-active', st.getAttribute('data-stay')===String(idx)?'true':'false');
+    });
+    var c=document.getElementById('sclose'); if(c){ c.addEventListener('click',closeSheet); c.focus(); }
+  }
+  function closeSheet(){
+    sheet.setAttribute('data-open','false'); scrim.setAttribute('data-open','false'); sheet.style.transform='';
+    open=null;
+    Array.prototype.forEach.call(document.querySelectorAll('.stop'),function(st){ st.setAttribute('data-active','false'); });
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  scrim.addEventListener('click',closeSheet);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&open!==null) closeSheet(); });
+  ss.addEventListener('click',function(e){
+    var b=e.target.closest('[data-goday]'); if(!b) return;
+    var di=+b.getAttribute('data-goday'); closeSheet(); setView('days'); renderDay(di);
+  });
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.stop, .staycard, .nightbtn[data-stay]');
+    if(t && t.hasAttribute('data-stay')) openSheet(+t.getAttribute('data-stay'));
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Enter'&&e.key!==' ') return;
+    var st=e.target.closest&&e.target.closest('.stop');
+    if(st){ e.preventDefault(); openSheet(+st.getAttribute('data-stay')); }
+  });
+
+  /* ---- drag to dismiss ---- */
+  var grab=document.getElementById('grab'), drag=false, sy=0, stT=0, dy=0, pid=null;
+  grab.addEventListener('pointerdown',function(e){
+    if(drag||sheet.getAttribute('data-open')!=='true') return;
+    drag=true; pid=e.pointerId; sy=e.clientY; stT=Date.now(); dy=0;
+    sheet.style.transition='none';
+    try{ grab.setPointerCapture(pid); }catch(x){}
+  });
+  grab.addEventListener('pointermove',function(e){
+    if(!drag||e.pointerId!==pid) return;
+    dy=e.clientY-sy; if(dy<0) dy=dy/6;
+    sheet.style.transform='translateY('+dy+'px)';
+  });
+  function up(e){
+    if(!drag||e.pointerId!==pid) return;
+    drag=false; try{ grab.releasePointerCapture(pid); }catch(x){}
+    sheet.style.transition='';
+    var v=Math.abs(dy)/Math.max(Date.now()-stT,1);
+    if(dy>110||(dy>24&&v>0.11)) closeSheet(); else sheet.style.transform='';
+    dy=0; pid=null;
+  }
+  grab.addEventListener('pointerup',up);
+  grab.addEventListener('pointercancel',up);
+})();
+</script>
+
+</body>
+</html>
