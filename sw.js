@@ -15,11 +15,13 @@ self.addEventListener('fetch', function(e){
   if(e.request.method !== 'GET' || u.origin !== location.origin) return;   // the weather call goes straight to the network
   var doc = e.request.mode === 'navigate' || u.pathname === '/' || u.pathname.endsWith('/index.html');
   if(doc){
+    // only the app itself refreshes the cached copy; any other page on this
+    // origin must not be written in over it
+    var isApp = u.pathname === '/' || u.pathname.endsWith('/index.html');
     e.respondWith(fetch(e.request).then(function(r){
-      var copy = r.clone();
-      caches.open(C).then(function(c){ c.put('./index.html', copy); });
+      if(isApp){ var copy = r.clone(); caches.open(C).then(function(c){ c.put('./index.html', copy); }); }
       return r;
-    }).catch(function(){ return caches.match('./index.html'); }));
+    }).catch(function(){ return isApp ? caches.match('./index.html') : Response.error(); }));
     return;
   }
   e.respondWith(caches.match(e.request).then(function(m){ return m || fetch(e.request); }));
