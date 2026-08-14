@@ -1,0 +1,700 @@
+<title>Aizat's 2027 Route</title>
+<style>
+@font-face{
+  font-family:'Sora';
+  font-style:normal;
+  font-weight:600 800;
+  font-display:swap;
+  src:url(fonts/sora.woff2) format('woff2');
+}
+@font-face{
+  font-family:'Jakarta';
+  font-style:normal;
+  font-weight:400 700;
+  font-display:swap;
+  src:url(fonts/jakarta.woff2) format('woff2');
+}
+
+:root{
+  --bg:#F6F7F5;
+  --surface:#FFFFFF;
+  --surface-2:#EEF1EA;
+  --ink:#12182A;
+  --ink-soft:#565F74;
+  --ink-faint:#8A92A3;
+  --accent:#E2A33E;
+  --accent-deep:#B97C1E;
+  --accent-ink:#3D2A08;
+  --line:#E3E1D8;
+  --warn-bg:#FBEDE7;
+  --warn-ink:#8A3A22;
+  --warn-line:#E7C4B3;
+  --confirm:#2F7A4F;
+  --confirm-bg:#E7F3EB;
+  --shadow-sm:0 1px 2px rgba(18,24,42,0.06);
+  --shadow-md:0 12px 32px -12px rgba(18,24,42,0.18);
+  --shadow-lg:0 24px 60px -20px rgba(18,24,42,0.28);
+  --radius-lg:28px;
+  --radius-md:20px;
+  --radius-sm:14px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1220;
+    --surface:#171F33;
+    --surface-2:#1C2439;
+    --ink:#EEF1F6;
+    --ink-soft:#A4ACC0;
+    --ink-faint:#6C7590;
+    --accent:#F0AE4D;
+    --accent-deep:#C9862A;
+    --accent-ink:#2A1B04;
+    --line:#2A3350;
+    --warn-bg:#2A1810;
+    --warn-ink:#F0A98A;
+    --warn-line:#4A2A1D;
+    --confirm:#6FCB93;
+    --confirm-bg:#122A1C;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 12px 32px -12px rgba(0,0,0,0.5);
+    --shadow-lg:0 24px 60px -20px rgba(0,0,0,0.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1220;
+  --surface:#171F33;
+  --surface-2:#1C2439;
+  --ink:#EEF1F6;
+  --ink-soft:#A4ACC0;
+  --ink-faint:#6C7590;
+  --accent:#F0AE4D;
+  --accent-deep:#C9862A;
+  --accent-ink:#2A1B04;
+  --line:#2A3350;
+  --warn-bg:#2A1810;
+  --warn-ink:#F0A98A;
+  --warn-line:#4A2A1D;
+  --confirm:#6FCB93;
+  --confirm-bg:#122A1C;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md:0 12px 32px -12px rgba(0,0,0,0.5);
+  --shadow-lg:0 24px 60px -20px rgba(0,0,0,0.6);
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Jakarta',system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:96px;
+}
+h1,h2,h3,.display{
+  font-family:'Sora',system-ui,sans-serif;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  text-wrap:balance;
+  margin:0;
+}
+.tnum{ font-variant-numeric:tabular-nums; }
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; }
+
+.wrap{ max-width:640px; margin:0 auto; padding:0 20px; }
+@media (min-width:760px){ .wrap{ max-width:720px; } }
+
+/* ---------- Top ---------- */
+.top{ padding:28px 0 8px; }
+.eyebrow{
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--accent-deep);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin:0 0 10px;
+}
+.h1{ font-size:clamp(30px,7vw,42px); line-height:1.06; margin-bottom:14px; }
+.lede{
+  font-size:16px;
+  color:var(--ink-soft);
+  max-width:56ch;
+  margin:0 0 22px;
+}
+
+/* ---------- Budget strip ---------- */
+.budget{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  background:var(--line);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  margin-bottom:14px;
+}
+.budget .cell{
+  background:var(--surface);
+  padding:16px 10px;
+  text-align:center;
+}
+.budget .num{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:26px;
+  line-height:1;
+}
+.budget .num.accent{ color:var(--accent-deep); }
+.budget .lbl{
+  font-size:11px;
+  color:var(--ink-faint);
+  margin-top:6px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.spare-note{
+  font-size:13.5px;
+  color:var(--ink-faint);
+  margin:0 0 28px;
+}
+
+/* ---------- Holiday chips ---------- */
+.holiday-block{
+  background:var(--surface);
+  border-radius:var(--radius-md);
+  padding:18px 18px 20px;
+  box-shadow:var(--shadow-sm);
+  margin-bottom:36px;
+}
+.holiday-block h3{ font-size:16px; margin-bottom:4px; }
+.holiday-block .sub{ font-size:13px; color:var(--ink-faint); margin-bottom:14px; }
+.hgroup{ margin-bottom:14px; }
+.hgroup:last-child{ margin-bottom:0; }
+.hgroup-label{
+  font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.dot{ width:7px; height:7px; border-radius:50%; display:inline-block; }
+.dot.confirm{ background:var(--confirm); }
+.dot.est{ background:var(--accent); }
+.hrow{
+  display:flex; justify-content:space-between; gap:10px;
+  font-size:14.5px; padding:6px 0;
+  border-top:1px solid var(--line);
+}
+.hrow:first-of-type{ border-top:none; }
+.hrow .d{ color:var(--ink-faint); font-size:13.5px; white-space:nowrap; }
+
+/* ---------- Trip sections ---------- */
+.section{ padding-top:56px; scroll-margin-top:24px; }
+.section-head{ margin-bottom:18px; }
+.trip-tag{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;
+  color:var(--accent-deep); margin-bottom:8px;
+}
+.section h2{ font-size:clamp(24px,6vw,32px); margin-bottom:8px; }
+.section .dates{
+  font-size:14.5px; color:var(--ink-soft); font-weight:600; margin-bottom:2px;
+}
+.section .season-note{
+  font-size:14.5px; color:var(--ink-faint); margin-top:10px; max-width:58ch;
+}
+
+.hero-photo{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio:4/3;
+  margin:16px 0 18px;
+  background:var(--surface-2);
+  box-shadow:var(--shadow-md);
+}
+.hero-photo img{
+  width:100%; height:100%; object-fit:cover;
+}
+.hero-photo::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(13,18,32,0.55) 0%, rgba(13,18,32,0.0) 42%);
+}
+.hero-photo .cap{
+  position:absolute; left:16px; bottom:14px; right:16px;
+  color:#fff; font-size:13.5px; font-weight:600;
+  text-shadow:0 1px 4px rgba(0,0,0,0.4);
+  z-index:2;
+}
+
+/* route rail */
+.rail-wrap{ overflow-x:auto; margin:22px 0 6px; padding-bottom:6px; -webkit-overflow-scrolling:touch; }
+.rail{
+  display:flex; align-items:flex-start; gap:0; min-width:max-content; padding:2px 2px;
+}
+.rail .stop{
+  display:flex; flex-direction:column; align-items:center; width:96px; position:relative;
+}
+.rail .stop:not(:first-child)::before{
+  content:"";
+  position:absolute; top:9px; right:calc(50% + 12px); width:calc(96px - 24px);
+  height:2px; background:var(--line);
+}
+.rail .stop .pt{
+  width:20px; height:20px; border-radius:50%;
+  background:var(--surface); border:3px solid var(--accent);
+  margin-bottom:8px; flex-shrink:0;
+}
+.rail .stop .nm{ font-size:12.5px; font-weight:700; text-align:center; }
+.rail .stop .nt{ font-size:11px; color:var(--ink-faint); text-align:center; }
+
+/* stop cards */
+.stops{ display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+.stop-card{
+  background:var(--surface);
+  border-radius:var(--radius-md);
+  padding:16px 16px;
+  box-shadow:var(--shadow-sm);
+  display:flex; flex-direction:column; gap:8px;
+}
+.stop-card .row1{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.stop-card .city{ font-size:16px; font-weight:700; }
+.stop-card .nights{ font-size:12.5px; color:var(--ink-faint); font-weight:600; }
+.stop-card .desc{ font-size:14px; color:var(--ink-soft); }
+
+.status-chip{
+  border:none; cursor:pointer;
+  font-size:12px; font-weight:700;
+  padding:7px 13px;
+  border-radius:999px;
+  display:inline-flex; align-items:center; gap:6px;
+  transition:transform .12s ease, background .15s ease;
+  align-self:flex-start;
+}
+.status-chip:active{ transform:scale(0.96); }
+.status-chip .sdot{ width:7px; height:7px; border-radius:50%; }
+.status-chip[data-status="planned"]{ background:var(--confirm-bg); color:var(--confirm); }
+.status-chip[data-status="planned"] .sdot{ background:var(--confirm); }
+.status-chip[data-status="maybe"]{ background:var(--surface-2); color:var(--ink-soft); }
+.status-chip[data-status="maybe"] .sdot{ background:var(--ink-faint); }
+.status-chip[data-status="skip"]{ background:var(--warn-bg); color:var(--warn-ink); }
+.status-chip[data-status="skip"] .sdot{ background:var(--warn-ink); }
+
+.hint{ font-size:12px; color:var(--ink-faint); margin-top:14px; }
+
+/* ---------- Watch / safety section ---------- */
+.watch-card{
+  background:var(--warn-bg);
+  border:1px solid var(--warn-line);
+  border-radius:var(--radius-lg);
+  padding:22px 20px 20px;
+  margin-top:16px;
+}
+.watch-card h3{ font-size:18px; color:var(--warn-ink); margin-bottom:8px; }
+.watch-card p{ font-size:14.5px; color:var(--warn-ink); margin:0 0 12px; line-height:1.55; }
+.watch-card p:last-child{ margin-bottom:0; }
+.watch-card .src{ font-size:12px; opacity:0.75; }
+.watch-divider{ height:1px; background:var(--warn-line); margin:14px 0; }
+.watch-verdict{
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:700; color:var(--warn-ink);
+  margin-top:14px;
+}
+
+/* ---------- Notes ---------- */
+.notes-box{
+  background:var(--surface);
+  border-radius:var(--radius-md);
+  padding:18px;
+  box-shadow:var(--shadow-sm);
+  margin-top:16px;
+}
+.notes-box textarea{
+  width:100%; min-height:120px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  padding:12px 14px;
+  font-family:'Jakarta',sans-serif;
+  font-size:14.5px;
+  color:var(--ink);
+  background:var(--surface);
+  resize:vertical;
+}
+.notes-box textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+.notes-box .save-state{
+  font-size:12px; color:var(--ink-faint); margin-top:8px; height:16px;
+}
+.reset-btn{
+  margin-top:14px;
+  background:none; border:1px solid var(--line);
+  color:var(--ink-soft); font-size:12.5px; font-weight:600;
+  padding:8px 14px; border-radius:999px; cursor:pointer;
+}
+.reset-btn:active{ transform:scale(0.97); }
+
+/* ---------- Footer ---------- */
+footer{
+  margin-top:56px; padding-top:20px; border-top:1px solid var(--line);
+  font-size:12px; color:var(--ink-faint); line-height:1.7;
+}
+footer a{ text-decoration:underline; }
+
+/* ---------- Floating nav ---------- */
+.pillnav{
+  position:fixed; left:50%; bottom:16px;
+  transform:translateX(-50%) translateY(0);
+  transition:transform .28s cubic-bezier(0.16,1,0.3,1);
+  background:rgba(18,24,42,0.92);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  border-radius:999px;
+  box-shadow:var(--shadow-lg);
+  padding:6px;
+  display:flex; gap:2px;
+  z-index:40;
+  max-width:calc(100vw - 24px);
+  overflow-x:auto;
+}
+.pillnav.nav-hidden{ transform:translateX(-50%) translateY(140%); }
+@media (prefers-reduced-motion:reduce){
+  .pillnav{ transition:none; }
+  .pillnav.nav-hidden{ transform:translateX(-50%) translateY(0); }
+}
+.pillnav a{
+  text-decoration:none;
+  font-size:12.5px; font-weight:700;
+  color:#C8CDDC;
+  padding:9px 13px;
+  border-radius:999px;
+  white-space:nowrap;
+  transition:background .15s ease, color .15s ease;
+}
+.pillnav a.active{
+  background:var(--accent);
+  color:var(--accent-ink);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .status-chip, .reset-btn{ transition:none; }
+}
+</style>
+
+<div class="wrap">
+
+  <div class="top" id="top">
+    <p class="eyebrow">A plan for Aizat &middot; built by Remy &amp; Raffy</p>
+    <h1 class="h1">Nine countries,<br>2027.</h1>
+    <p class="lede">Split into two real trips, each timed to its own best season, built around your 21 days of leave and the March Australia trip already spoken for. Tap any stop to mark it planned, maybe, or skip. It saves on your phone.</p>
+
+    <div class="budget">
+      <div class="cell">
+        <div class="num tnum">21</div>
+        <div class="lbl">Leave, 2027</div>
+      </div>
+      <div class="cell">
+        <div class="num tnum">7</div>
+        <div class="lbl">Australia, Mar</div>
+      </div>
+      <div class="cell">
+        <div class="num tnum">11</div>
+        <div class="lbl">Used below</div>
+      </div>
+      <div class="cell">
+        <div class="num tnum accent">3</div>
+        <div class="lbl">Spare</div>
+      </div>
+    </div>
+    <p class="spare-note">14 days are left once Australia is out. This plan uses 11 across two trips and leaves 3 spare, in case a flight or a border crossing eats a day.</p>
+
+    <div class="holiday-block">
+      <h3>2027 Malaysian holidays used</h3>
+      <p class="sub">Two kinds below. Fixed-date ones are safe to book against. Islamic-calendar ones move with the moon and Malaysia hasn't gazetted 2027 yet, so those are estimates, not facts.</p>
+      <div class="hgroup">
+        <div class="hgroup-label" style="color:var(--confirm)"><span class="dot confirm"></span>Confirmed, fixed date</div>
+        <div class="hrow"><span>Malaysia Day</span><span class="d">Thu, 16 Sept 2027</span></div>
+        <div class="hrow"><span>National Day (Merdeka)</span><span class="d">Tue, 31 Aug 2027</span></div>
+      </div>
+      <div class="hgroup">
+        <div class="hgroup-label" style="color:var(--accent-deep)"><span class="dot est"></span>Estimated, moon-sighting dependent</div>
+        <div class="hrow"><span>Hari Raya Haji</span><span class="d">~Mon, 17 May 2027</span></div>
+        <div class="hrow"><span>Awal Muharram</span><span class="d">~Sun, 6 Jun 2027</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TRIP 1: NORTH ============ -->
+  <div class="section" id="north">
+    <div class="section-head">
+      <div class="trip-tag">Trip 1 of 2 &middot; Northern summer</div>
+      <h2>Baltics &amp; Finland</h2>
+      <div class="dates tnum">Sat 19 - Sun 27 June 2027 &middot; 9 days, 5 leave days used</div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="img/tallinn.jpg" alt="Aerial view of Tallinn's medieval Old Town, Estonia, with the harbour behind it" loading="lazy">
+      <div class="cap">Tallinn's Old Town, Estonia</div>
+    </div>
+
+    <p class="season-note">Research confirms summer is genuinely the right call here, not a default: the Baltics and Finland are at their best May to September, with June and July bringing 18 to 19 hours of daylight and the warmest, most reliable weather of the year. This trip is timed around the summer solstice on 21 June, so most evenings barely get dark.</p>
+
+    <div class="rail-wrap">
+      <div class="rail">
+        <div class="stop"><div class="pt"></div><div class="nm">Vilnius</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Riga</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Tallinn</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Helsinki</div><div class="nt">2 nights</div></div>
+      </div>
+    </div>
+
+    <div class="hero-photo" style="aspect-ratio:16/10; margin-top:22px;">
+      <img src="img/helsinki.jpg" alt="Helsinki Cathedral, Finland, on a clear day" loading="lazy" style="object-position:center 35%;">
+      <div class="cap">Helsinki Cathedral, Finland</div>
+    </div>
+
+    <div class="stops">
+      <div class="stop-card" data-stop="vilnius">
+        <div class="row1"><span class="city">Vilnius, Lithuania</span><span class="nights">Arrive Sat 19</span></div>
+        <div class="desc">Baroque Old Town, one of the largest and best preserved in Europe. Easiest entry point by flight from KUL routings.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="riga">
+        <div class="row1"><span class="city">Riga, Latvia</span><span class="nights">Mon 21</span></div>
+        <div class="desc">Overland by bus (Lux Express / FlixBus, about 4 to 4.5 hrs from Vilnius). Art Nouveau district, biggest of the three capitals.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="tallinn">
+        <div class="row1"><span class="city">Tallinn, Estonia</span><span class="nights">Wed 23</span></div>
+        <div class="desc">Bus from Riga, about 4.5 hrs. The best-preserved medieval old town in the Baltics, walkable end to end.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="helsinki">
+        <div class="row1"><span class="city">Helsinki, Finland</span><span class="nights">Fri 25</span></div>
+        <div class="desc">The classic 2 hour ferry across the Gulf of Finland. Cleanest way to add Finland without a separate flight.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+    </div>
+    <p class="hint">Fly out of Vilnius, fly home from Helsinki (or reverse). No Malaysian holiday lines up with this window, so it runs on leave alone, bracketed by two weekends.</p>
+  </div>
+
+  <!-- ============ TRIP 2: BALKANS ============ -->
+  <div class="section" id="balkans">
+    <div class="section-head">
+      <div class="trip-tag">Trip 2 of 2 &middot; Autumn corridor</div>
+      <h2>The Balkan corridor</h2>
+      <div class="dates tnum">Fri 10 - Mon 20 Sept 2027 &middot; 11 days, 6 leave days used</div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="img/bran.jpg" alt="Bran Castle in Transylvania, Romania, on its rock outcrop" loading="lazy">
+      <div class="cap">Bran Castle, Transylvania, Romania</div>
+    </div>
+
+    <p class="season-note">Five countries, five sets of research, one consistent answer: September and early October is the shared sweet spot across Slovenia, Slovakia, Serbia, Romania and Moldova, with mild temperatures, autumn colour, wine harvest, and the summer crowds gone. This trip also lands on Malaysia Day, a real confirmed public holiday, which is what makes 11 days cost only 6 of leave.</p>
+
+    <div class="rail-wrap">
+      <div class="rail">
+        <div class="stop"><div class="pt"></div><div class="nm">Bratislava</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Ljubljana</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Belgrade</div><div class="nt">2 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Bucharest</div><div class="nt">3 nights</div></div>
+        <div class="stop"><div class="pt"></div><div class="nm">Chi&#537;in&#259;u</div><div class="nt">2 nights</div></div>
+      </div>
+    </div>
+
+    <div class="hero-photo" style="aspect-ratio:16/10; margin-top:22px;">
+      <img src="img/bled.jpg" alt="The island church on Lake Bled, Slovenia, seen from above" loading="lazy">
+      <div class="cap">Lake Bled, Slovenia</div>
+    </div>
+
+    <div class="stops">
+      <div class="stop-card" data-stop="bratislava">
+        <div class="row1"><span class="city">Bratislava, Slovakia</span><span class="nights">Fri 10</span></div>
+        <div class="desc">Fly in via a European hub. Small, walkable old town, easiest first stop on the corridor.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="ljubljana">
+        <div class="row1"><span class="city">Ljubljana, Slovenia</span><span class="nights">Sun 12</span></div>
+        <div class="desc">About 5 hrs overland via Vienna and Graz, or a short flight. Castle, river, and Lake Bled as a half-day out.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="belgrade">
+        <div class="row1"><span class="city">Belgrade, Serbia</span><span class="nights">Tue 14</span></div>
+        <div class="desc">Short flight from Ljubljana. Kalemegdan Fortress over the Sava and Danube confluence.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="bucharest">
+        <div class="row1"><span class="city">Bucharest &amp; Transylvania, Romania</span><span class="nights">Thu 16</span></div>
+        <div class="desc">Short flight from Belgrade. Malaysia Day lands here, a free day for the Bran / Pele&#537; Castle day trip out of Bra&#537;ov.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+      <div class="stop-card" data-stop="chisinau">
+        <div class="row1"><span class="city">Chi&#537;in&#259;u, Moldova</span><span class="nights">Sun 19</span></div>
+        <div class="desc">About 1.5 hrs from Ia&#537;i, or a short hop from Bucharest. The least-visited capital in Europe, wine country on its doorstep. Fly home from here or loop back to Bucharest.</div>
+        <button class="status-chip" data-status="planned"><span class="sdot"></span><span class="txt">Planned</span></button>
+      </div>
+    </div>
+    <p class="hint">Five countries in 11 days is capital-hopping, not slow travel. Built that way on purpose to fit the leave budget, so cut a stop with the chips above if you'd rather linger.</p>
+  </div>
+
+  <!-- ============ WATCH: SYRIA & LEBANON ============ -->
+  <div class="section" id="watch">
+    <div class="section-head">
+      <div class="trip-tag" style="color:var(--warn-ink)">Not scheduled &middot; on hold</div>
+      <h2>Syria &amp; Lebanon</h2>
+    </div>
+    <div class="watch-card">
+      <h3>Both carry active government travel advisories right now</h3>
+      <p><strong>Syria:</strong> the UK Foreign Office advises against all travel to the entire country, citing unpredictable security conditions and terrorism risk. There is no British consular support available from inside Syria at all. This has not been a routine destination through 2026.</p>
+      <p><strong>Lebanon:</strong> advised against all travel to the southern suburbs of Beirut and the South and Nabatiyeh governorates specifically, and against all but essential travel to the rest of the country. Israeli strikes and Hizballah-linked incidents have continued into the advisory's most recent updates, alongside a standing terrorism threat to foreigners.</p>
+      <p class="src">Checked against gov.uk/foreign-travel-advice, August 2026. Advisories change, sometimes quickly, so re-check both before booking anything, and check Malaysia's own Wisma Putra travel advisory too.</p>
+      <div class="watch-divider"></div>
+      <p style="margin-bottom:0;">These two are deliberately left out of both 2027 trips above rather than routed through on a hope things improve by then. If conditions genuinely change, this is worth its own separate trip, planned closer to the date against whatever the advisory says then, not decided now.</p>
+      <div class="watch-verdict">Recommendation: hold, don't book, re-check closer to any travel date.</div>
+    </div>
+  </div>
+
+  <!-- ============ NOTES ============ -->
+  <div class="section" id="notes">
+    <div class="section-head">
+      <h2>Your notes</h2>
+      <p class="season-note" style="margin-top:6px;">Flight numbers, hotel picks, anything you want to change. Saved on this device only, nobody else sees it.</p>
+    </div>
+    <div class="notes-box">
+      <textarea id="notesArea" placeholder="e.g. found a cheaper flight into Vilnius via Doha, checking Riga hostel..."></textarea>
+      <div class="save-state" id="saveState"></div>
+    </div>
+    <button class="reset-btn" id="resetBtn">Reset all stop statuses</button>
+  </div>
+
+  <footer>
+    <p>Built by Remy for Raffy, for Aizat &middot; from the phone call on 14 Aug 2026 where this trip idea came up. Route logic, season research and hotel-check-in-style leave math done same as Raffy's own family trip planning.</p>
+    <p>Photos: Tallinn Old Town by Diego Delso, CC BY-SA 4.0. Helsinki Cathedral by Hans Hillewaert, CC BY-SA 4.0. Bran Castle by David Stanley, CC BY 2.0. Lake Bled by Poco a poco, CC BY-SA 3.0. All via Wikimedia Commons.</p>
+    <p>Public holiday dates: fixed-date ones are reliable. Islamic-calendar ones (Hari Raya Haji, Awal Muharram) are estimates projected from the calendar's yearly shift, not yet gazetted by Malaysia as of this writing. Confirm closer to the date.</p>
+  </footer>
+</div>
+
+<nav class="pillnav" id="pillnav">
+  <a href="#top" data-target="top">Plan</a>
+  <a href="#north" data-target="north">North</a>
+  <a href="#balkans" data-target="balkans">Balkans</a>
+  <a href="#watch" data-target="watch">Watch</a>
+  <a href="#notes" data-target="notes">Notes</a>
+</nav>
+
+<script>
+(function(){
+  var STORE_KEY = 'aizat2027.v1';
+  var state = { stops:{}, notes:'' };
+  try {
+    var raw = localStorage.getItem(STORE_KEY);
+    if (raw) state = Object.assign(state, JSON.parse(raw));
+  } catch(e){}
+
+  function save(){
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  var CYCLE = ['planned','maybe','skip'];
+  var LABELS = { planned:'Planned', maybe:'Maybe', skip:'Skip' };
+
+  function applyChip(btn, status){
+    btn.setAttribute('data-status', status);
+    btn.querySelector('.txt').textContent = LABELS[status];
+  }
+
+  document.querySelectorAll('.status-chip').forEach(function(btn){
+    var card = btn.closest('.stop-card');
+    var id = card ? card.getAttribute('data-stop') : null;
+    if (id && state.stops[id]) applyChip(btn, state.stops[id]);
+
+    btn.addEventListener('click', function(){
+      var current = btn.getAttribute('data-status');
+      var idx = CYCLE.indexOf(current);
+      var next = CYCLE[(idx + 1) % CYCLE.length];
+      applyChip(btn, next);
+      if (id) { state.stops[id] = next; save(); }
+    });
+  });
+
+  var notesArea = document.getElementById('notesArea');
+  var saveState = document.getElementById('saveState');
+  if (state.notes) notesArea.value = state.notes;
+  var saveTimer;
+  notesArea.addEventListener('input', function(){
+    saveState.textContent = 'Saving...';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      state.notes = notesArea.value;
+      save();
+      saveState.textContent = 'Saved on this device';
+    }, 500);
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    state.stops = {};
+    save();
+    document.querySelectorAll('.status-chip').forEach(function(btn){
+      applyChip(btn, 'planned');
+    });
+  });
+
+  /* Scrollspy for the pill nav */
+  var sections = ['top','north','balkans','watch','notes'].map(function(id){
+    return document.getElementById(id);
+  });
+  var links = {};
+  document.querySelectorAll('#pillnav a').forEach(function(a){
+    links[a.getAttribute('data-target')] = a;
+  });
+
+  if ('IntersectionObserver' in window) {
+    var current = 'top';
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          if (id !== current) {
+            if (links[current]) links[current].classList.remove('active');
+            current = id;
+            if (links[current]) links[current].classList.add('active');
+          }
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ if (s) io.observe(s); });
+    if (links['top']) links['top'].classList.add('active');
+  }
+
+  /* Auto-hide the pill nav on scroll down, return on scroll up.
+     Always visible near the top and bottom of the page. Skipped
+     entirely under reduced motion, where it just stays put. */
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('pillnav');
+  if (nav && !reduceMotion) {
+    var lastY = window.scrollY;
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY;
+        var atTop = y < 80;
+        var atBottom = (window.innerHeight + y) >= (document.body.scrollHeight - 80);
+        var goingDown = y > lastY + 4;
+        var goingUp = y < lastY - 4;
+        if (atTop || atBottom || goingUp) {
+          nav.classList.remove('nav-hidden');
+        } else if (goingDown) {
+          nav.classList.add('nav-hidden');
+        }
+        lastY = y;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+})();
+</script>
